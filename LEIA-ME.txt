@@ -1,0 +1,29 @@
+SITE VICTOR FÁVARO — HTML + CSS
+
+COMO SUBIR NA HOSTINGER
+1. hPanel > Sites > Gerenciar > Gerenciador de Arquivos
+2. Abra a pasta public_html e apague o default.php, se ele existir
+3. Envie o .zip, clique com o botão direito > Extrair
+4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
+
+ESTRUTURA
+index.html             Home
+work.html              Lista de projetos
+projetos/*.html        Uma página por projeto
+css/style.css          Todo o visual (cores ficam no topo, em :root)
+img/                   Imagens exportadas do Figma
+
+O QUE AINDA FALTA PREENCHER
+- Blocos cinza: são os espaços de imagem que já estavam vazios no Figma.
+  Na home, coloque um <img src="img/arquivo.jpg" alt=""> dentro do <div class="split__media">.
+  Nas páginas de projeto, troque <div class="media"></div> por
+  <img class="media" src="../img/arquivo.jpg" alt="descrição">
+- Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
+- index.html: e-mail do botão CONTACT ME e os links do Instagram e do LinkedIn
+- Botão SEE WORK do bloco "Personal" e os links Privacy/Cookies policy (estão como "#")
+
+FONTES
+- Bricolage Grotesque vem do Google Fonts e já está configurada.
+- Os botões usam "Obviously Wide Black" no Figma. Essa fonte é paga (Adobe Fonts).
+  Por enquanto o site usa Archivo Expanded Black, que é bem parecida. Se tiver
+  o Obviously no Adobe Fonts, cole o <link> do kit no <head> das páginas.
