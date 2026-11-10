@@ -19,6 +19,8 @@ js/motion.js           Parallax e animações de entrada (intensidade ajustável
 img/                   Imagens exportadas do Figma
 
 O QUE AINDA FALTA PREENCHER
+- Home, bloco "To see my work": a imagem do Metrópole é PROVISÓRIA.
+  Tamanho ideal da imagem final: 1564 x 1080 px (veja o comentário no index.html)
 - Páginas de projeto: troque cada <div class="media"></div> por
   <img class="media" src="../img/arquivo.jpg" alt="descrição">
 - Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
