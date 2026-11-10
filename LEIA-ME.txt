@@ -11,6 +11,7 @@ index.html             Home
 work.html              Lista de projetos
 projetos/*.html        Uma página por projeto
 css/style.css          Todo o visual (cores ficam no topo, em :root)
+js/motion.js           Parallax e animações de entrada (intensidade ajustável no topo do arquivo)
 img/                   Imagens exportadas do Figma
 
 O QUE AINDA FALTA PREENCHER

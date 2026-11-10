@@ -628,3 +628,32 @@ h1, h2, h3, p { margin: 0; }
   html { scroll-behavior: auto; }
   .btn { transition: none; }
 }
+
+/* =========================================================
+   MOVIMENTO (usado pelo js/motion.js)
+   Só vale quando o script roda e a pessoa não pediu
+   "reduzir movimento" no sistema.
+   ========================================================= */
+.motion .reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+.motion .reveal.is-in { opacity: 1; transform: none; }
+
+/* deslocamento do parallax (usa "translate", que soma com o "transform" da entrada) */
+.motion .parallax { translate: 0 var(--py, 0px); will-change: translate; }
+
+@media (min-width: 801px) {
+  /* imagens que ocupam a faixa toda ficam um pouco maiores
+     para o parallax não mostrar borda */
+  .motion .parallax--zoom { scale: 1.15; }
+}
+
+/* leve flutuação no nome do topo */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-.6deg); }
+}
+.motion .hero__name { animation: float 6s ease-in-out infinite; }
+.motion .hero__subtitle { animation: float 6s ease-in-out -3s infinite; }
