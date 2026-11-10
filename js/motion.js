@@ -99,7 +99,14 @@
 
       // distância do centro do elemento até o centro da tela
       var d = (r.top + r.height / 2) - vh / 2;
-      el.style.setProperty('--py', (d * l.speed).toFixed(1) + 'px');
+      var py = d * l.speed;
+      if (l.zoom) {
+        // imagens com zoom: nunca desloca mais do que a sobra do zoom (15%),
+        // para não aparecer borda
+        var max = r.height / 1.15 * 0.07;
+        py = Math.max(-max, Math.min(max, py));
+      }
+      el.style.setProperty('--py', py.toFixed(1) + 'px');
 
       if (l.fade) {
         // some suavemente quando o topo sai da tela

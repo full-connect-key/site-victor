@@ -682,8 +682,9 @@ h1, h2, h3, p { margin: 0; }
   place-items: center;
   aspect-ratio: 640 / 520;
   overflow: hidden;
-  background: var(--black);
+  background-color: var(--black);
 }
+.featured__item--pia { background-color: #ffd900; }
 .featured__item + .featured__item { border-left: 2px solid var(--black); }
 .featured__item--oz { background: #e5c823; }
 .featured__logo {
