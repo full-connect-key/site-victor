@@ -16,7 +16,8 @@
   var revealSel = [
     '.big-title', '.split .btn', '.about__title', '.about__grad', '.tags__row',
     '.contact__col', '.card', '.project-row__visual',
-    '.intro > *', '.gallery .media', '.media--full', '.concept', '.credits > *'
+    '.intro > *', '.gallery .media', '.media--full', '.concept', '.credits > *',
+    '.featured__item', '.project-nav'
   ].join(',');
 
   var revealEls = [].slice.call(document.querySelectorAll(revealSel));

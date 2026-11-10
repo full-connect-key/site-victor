@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=3" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=4" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -19,13 +19,17 @@ js/motion.js           Parallax e animações de entrada (intensidade ajustável
 img/                   Imagens exportadas do Figma
 
 O QUE AINDA FALTA PREENCHER
-- Blocos cinza: são os espaços de imagem que já estavam vazios no Figma.
-  Na home, coloque um <img src="img/arquivo.jpg" alt=""> dentro do <div class="split__media">.
-  Nas páginas de projeto, troque <div class="media"></div> por
+- Páginas de projeto: troque cada <div class="media"></div> por
   <img class="media" src="../img/arquivo.jpg" alt="descrição">
 - Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
 - index.html: e-mail do botão CONTACT ME e os links do Instagram e do LinkedIn
-- Botão SEE WORK do bloco "Personal" e os links Privacy/Cookies policy (estão como "#")
+- Bloco "Personal" da home: o botão está como "Coming soon" e o espaço da imagem
+  usa o pontilhado do topo. Quando houver página/imagem, siga o comentário no index.html
+- Projeto "Qual emoção é essa aqui?" ainda não tem imagem na página Work
+- Projetos em destaque da home (seção "featured" no index.html): troque ou
+  reordene os três blocos se quiser outros projetos ali
+- Ao adicionar um projeto novo, inclua-o também nos links "Previous/Next"
+  do fim das páginas de projeto
 
 FONTES
 - Bricolage Grotesque vem do Google Fonts e já está configurada.
