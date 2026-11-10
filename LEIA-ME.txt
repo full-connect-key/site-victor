@@ -6,6 +6,10 @@ COMO SUBIR NA HOSTINGER
 3. Envie o .zip, clique com o botão direito > Extrair
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
+VERSÃO
+Ao mudar o CSS ou o JS, aumente o número em "?v=3" nos <link>/<script>
+das páginas, para os navegadores baixarem a versão nova.
+
 ESTRUTURA
 index.html             Home
 work.html              Lista de projetos
