@@ -64,7 +64,7 @@
     { sel: '.project-row .card', speed: 0.06 },
     { sel: '.project-row__bg', speed: 0.18, zoom: true },
     // páginas de projeto
-    { sel: 'img.media--full', speed: 0.1, zoom: true }
+    { sel: 'img.media--full:not([style*="contain"])', speed: 0.1, zoom: true }
   ];
 
   var items = [];

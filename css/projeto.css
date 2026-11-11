@@ -279,3 +279,6 @@ body { overflow-x: clip; }
 
 /* Qual emoção é essa aqui?: azul do projeto + capa */
 .project-hero--qual { background: #283583 url("../img/qual-capa.jpg") center / cover no-repeat; }
+
+/* imagem larga que vem depois dos blocos de marca: mesmo respiro das seções */
+#brand ~ .media--full { margin-top: calc(140 * var(--u)); }
