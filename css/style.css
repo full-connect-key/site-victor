@@ -721,3 +721,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* categorias dos cards: cada uma inteira na mesma linha */
 .card__cat span { white-space: nowrap; }
+
+/* Página Work: Qual emoção é essa aqui? */
+.project-row--qual { background: #283583; }
+.project-row__visual--qual { width: calc(330 * var(--u)); }

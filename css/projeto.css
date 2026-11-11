@@ -313,3 +313,6 @@ body { overflow-x: clip; }
 
 /* nomes longos no "Next project" ficam menores */
 .next__title--long { font-size: clamp(40px, 5.4vw, 104px); }
+
+/* Qual emoção é essa aqui?: azul do projeto + capa */
+.project-hero--qual { background: #283583 url("../img/qual-capa.jpg") center / cover no-repeat; }

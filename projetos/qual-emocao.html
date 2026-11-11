@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=10">
-  <link rel="stylesheet" href="../css/brand.css?v=10">
-  <link rel="stylesheet" href="../css/projeto.css?v=10">
+  <link rel="stylesheet" href="../css/style.css?v=11">
+  <link rel="stylesheet" href="../css/brand.css?v=11">
+  <link rel="stylesheet" href="../css/projeto.css?v=11">
 </head>
 <body>
   <!-- Imagens do projeto: cada bloco <figure class="shot"> é um espaço de imagem.
@@ -30,7 +30,7 @@
   </nav>
 
   <section class="p-hero">
-    <div class="p-hero__card project-hero--green">
+    <div class="p-hero__card project-hero--qual">
     <header class="site-header">
       <div class="container">
         <a class="site-header__logo" href="../index.html" aria-label="Victor Fávaro — início">
@@ -44,7 +44,7 @@
         </nav>
       </div>
     </header>
-      <h1 class="p-hero__logo p-hero__title project-hero__title">Qual emoção<br>é essa aqui?</h1>
+      <h1 class="visually-hidden">Qual emoção é essa aqui?</h1>
       <div class="p-hero__meta">
         <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="pill">Narrative Board Game</span><span class="pill" style="background:var(--yellow)">2025</span></div>
         <span class="p-hero__scroll"><i></i>Scroll</span>
@@ -67,8 +67,8 @@
       </section>
 
       <div class="row row--2">
-        <figure class="shot" style="--bg:#7AA100" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
-        <figure class="shot" style="--bg:#FFD900" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
+        <figure class="shot" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-lettering.jpg" alt="Lettering do jogo Qual emoção é essa aqui?" loading="lazy" style="object-fit:contain;padding:6%"></div></figure>
+        <figure class="shot" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-outrora.jpg" alt="Logotipo da Editora Outrora e suas versões" loading="lazy"></div></figure>
       </div>
     </div>
 
@@ -76,7 +76,7 @@
       <span>Game Design</span><span><b>✦</b></span><span>Illustration</span><span><b>✦</b></span><span>Editorial Design</span><span><b>✦</b></span><span>Visual Identity</span><span><b>✦</b></span><span>Game Design</span><span><b>✦</b></span><span>Illustration</span><span><b>✦</b></span><span>Editorial Design</span><span><b>✦</b></span><span>Visual Identity</span><span><b>✦</b></span>
     </div></div></div>
 
-    <figure class="shot shot--full" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
+    <figure class="shot shot--full" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-personagens.jpg" alt="Artes finais dos personagens do jogo" loading="lazy" style="object-fit:contain;padding:6%"></div></figure>
 
     <div class="container">
       <section class="intro concept">
@@ -96,6 +96,7 @@
 {
   "fontsUrl": "https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap",
   "typographyText": "O projeto combina tipografias expressivas e de fácil leitura, equilibrando ludicidade e funcionalidade. No livro, a Bisbee VF garante legibilidade e a Marker Aid traz espontaneidade aos títulos; na identidade da Editora Outrora, Search e Comfortaa reforçam o caráter manual e acolhedor da marca.",
+  "paletteText": "As cores desempenham um papel narrativo no jogo: cada tonalidade ajuda a representar visualmente uma emoção. Na identidade da Editora Outrora, azul, amarelo, branco e preto representam nostalgia, afeto, esperança e criatividade.",
   "typography": [
     {
       "name": "Bisbee VF",
@@ -130,21 +131,75 @@
       "family": "'Comfortaa', sans-serif",
       "glyphWeight": 400
     }
+  ],
+  "palette": [
+    {
+      "name": "Coragem",
+      "hex": "#693C90"
+    },
+    {
+      "name": "Alegria",
+      "hex": "#EAE21F"
+    },
+    {
+      "name": "Tristeza",
+      "hex": "#519AD4"
+    },
+    {
+      "name": "Surpresa",
+      "hex": "#F6B207"
+    },
+    {
+      "name": "Irritação",
+      "hex": "#F0821A"
+    },
+    {
+      "name": "Amor",
+      "hex": "#E83C52"
+    },
+    {
+      "name": "Curiosidade",
+      "hex": "#8AC165"
+    },
+    {
+      "name": "Ódio",
+      "hex": "#3B5293"
+    },
+    {
+      "name": "Nojo",
+      "hex": "#D02161"
+    },
+    {
+      "name": "Confiança",
+      "hex": "#92C140"
+    },
+    {
+      "name": "Raiva",
+      "hex": "#DC0C15"
+    },
+    {
+      "name": "Lealdade",
+      "hex": "#FEC905"
+    },
+    {
+      "name": "Medo",
+      "hex": "#3D8834"
+    }
   ]
 }
     </script>
 
     <div class="stories">
-      <figure class="shot" style="--bg:#FF8A3D" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
-      <figure class="shot" style="--bg:#E5484D" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
-      <figure class="shot" style="--bg:#8E5BD6" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
+      <figure class="shot" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-menino.jpg" alt="Personagem principal, o menino" loading="lazy" style="object-fit:contain;padding:6%"></div></figure>
+      <figure class="shot" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-tigre.jpg" alt="Personagem tigre" loading="lazy" style="object-fit:contain;padding:6%"></div></figure>
+      <figure class="shot" style="--bg:#283583" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-urso.jpg" alt="Personagem urso" loading="lazy" style="object-fit:contain;padding:6%"></div></figure>
     </div>
 
     <div class="container">
-      <div class="row row--3">
-        <figure class="shot" style="--bg:#7AA100" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
-        <figure class="shot" style="--bg:#FFD900" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
-        <figure class="shot" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><p class="project-hero__title" style="font-size:clamp(22px,2.6vw,48px);-webkit-text-stroke:2px var(--black);text-shadow:4px 4px 0 var(--black)">Qual emoção<br>é essa aqui?</p></div></figure>
+      <div class="row row--3" style="grid-template-columns:1fr">
+        <figure class="shot" style="--bg:#283583;aspect-ratio:1400/612" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-rascunhos-1.jpg" alt="Rascunhos do personagem principal" loading="lazy" style="object-fit:contain;padding:3%"></div></figure>
+        <figure class="shot" style="--bg:#283583;aspect-ratio:1400/549" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-rascunhos-2.jpg" alt="Rascunhos dos animais" loading="lazy" style="object-fit:contain;padding:3%"></div></figure>
+        <figure class="shot" style="--bg:#283583;aspect-ratio:1600/677" data-cursor="Ver"><div class="shot__in"><img class="cover" src="../img/qual-livro.jpg" alt="Espelho editorial do livro interativo" loading="lazy" style="object-fit:contain;padding:3%"></div></figure>
       </div>
 
       <section class="credits">
@@ -174,8 +229,8 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=10" defer></script>
-  <script src="../js/motion.js?v=10" defer></script>
-  <script src="../js/projeto.js?v=10" defer></script>
+  <script src="../js/brand.js?v=11" defer></script>
+  <script src="../js/motion.js?v=11" defer></script>
+  <script src="../js/projeto.js?v=11" defer></script>
 </body>
 </html>
