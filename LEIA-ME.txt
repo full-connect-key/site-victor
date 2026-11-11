@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=7" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=8" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -27,7 +27,8 @@ dele; o que não estiver lá não aparece (ex.: um livro sem logo não mostra o 
 de logo). O formato completo está explicado no topo de js/brand.js.
 Para um projeto novo: copie o <div id="brand"></div> e o bloco brand-data de
 uma página existente e troque os dados.
-ATENÇÃO: os dados do Piá (fontes, cores, medidas) são DE EXEMPLO. Troque pelos reais.
+Piá e Helena já têm paleta real. Helena usa Degular e Area (Adobe Fonts): sem o kit
+do Adobe Fonts no <head>, aparecem fontes parecidas no lugar.
 
 O QUE AINDA FALTA PREENCHER
 - Home, bloco "To see my work": a imagem do Metrópole é PROVISÓRIA.

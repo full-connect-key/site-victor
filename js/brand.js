@@ -10,6 +10,9 @@
 
    {
      "fontsUrl": "https://fonts.googleapis.com/css2?family=...",   // se a fonte não for do site
+     "typographyText": "Parágrafo opcional abaixo do título Typography",
+     "paletteText": "Parágrafo opcional abaixo do título Color palette",
+     "logoText": "Parágrafo opcional abaixo do título Logo",
      "typography": [
        { "name": "Nome da fonte", "role": "Primary", "use": "Títulos",
          "family": "'Nome da fonte', sans-serif",
@@ -71,6 +74,9 @@
   }
 
   var n = 0;
+  function lead(text) {
+    return text ? '<p class="block__lead">' + esc(text) + '</p>' : '';
+  }
   function head(title, note) {
     n++;
     return '<header class="block__head"><span class="block__num">' + (n < 10 ? '0' : '') + n +
@@ -83,7 +89,7 @@
 
   /* ---------- Tipografia ---------- */
   if (data.typography && data.typography.length) {
-    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + '<div class="type">';
+    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText) + '<div class="type">';
     data.typography.forEach(function (f, i) {
       var st = 'font-family:' + f.family + ';' + (f.style || '');
       var heavy = f.weights && f.weights.length ? f.weights[f.weights.length - 1][1] : 700;
@@ -106,7 +112,7 @@
   /* ---------- Paleta ---------- */
   var palette = data.palette || [];
   if (palette.length) {
-    html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + '</div><div class="palette-strip">';
+    html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="palette-strip" style="--n:' + palette.length + '">';
     palette.forEach(function (c) {
       var rgb = hexToRgb(c.hex);
       var text = isDark(c.hex) ? '#fff' : '';
@@ -135,7 +141,7 @@
     if (logo.clearSpace) tabs.push({ id: 'space', long: 'Área de proteção', short: 'Proteção' });
     if (logo.sizes && logo.sizes.length) tabs.push({ id: 'sizes', long: 'Tamanho mínimo', short: 'Mínimo' });
 
-    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + '<div class="lab">';
+    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText) + '<div class="lab">';
     if (tabs.length > 1) {
       html += '<div class="lab__tabs" role="tablist" aria-label="Logo"><span class="lab__ink" aria-hidden="true"></span>' +
         tabs.map(function (t, i) {

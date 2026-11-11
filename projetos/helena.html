@@ -15,8 +15,8 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=7">
-  <link rel="stylesheet" href="../css/brand.css?v=7">
+  <link rel="stylesheet" href="../css/style.css?v=8">
+  <link rel="stylesheet" href="../css/brand.css?v=8">
 </head>
 <body>
 
@@ -76,6 +76,76 @@
     <!-- Tipografia, paleta e logo: gerados a partir do bloco "brand-data" abaixo.
          Sem dados, nada aparece. Formato explicado no topo de js/brand.js -->
     <div id="brand"></div>
+    <script type="application/json" id="brand-data">
+{
+  "typographyText": "Para a tipografia, foram escolhidas duas famílias: Degular, utilizada nos títulos, trazendo personalidade e impacto visual, e Area, aplicada aos textos corridos, garantindo clareza, legibilidade e equilíbrio às composições editoriais.",
+  "paletteText": "A identidade visual da Revista Helena apresenta uma paleta de cores vibrante e diversa, composta por sete tonalidades. A combinação dessas cores transmite expressividade, diversidade e contemporaneidade, permitindo composições dinâmicas e contrastantes.",
+  "fontsUrl": "https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&display=swap",
+  "typography": [
+    {
+      "name": "Degular",
+      "role": "Títulos",
+      "use": "Títulos — personalidade e impacto visual",
+      "family": "'degular', 'Degular', 'Bricolage Grotesque', sans-serif",
+      "glyphWeight": 600
+    },
+    {
+      "name": "Area",
+      "role": "Texto",
+      "use": "Textos corridos — clareza, legibilidade e equilíbrio",
+      "family": "'area-normal', 'Area', 'Albert Sans', sans-serif",
+      "glyphWeight": 500,
+      "dark": true
+    }
+  ],
+  "palette": [
+    {
+      "name": "Azul-turquesa",
+      "hex": "#00B9BE"
+    },
+    {
+      "name": "Rosa",
+      "hex": "#E74B9C"
+    },
+    {
+      "name": "Laranja",
+      "hex": "#FA8C35"
+    },
+    {
+      "name": "Verde",
+      "hex": "#75B441"
+    },
+    {
+      "name": "Vermelho",
+      "hex": "#F24056"
+    },
+    {
+      "name": "Amarelo",
+      "hex": "#FFE000"
+    },
+    {
+      "name": "Roxo",
+      "hex": "#7750A1"
+    }
+  ],
+  "logo": {
+    "src": "../img/logo-helena.png",
+    "alt": "Logo Helena.",
+    "color": "light",
+    "backgrounds": [
+      "#111111",
+      "#00B9BE",
+      "#E74B9C",
+      "#FA8C35",
+      "#75B441",
+      "#F24056",
+      "#FFE000",
+      "#7750A1",
+      "#F4F4F4"
+    ]
+  }
+}
+    </script>
 
     <div class="media media--full"></div>
 
@@ -110,7 +180,7 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=7" defer></script>
-  <script src="../js/motion.js?v=7" defer></script>
+  <script src="../js/brand.js?v=8" defer></script>
+  <script src="../js/motion.js?v=8" defer></script>
 </body>
 </html>
