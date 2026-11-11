@@ -17,7 +17,7 @@
     '.big-title', '.split .btn', '.about__title', '.about__grad', '.tags__row',
     '.contact__col', '.card', '.project-row__visual',
     '.intro > *', '.gallery .media', '.media--full', '.concept', '.credits > *',
-    '.project-nav'
+    '.project-nav', '.type__card', '.palette-strip__c', '.lab'
   ].join(',');
 
   var revealEls = [].slice.call(document.querySelectorAll(revealSel));
