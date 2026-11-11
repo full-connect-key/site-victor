@@ -7,13 +7,15 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=9" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=10" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
 index.html             Home
 work.html              Lista de projetos
-projetos/*.html        Uma página por projeto
+projetos/*.html        Uma página por projeto (todas no mesmo modelo)
+css/projeto.css        Visual e movimento das páginas de projeto
+js/projeto.js          Topo que vira card, menu flutuante, imagens em cortina etc.
 css/style.css          Todo o visual (cores ficam no topo, em :root)
 js/brand.js            Tipografia, paleta e logo interativo das páginas de projeto
 css/brand.css          Visual desses blocos
@@ -33,8 +35,9 @@ do Adobe Fonts no <head>, aparecem fontes parecidas no lugar.
 O QUE AINDA FALTA PREENCHER
 - Home, bloco "To see my work": a imagem do Metrópole é PROVISÓRIA.
   Tamanho ideal da imagem final: 1564 x 1080 px (veja o comentário no index.html)
-- Páginas de projeto: troque cada <div class="media"></div> por
-  <img class="media" src="../img/arquivo.jpg" alt="descrição">
+- Páginas de projeto: cada <figure class="shot"> é um espaço de imagem (hoje
+  um bloco colorido). Para usar uma foto, troque o conteúdo do
+  <div class="shot__in"> por <img class="cover" src="../img/arquivo.jpg" alt="descrição">
 - Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
 - index.html: e-mail do botão CONTACT ME e os links do Instagram e do LinkedIn
 - Bloco "Personal" da home: o botão está como "Coming soon" e o espaço da imagem

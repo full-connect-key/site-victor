@@ -15,13 +15,22 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=9">
-  <link rel="stylesheet" href="../css/brand.css?v=9">
+  <link rel="stylesheet" href="../css/style.css?v=10">
+  <link rel="stylesheet" href="../css/brand.css?v=10">
+  <link rel="stylesheet" href="../css/projeto.css?v=10">
 </head>
 <body>
+  <!-- Imagens do projeto: cada bloco <figure class="shot"> é um espaço de imagem.
+       Para usar uma foto, troque o conteúdo de <div class="shot__in"> por
+       <img class="cover" src="../img/arquivo.jpg" alt="Descrição"> -->
 
-  <section class="project-hero project-hero--kv">
+  <nav class="float-nav" aria-label="Menu">
+    <a class="float-nav__home" href="../index.html" aria-label="Início"><img src="../img/logo-victor-favaro.png" alt="Victor Fávaro"></a>
+    <a href="../work.html">Work</a><a href="../index.html#personal">Personal</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+  </nav>
 
+  <section class="p-hero">
+    <div class="p-hero__card project-hero--kv">
     <header class="site-header">
       <div class="container">
         <a class="site-header__logo" href="../index.html" aria-label="Victor Fávaro — início">
@@ -35,8 +44,12 @@
         </nav>
       </div>
     </header>
-  
-    <img class="project-hero__logo project-hero__logo--kv" src="../img/key-visual-como-voce-quer.png" alt="Como você quer que eu te chame?" width="621" height="301">
+      <img class="p-hero__logo" src="../img/key-visual-como-voce-quer.png" alt="Como você quer que eu te chame?">
+      <div class="p-hero__meta">
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="pill">Campaign Key Visual</span></div>
+        <span class="p-hero__scroll"><i></i>Scroll</span>
+      </div>
+    </div>
   </section>
 
   <main class="project-body">
@@ -53,15 +66,17 @@
         </div>
       </section>
 
-      <!-- Imagens do projeto: troque cada <div class="media"></div>
-           por <img class="media" src="../img/nome-da-imagem.jpg" alt="Descrição"> -->
-      <div class="gallery gallery--2">
-        <div class="media"></div>
-        <div class="media"></div>
+      <div class="row row--2">
+        <figure class="shot" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+        <figure class="shot" style="--bg:#FF589E" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
       </div>
     </div>
 
-    <div class="media media--full"></div>
+    <div class="marquee-wrap" aria-hidden="true"><div class="marquee"><div class="marquee__track">
+      <span>Art Direction</span><span><b>✦</b></span><span>Key Visual</span><span><b>✦</b></span><span>Lettering</span><span><b>✦</b></span><span>Social Design</span><span><b>✦</b></span><span>Art Direction</span><span><b>✦</b></span><span>Key Visual</span><span><b>✦</b></span><span>Lettering</span><span><b>✦</b></span><span>Social Design</span><span><b>✦</b></span>
+    </div></div></div>
+
+    <figure class="shot shot--full" style="--bg:#FFFFFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
 
     <div class="container">
       <section class="intro concept">
@@ -78,13 +93,17 @@
          Sem dados, nada aparece. Formato explicado no topo de js/brand.js -->
     <div id="brand"></div>
 
-    <div class="media media--full"></div>
+    <div class="stories">
+      <figure class="shot" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+      <figure class="shot" style="--bg:#FF589E" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+      <figure class="shot" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+    </div>
 
     <div class="container">
-      <div class="gallery gallery--3">
-        <div class="media"></div>
-        <div class="media"></div>
-        <div class="media"></div>
+      <div class="row row--3">
+        <figure class="shot" style="--bg:#FFFFFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+        <figure class="shot" style="--bg:#FF589E" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
+        <figure class="shot" style="--bg:#58AEFF" data-cursor="Ver"><div class="shot__in"><img class="mark" src="../img/key-visual-como-voce-quer.png" alt=""></div></figure>
       </div>
 
       <section class="credits">
@@ -94,21 +113,26 @@
           <div><dt>Key Visual</dt><dd>Victor Hugo Fávaro</dd></div>
         </dl>
       </section>
-
-      <nav class="project-nav" aria-label="Outros projetos">
-        <a class="project-nav__link project-nav__link--prev" href="metropole.html"><span class="project-nav__dir">&larr; Previous</span><span class="project-nav__name">Metrópole</span></a>
-        <a class="btn btn--md btn--yellow" href="../work.html">All projects</a>
-        <a class="project-nav__link project-nav__link--next" href="qual-emocao.html"><span class="project-nav__dir">Next &rarr;</span><span class="project-nav__name">Qual emoção é essa aqui?</span></a>
-      </nav>
     </div>
+
+    <a class="next" href="qual-emocao.html" data-cursor="Abrir">
+      <div class="next__bg project-hero--green"></div>
+      <div class="next__in">
+        <p class="next__label"><span>Next project</span><span class="pill">Emotional Design</span></p>
+        <p class="next__title next__title--long"><span class="next__title-text">Qual emoção é essa aqui?</span><span class="next__arrow">→</span></p>
+      </div>
+    </a>
   </main>
+
+  <div class="cursor" aria-hidden="true">Ver</div>
 
   <footer class="site-footer site-footer--dark">
     <div class="container">
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=9" defer></script>
-  <script src="../js/motion.js?v=9" defer></script>
+  <script src="../js/brand.js?v=10" defer></script>
+  <script src="../js/motion.js?v=10" defer></script>
+  <script src="../js/projeto.js?v=10" defer></script>
 </body>
 </html>

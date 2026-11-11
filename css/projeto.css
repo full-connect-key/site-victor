@@ -1,0 +1,315 @@
+/* =========================================================
+   PÁGINA DE PROJETO
+   Topo em tela cheia que vira card, menu flutuante, imagens em
+   cortina, texto que acende, faixa de palavras, stories,
+   cursor "Ver" e bloco "Next project".
+   ========================================================= */
+
+/* ---------- Menu flutuante (aparece depois do topo) ---------- */
+.float-nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--black);
+  translate: -50% -140%;
+  transition: translate .55s cubic-bezier(.34, 1.4, .64, 1);
+}
+.float-nav.is-on { translate: -50% 0; }
+.float-nav a {
+  font-family: var(--font-button);
+  font-weight: 900;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 11px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background .2s ease;
+}
+.float-nav a:hover { background: var(--yellow); }
+.float-nav .float-nav__home { background: var(--black); color: var(--white); padding: 6px 14px; }
+.float-nav .float-nav__home img { height: 20px; width: auto; }
+.float-nav .float-nav__home:hover { background: var(--pink); }
+
+/* ---------- Topo: imagem cheia que "encolhe" em card ao rolar ---------- */
+.p-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  max-height: 1080px;
+}
+.p-hero__card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  scale: var(--s, 1);
+  border-radius: var(--r, 0px);
+  border: 2px solid rgba(0, 0, 0, var(--b, 0));
+  transform-origin: 50% 0;
+  will-change: scale;
+}
+.p-hero__logo {
+  position: relative;
+  z-index: 1;
+  width: min(calc(960 * var(--u)), 80%);
+  translate: 0 var(--ly, 0px);
+  animation: hero-in 1.2s cubic-bezier(.2, .7, .2, 1) both .15s;
+}
+@keyframes hero-in {
+  from { opacity: 0; scale: .9; filter: blur(10px); }
+  to { opacity: 1; scale: 1; filter: none; }
+}
+.p-hero__meta {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(36 * var(--u));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding-inline: var(--gutter);
+  width: min(calc(1200 * var(--u)), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+  padding: 0;
+  color: var(--white);
+}
+.p-hero__meta .pill { animation: hero-in .9s cubic-bezier(.2, .7, .2, 1) both .6s; }
+.p-hero__scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 12px;
+  animation: hero-in .9s cubic-bezier(.2, .7, .2, 1) both .8s;
+}
+.p-hero__scroll i {
+  display: block;
+  width: 2px;
+  height: 34px;
+  background: currentColor;
+  transform-origin: top;
+  animation: scroll-line 1.6s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0% { scale: 1 0; transform-origin: top; }
+  50% { scale: 1 1; transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { scale: 1 0; transform-origin: bottom; }
+}
+
+/* ---------- Texto que "acende" palavra por palavra ao rolar ---------- */
+.words .w {
+  opacity: .14;
+  transition: opacity .25s linear;
+}
+.words .w.on { opacity: 1; }
+
+/* ---------- Faixa de palavras correndo ---------- */
+.marquee-wrap { overflow: hidden; margin-top: calc(80 * var(--u)); padding: calc(30 * var(--u)) 0; }
+.marquee {
+  border-block: 2px solid var(--black);
+  background: var(--yellow);
+  overflow: hidden;
+  padding: calc(18 * var(--u)) 0;
+  rotate: -1.2deg;
+  scale: 1.02;
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  animation: marquee 22s linear infinite;
+  translate: var(--mx, 0px) 0;
+}
+.marquee span {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  font-size: clamp(28px, 3.4vw, 64px);
+  line-height: 1;
+  white-space: nowrap;
+}
+.marquee b { color: var(--pink); -webkit-text-stroke: 2px var(--black); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Imagens: cortina que abre + zoom que assenta ---------- */
+.shot {
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(25 * var(--u));
+  background: var(--bg, var(--placeholder));
+  clip-path: inset(100% 0 0 0 round calc(25 * var(--u)));
+  transition: clip-path 1.1s cubic-bezier(.77, 0, .18, 1);
+}
+.shot.is-in { clip-path: inset(0 0 0 0 round calc(25 * var(--u))); }
+.shot__in {
+  position: absolute;
+  inset: -8% 0;
+  display: grid;
+  place-items: center;
+  scale: 1.18;
+  translate: 0 var(--py, 0px);
+  transition: scale 1.6s cubic-bezier(.2, .7, .2, 1);
+}
+.shot.is-in .shot__in { scale: 1; }
+.shot__in > img.cover { width: 100%; height: 100%; object-fit: cover; }
+.shot__in > img.mark { width: 46%; }
+.shot__tag { position: absolute; left: calc(20 * var(--u)); bottom: calc(20 * var(--u)); z-index: 2; }
+.shot--full { border-radius: 0; clip-path: inset(100% 0 0 0); }
+.shot--full.is-in { clip-path: inset(0 0 0 0); }
+
+.row { display: grid; gap: calc(28 * var(--u)); margin-top: calc(28 * var(--u)); }
+.row--2 { grid-template-columns: 1fr 1fr; }
+.row--3 { grid-template-columns: repeat(3, 1fr); }
+.row--2 .shot { aspect-ratio: 583 / 532; }
+.row--3 .shot { aspect-ratio: 385 / 470; }
+.shot--full { aspect-ratio: 1920 / 900; margin-top: calc(28 * var(--u)); }
+
+/* Stories: 3 telas verticais, a do meio em outra velocidade */
+.stories {
+  display: flex;
+  justify-content: center;
+  gap: calc(28 * var(--u));
+  padding: calc(120 * var(--u)) 0;
+}
+.stories .shot {
+  width: calc(300 * var(--u));
+  min-width: 150px;
+  aspect-ratio: 9 / 16;
+  border: 2px solid var(--black);
+  box-shadow: 8px 8px 0 var(--black);
+  translate: 0 var(--sy, 0px);
+}
+.stories .shot__in { inset: 0; }
+
+/* ---------- Próximo projeto ---------- */
+.next {
+  position: relative;
+  display: block;
+  margin-top: calc(160 * var(--u));
+  border-top: 2px solid var(--black);
+  overflow: hidden;
+  background: var(--black);
+  color: var(--white);
+  isolation: isolate;
+}
+.next__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  scale: 1.1;
+  transition: opacity .6s ease, scale 1.2s cubic-bezier(.2, .7, .2, 1);
+}
+.next__bg img { width: 100%; height: 100%; object-fit: cover; }
+.next:hover .next__bg { opacity: .55; scale: 1; }
+.next__in {
+  width: min(calc(1200 * var(--u)), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+  padding: calc(110 * var(--u)) 0 calc(120 * var(--u));
+}
+.next__label { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.next__label span:first-child {
+  text-transform: uppercase;
+  letter-spacing: .26em;
+  font-weight: 600;
+  font-size: clamp(13px, 1vw, 18px);
+  color: #bbb;
+}
+.next__title {
+  margin-top: calc(26 * var(--u));
+  font-weight: 800;
+  font-size: clamp(54px, 8.6vw, 166px);
+  line-height: .9;
+  letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: .25em;
+}
+.next__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: .8em;
+  height: .8em;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--black);
+  border: 3px solid var(--white);
+  font-size: .6em;
+  transition: rotate .5s cubic-bezier(.34, 1.56, .64, 1), background .3s ease;
+  rotate: -45deg;
+}
+.next:hover .next__arrow { rotate: 0deg; background: var(--pink); }
+.next__title-text { display: inline-block; transition: translate .6s cubic-bezier(.2, .7, .2, 1); }
+.next:hover .next__title-text { translate: calc(20 * var(--u)) 0; }
+
+/* Cursor "VER" que segue o mouse sobre imagens e o próximo projeto */
+.cursor {
+  position: fixed;
+  z-index: 60;
+  left: 0; top: 0;
+  width: 92px; height: 92px;
+  margin: -46px 0 0 -46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+  font-family: var(--font-button);
+  font-weight: 900;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  scale: 0;
+  transition: scale .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.cursor.is-on { scale: 1; }
+
+@media (max-width: 800px) {
+  .float-nav { display: none; }
+  .row--2, .row--3 { grid-template-columns: 1fr; }
+  .stories { gap: 12px; padding: 70px 0; }
+  .stories .shot { width: 30vw; min-width: 0; }
+  .cursor { display: none; }
+}
+@media (hover: none) { .cursor { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .shot, .shot.is-in { clip-path: none; transition: none; }
+  .shot__in { scale: 1; transition: none; }
+  .words .w { opacity: 1; }
+  .marquee__track { animation: none; }
+  .p-hero__logo, .p-hero__meta .pill, .p-hero__scroll { animation: none; }
+}
+
+/* ajustes */
+body { overflow-x: clip; }
+.shot { margin: 0; }
+.project-body:has(.next) { padding-bottom: 0; }
+
+/* topo com título em texto (sem logo) */
+.p-hero__title { width: auto; max-width: 90%; }
+/* imagens reais dentro dos blocos */
+.shot__in > img.cover { position: absolute; inset: 0; }
+
+/* nomes longos no "Next project" ficam menores */
+.next__title--long { font-size: clamp(40px, 5.4vw, 104px); }
