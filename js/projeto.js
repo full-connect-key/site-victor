@@ -29,7 +29,6 @@
   var hero = document.querySelector('.p-hero');
   var card = document.querySelector('.p-hero__card');
   var logo = document.querySelector('.p-hero__logo');
-  var nav = document.querySelector('.float-nav');
   var fulls = [].slice.call(document.querySelectorAll('.shot--full .shot__in'));
   var stories = [].slice.call(document.querySelectorAll('.stories .shot'));
   var track = document.querySelector('.marquee__track');
@@ -45,8 +44,6 @@
       card.style.setProperty('--r', (40 * p).toFixed(1) + 'px');
       card.style.setProperty('--b', p.toFixed(2));
       if (logo) logo.style.setProperty('--ly', (y * .3).toFixed(1) + 'px');
-      // menu flutuante: aparece depois do topo; some ao descer, volta ao subir
-      if (nav) nav.classList.toggle('is-on', y > h * .7 && (y < lastY || y < h * 1.1));
     }
     // palavras acendem conforme passam de 80% da tela
     words.forEach(function (w) { w.classList.toggle('on', w.getBoundingClientRect().top < vh * .8); });

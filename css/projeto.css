@@ -5,42 +5,6 @@
    cursor "Ver" e bloco "Next project".
    ========================================================= */
 
-/* ---------- Menu flutuante (aparece depois do topo) ---------- */
-.float-nav {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px;
-  background: var(--white);
-  border: 2px solid var(--black);
-  border-radius: 999px;
-  box-shadow: 4px 4px 0 var(--black);
-  translate: -50% -140%;
-  transition: translate .55s cubic-bezier(.34, 1.4, .64, 1);
-}
-.float-nav.is-on { translate: -50% 0; }
-.float-nav a {
-  font-family: var(--font-button);
-  font-weight: 900;
-  font-stretch: 125%;
-  font-variation-settings: "wdth" 125;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-size: 11px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: background .2s ease;
-}
-.float-nav a:hover { background: var(--yellow); }
-.float-nav .float-nav__home { background: var(--black); color: var(--white); padding: 6px 14px; }
-.float-nav .float-nav__home img { height: 20px; width: auto; }
-.float-nav .float-nav__home:hover { background: var(--pink); }
-
 /* ---------- Topo: imagem cheia que "encolhe" em card ao rolar ---------- */
 .p-hero {
   position: relative;
@@ -286,7 +250,6 @@
 .cursor.is-on { scale: 1; }
 
 @media (max-width: 800px) {
-  .float-nav { display: none; }
   .row--2, .row--3 { grid-template-columns: 1fr; }
   .stories { gap: 12px; padding: 70px 0; }
   .stories .shot { width: 30vw; min-width: 0; }
