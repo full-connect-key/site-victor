@@ -18,7 +18,9 @@
          "family": "'Nome da fonte', sans-serif",
          "weights": [["Regular", 400], ["Bold", 700]],
          "style": "font-stretch:125%",          // CSS extra (opcional)
-         "dark": false }                        // cartão preto
+         "dark": false,                         // cartão preto
+         "specimen": false,                     // fonte não carrega no site: sem amostra "Aa"
+         "source": "Adobe Fonts" }              // origem da fonte (opcional)
      ],
      "palette": [
        { "name": "Rosa", "hex": "#FF589E", "pantone": "213 C", "weight": 2,
@@ -91,6 +93,21 @@
   if (data.typography && data.typography.length) {
     html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText) + '<div class="type">';
     data.typography.forEach(function (f, i) {
+      // "specimen": false → a fonte não carrega no site (ex.: Adobe Fonts sem kit):
+      // mostra só nome, função e origem, sem desenhar a amostra com outra fonte.
+      if (f.specimen === false) {
+        html += '<article class="type__card type__card--name' + (f.dark ? ' type__card--dark' : '') + '">' +
+          '<div class="type__top"><div>' +
+            '<p class="type__name type__name--big">' + esc(f.name) + '</p>' +
+            (f.use ? '<p class="type__use">' + esc(f.use) + '</p>' : '') +
+          '</div>' + (f.role ? '<span class="pill" style="background:' + pillColors[i % 4] + '">' + esc(f.role) + '</span>' : '') + '</div>' +
+          (f.weights && f.weights.length ? '<div class="type__weights">' + f.weights.map(function (w) {
+            return '<span>' + esc(w[0]) + '</span>';
+          }).join('') + '</div>' : '') +
+          (f.source ? '<p class="type__source">' + esc(f.source) + '</p>' : '') +
+          '</article>';
+        return;
+      }
       var st = 'font-family:' + f.family + ';' + (f.style || '');
       var heavy = f.weights && f.weights.length ? f.weights[f.weights.length - 1][1] : 700;
       html += '<article class="type__card' + (f.dark ? ' type__card--dark' : '') + '" style="' + esc(st) + '">' +

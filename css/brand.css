@@ -89,6 +89,16 @@
   color: var(--muted);
   font-size: clamp(14px, 1vw, 19px);
 }
+.type__card--name { justify-content: space-between; min-height: calc(260 * var(--u)); }
+.type__name--big { font-weight: 800; font-size: clamp(34px, 3.4vw, 64px); line-height: .95; }
+.type__source {
+  border-top: 2px solid currentColor;
+  padding-top: calc(16 * var(--u));
+  color: var(--muted);
+  font-size: clamp(13px, .95vw, 18px);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
 .type__aa { font-size: clamp(110px, 11vw, 210px); line-height: .8; letter-spacing: -.02em; }
 .type__weights { display: flex; flex-wrap: wrap; gap: 10px; }
 .type__weights span {

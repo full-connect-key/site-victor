@@ -704,3 +704,20 @@ h1, h2, h3, p { margin: 0; }
   .project-nav { grid-template-columns: 1fr 1fr; }
   .project-nav .btn { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
 }
+
+/* Concept: versão em português, menor e em cinza (como na introdução) */
+.concept__text-pt {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: clamp(14px, 1.05vw, 20px);
+  line-height: 1.05;
+}
+.concept__quote-by {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: clamp(14px, 1vw, 19px);
+  letter-spacing: .04em;
+}
+
+/* categorias dos cards: cada uma inteira na mesma linha */
+.card__cat span { white-space: nowrap; }
