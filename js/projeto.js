@@ -37,12 +37,9 @@
   function update() {
     ticking = false;
     var y = scrollY;
-    // topo encolhe em card
+    // topo: o logo sobe mais devagar que a página (a capa não encolhe)
     if (hero) {
       var h = hero.offsetHeight, p = Math.min(1, Math.max(0, y / h));
-      card.style.setProperty('--s', (1 - .1 * p).toFixed(4));
-      card.style.setProperty('--r', (40 * p).toFixed(1) + 'px');
-      card.style.setProperty('--b', p.toFixed(2));
       if (logo) logo.style.setProperty('--ly', (y * .3).toFixed(1) + 'px');
     }
     // palavras acendem conforme passam de 80% da tela

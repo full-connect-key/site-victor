@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=15" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=16" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -15,7 +15,7 @@ index.html             Home
 work.html              Lista de projetos
 projetos/*.html        Uma página por projeto (todas no mesmo modelo)
 css/projeto.css        Visual e movimento das páginas de projeto
-js/projeto.js          Topo que vira card, imagens em cortina etc.
+js/projeto.js          Topo em tela cheia, imagens em cortina etc.
 css/style.css          Todo o visual (cores ficam no topo, em :root)
 js/brand.js            Tipografia, paleta e logo interativo das páginas de projeto
 css/brand.css          Visual desses blocos
