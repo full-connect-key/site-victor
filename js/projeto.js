@@ -26,9 +26,6 @@
 
   if (reduce) { words.forEach(function (w) { w.classList.add('on'); }); return; }
 
-  var hero = document.querySelector('.p-hero');
-  var card = document.querySelector('.p-hero__card');
-  var logo = document.querySelector('.p-hero__logo');
   var fulls = [].slice.call(document.querySelectorAll('.shot--full .shot__in'));
   var stories = [].slice.call(document.querySelectorAll('.stories .shot'));
   var track = document.querySelector('.marquee__track');
@@ -37,11 +34,6 @@
   function update() {
     ticking = false;
     var y = scrollY;
-    // topo: o logo sobe mais devagar que a página (a capa não encolhe)
-    if (hero) {
-      var h = hero.offsetHeight, p = Math.min(1, Math.max(0, y / h));
-      if (logo) logo.style.setProperty('--ly', (y * .3).toFixed(1) + 'px');
-    }
     // palavras acendem conforme passam de 80% da tela
     words.forEach(function (w) { w.classList.toggle('on', w.getBoundingClientRect().top < vh * .8); });
     // parallax nas imagens largas
