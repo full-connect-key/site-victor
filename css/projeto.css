@@ -282,3 +282,22 @@ body { overflow-x: clip; }
 
 /* imagem larga que vem depois dos blocos de marca: mesmo respiro das seções */
 #brand ~ .media--full { margin-top: calc(140 * var(--u)); }
+
+/* =========================================================
+   PIÁ: fonte Co Text na página inteira (exceto o cabeçalho do site)
+   A Co Text é paga e ainda não está no site. Por enquanto:
+   - quem tem a Co Text instalada no computador já a vê (local());
+   - quem não tem vê a fonte atual do site.
+   Para publicar com ela: coloque os arquivos .woff2 em fonts/ e
+   descomente as linhas url(...) abaixo.
+   ========================================================= */
+@font-face { font-family: "Co Text"; font-weight: 300; src: local("Co Text Light"), local("CoText-Light"); /* , url("../fonts/co-text-light.woff2") format("woff2") */ }
+@font-face { font-family: "Co Text"; font-weight: 400; src: local("Co Text"), local("Co Text Regular"), local("CoText-Regular"); /* , url("../fonts/co-text-regular.woff2") format("woff2") */ }
+@font-face { font-family: "Co Text"; font-weight: 700; src: local("Co Text Bold"), local("CoText-Bold"); /* , url("../fonts/co-text-bold.woff2") format("woff2") */ }
+.page-pia main,
+.page-pia .p-hero__meta,
+.page-pia .site-footer { --font-display: "Co Text", "Bricolage Grotesque", "Arial Narrow", sans-serif; font-family: var(--font-display); }
+.page-pia main * { font-family: inherit; }
+.page-pia main .pill, .page-pia main .btn, .page-pia main .lab__tab { font-family: var(--font-button); }
+/* na paleta, enquanto a Co Text não está no site, a reserva é a Montserrat (mais parecida) */
+.page-pia main .pal-band__name, .page-pia main .pal-band__codes { font-family: var(--pf); }
