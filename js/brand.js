@@ -22,6 +22,8 @@
          "specimen": false,                     // fonte não carrega no site: sem amostra "Aa"
          "source": "Adobe Fonts" }              // origem da fonte (opcional)
      ],
+     "paletteStyle": "bands",                  // opcional: faixas empilhadas (ex.: Piá)
+     "paletteFont": "'Montserrat', sans-serif", // opcional: fonte dos nomes nas faixas
      "palette": [
        { "name": "Rosa", "hex": "#FF589E", "pantone": "213 C", "weight": 2,
          "rgb": "255 88 158", "cmyk": "0 65 38 0" }   // rgb/cmyk: calculados se faltarem
@@ -129,6 +131,24 @@
   /* ---------- Paleta ---------- */
   var palette = data.palette || [];
   if (palette.length) {
+    if (data.paletteStyle === 'bands') {
+      // faixas empilhadas: nome em 2 linhas e códigos ao lado, alternando o lado
+      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="pal-bands"' + (data.paletteFont ? ' style="--pf:' + esc(data.paletteFont) + '"' : '') + '>';
+      palette.forEach(function (c, i) {
+        var rgb = hexToRgb(c.hex);
+        var parts = String(c.name).split(' ');
+        var first = parts.shift();
+        var name = '<p class="pal-band__name"><b>' + esc(first) + '</b>' + (parts.length ? '<span>' + esc(parts.join(' ')) + '</span>' : '') + '</p>';
+        var codes = '<p class="pal-band__codes">' +
+          '<span><b>RGB</b> ' + esc(c.rgb || rgb.join(', ')) + '</span>' +
+          '<span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span>' +
+          '<span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span>' +
+          (c.pantone ? '<span><b>PMS</b> ' + esc(c.pantone) + '</span>' : '') + '</p>';
+        html += '<button class="pal-band' + (i % 2 ? ' pal-band--rev' : '') + '" style="--c:' + esc(c.hex) + ';--i:' + i + '" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' +
+          (i % 2 ? codes + name : name + codes) + '</button>';
+      });
+      html += '</div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
+    } else {
     html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="palette-strip" style="--n:' + palette.length + '">';
     palette.forEach(function (c) {
       var rgb = hexToRgb(c.hex);
@@ -142,6 +162,7 @@
         '</p></div>';
     });
     html += '</div></section>';
+    }
   }
 
   /* ---------- Logo ---------- */
@@ -193,6 +214,31 @@
   }
 
   mount.innerHTML = html;
+
+  /* ---------- Paleta em faixas: entrada ao rolar + copiar o código ---------- */
+  var bands = [].slice.call(mount.querySelectorAll('.pal-band'));
+  if (bands.length) {
+    if ('IntersectionObserver' in window) {
+      // observa o bloco (as faixas começam fora da tela, deslocadas para o lado)
+      var bio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) { bands.forEach(function (b) { b.classList.add('is-in'); }); bio.disconnect(); }
+        });
+      }, { threshold: .15 });
+      bio.observe(mount.querySelector('.pal-bands'));
+    } else bands.forEach(function (b) { b.classList.add('is-in'); });
+    var toast = mount.querySelector('.pal-toast'), tt;
+    bands.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var hex = b.dataset.hex;
+        if (navigator.clipboard) navigator.clipboard.writeText(hex).catch(function () {});
+        toast.textContent = hex + ' copiado!';
+        toast.style.background = hex;
+        toast.classList.add('is-on');
+        clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove('is-on'); }, 1500);
+      });
+    });
+  }
 
   /* ---------- Interação do bloco de logo ---------- */
   var lab = mount.querySelector('.lab');
