@@ -697,4 +697,4 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 @media (max-width: 1000px) { .event-gallery__item--big:nth-child(24n + 13) { grid-column: span 2; } }
 
 /* Metrópole: capa (arte vetorial do mapa + cruzamento) */
-.project-hero--metropole-capa { background: #000 url("../img/metropole/capa.svg") center / cover no-repeat; }
+.project-hero--metropole-capa { background: #000 url("../img/metropole/capa.svg?v=2") center / cover no-repeat; }
