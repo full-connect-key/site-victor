@@ -6,6 +6,14 @@
      (0 = parado, valores maiores = mexe mais, negativo = sentido oposto).
    ========================================================= */
 (function () {
+  /* cabeçalho fixo: vira barra compacta depois de rolar */
+  var hdr = document.querySelector('.site-header');
+  if (hdr) {
+    var onHdr = function () { hdr.classList.toggle('is-scrolled', window.scrollY > 40); };
+    window.addEventListener('scroll', onHdr, { passive: true });
+    onHdr();
+  }
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
 

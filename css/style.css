@@ -116,11 +116,21 @@ h1, h2, h3, p { margin: 0; }
 
 /* ---------- Header ---------- */
 .site-header {
-  position: absolute;
+  /* fixo: acompanha a rolagem em todas as páginas */
+  position: fixed;
   inset: 0 0 auto 0;
-  z-index: 10;
-  padding-top: calc(62 * var(--u));
+  z-index: 60;
+  padding: calc(62 * var(--u)) 0 calc(14 * var(--u));
+  transition: padding .35s ease, background-color .35s ease, box-shadow .35s ease;
 }
+/* depois de rolar um pouco: barra branca compacta, para ficar legível sobre qualquer conteúdo */
+.site-header.is-scrolled {
+  padding: 12px 0;
+  background-color: rgba(255, 255, 255, .97);
+  box-shadow: 0 2px 0 var(--black);
+}
+.site-header__logo img { transition: width .35s ease; }
+.site-header.is-scrolled .site-header__logo img { width: max(160px, calc(230 * var(--u))); }
 .site-header .container {
   display: flex;
   align-items: center;
@@ -735,7 +745,7 @@ h1, h2, h3, p { margin: 0; }
   background-blend-mode: multiply;
   border-bottom: 2px solid var(--black);
 }
-.personal-hero .site-header { position: relative; }
+.personal-hero { padding-top: calc(150 * var(--u)); }
 .personal-hero__content {
   padding: calc(120 * var(--u)) 0 calc(110 * var(--u));
   display: flex;
@@ -886,3 +896,13 @@ h1, h2, h3, p { margin: 0; }
 .lightbox__media .t36__ph { aspect-ratio: 1 / 1; width: auto; font-size: min(40vh, 40vw); }
 @media (max-width: 1000px) { .t36 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .t36 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } .t36__ph { font-size: 44px; } }
+
+/* cabeçalho fixo no tablet/celular: na barra compacta, logo e botões numa linha só */
+@media (max-width: 1100px) {
+  .personal-hero { padding-top: 150px; }
+  .site-header.is-scrolled { padding: 10px 0; }
+  .site-header.is-scrolled .container { gap: 8px; }
+  .site-header.is-scrolled .site-header__logo img { width: 120px; }
+  .site-header.is-scrolled .site-nav { gap: 6px; flex-wrap: nowrap; }
+  .site-header.is-scrolled .site-nav .btn { padding: 6px 10px; font-size: 9px; min-height: 0; box-shadow: 2px 2px 0 var(--black); }
+}
