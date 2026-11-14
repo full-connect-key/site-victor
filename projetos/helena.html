@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=37">
-  <link rel="stylesheet" href="../css/brand.css?v=37">
-  <link rel="stylesheet" href="../css/projeto.css?v=37">
+  <link rel="stylesheet" href="../css/style.css?v=39">
+  <link rel="stylesheet" href="../css/brand.css?v=39">
+  <link rel="stylesheet" href="../css/projeto.css?v=39">
 </head>
 <body class="page-helena">
 
@@ -68,7 +68,22 @@
 
     </div>
 
-    <img class="media media--full media--cover" src="../img/helena/capa.webp" alt="Capa da revista Helena., edição Mudanças" loading="lazy" width="1536" height="1152">
+
+    <!-- Galeria de capas: desliza sem parar; para ao passar o mouse; clicar amplia.
+         Para trocar/adicionar capas, edite os dois grupos (o segundo repete o primeiro para o loop). -->
+    <section class="covers" aria-label="Capas da revista">
+      <div class="covers__track">
+          <figure class="cover-card piece" data-title="Helena. Nº 00 — Você" data-year="2026" data-tech="Auto conhecimento"><img src="../img/helena/capas/n00-voce.jpg" alt="Capa da revista Helena., Nº 00 — Você, tema Auto conhecimento" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card piece" data-title="Helena. Nº 01 — Xuxa Meneghel" data-year="2026" data-tech="Liberdade"><img src="../img/helena/capas/n01-xuxa.jpg" alt="Capa da revista Helena., Nº 01 — Xuxa Meneghel, tema Liberdade" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card piece" data-title="Helena. Nº 02 — Gloria Pires" data-year="2026" data-tech="Amadurecimento"><img src="../img/helena/capas/n02-gloria-pires.jpg" alt="Capa da revista Helena., Nº 02 — Gloria Pires, tema Amadurecimento" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card piece" data-title="Helena. Nº 03 — Denise Zinetti Bitencourt" data-year="2026" data-tech="Mudanças"><img src="../img/helena/capas/n03-denise.jpg" alt="Capa da revista Helena., Nº 03 — Denise Zinetti Bitencourt, tema Mudanças" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card" aria-hidden="true"><img src="../img/helena/capas/n00-voce.jpg" alt="" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card" aria-hidden="true"><img src="../img/helena/capas/n01-xuxa.jpg" alt="" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card" aria-hidden="true"><img src="../img/helena/capas/n02-gloria-pires.jpg" alt="" width="900" height="1273" loading="lazy"></figure>
+          <figure class="cover-card" aria-hidden="true"><img src="../img/helena/capas/n03-denise.jpg" alt="" width="900" height="1273" loading="lazy"></figure>
+      </div>
+    </section>
+
 
 
 
@@ -223,6 +238,17 @@
     </a>
   </main>
 
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Capa ampliada" hidden>
+    <button class="lightbox__close btn" type="button" aria-label="Fechar">Close ✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Anterior">←</button>
+    <figure class="lightbox__fig">
+      <div class="lightbox__media"></div>
+      <figcaption class="lightbox__cap"><b class="lightbox__title"></b><span class="lightbox__meta"></span></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Próximo">→</button>
+  </div>
+
   <div class="cursor" aria-hidden="true">Ver</div>
 
   <footer class="site-footer site-footer--dark">
@@ -230,8 +256,9 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=37" defer></script>
-  <script src="../js/motion.js?v=37" defer></script>
-  <script src="../js/projeto.js?v=37" defer></script>
+  <script src="../js/brand.js?v=39" defer></script>
+  <script src="../js/motion.js?v=39" defer></script>
+  <script src="../js/projeto.js?v=39" defer></script>
+  <script src="../js/personal.js?v=39" defer></script>
 </body>
 </html>
