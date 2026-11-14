@@ -13,6 +13,7 @@
      "typographyText": "Parágrafo opcional abaixo do título Typography",
      "paletteText": "Parágrafo opcional abaixo do título Color palette",
      "logoText": "Parágrafo opcional abaixo do título Logo",
+     "typographyTextPt" / "paletteTextPt" / "logoTextPt": versão em português (aparece embaixo, menor),
      "order": ["logo", "typography", "palette"],   // ordem das seções (padrão: logo primeiro)
      "typography": [
        { "name": "Nome da fonte", "role": "Primary", "use": "Títulos",
@@ -81,8 +82,11 @@
   }
 
   var n = 0;
-  function lead(text) {
-    return text ? '<p class="block__lead">' + esc(text) + '</p>' : '';
+  // texto de abertura de cada seção; com a versão em português (…TextPt), aparece embaixo, menor
+  function lead(text, pt) {
+    if (!text && !pt) return '';
+    return '<div class="block__leadwrap">' + (text ? '<p class="block__lead">' + esc(text) + '</p>' : '') +
+      (pt ? '<p class="block__lead-pt" lang="pt-BR">' + esc(pt) + '</p>' : '') + '</div>';
   }
   function head(title, note) {
     n++;
@@ -96,7 +100,7 @@
 
   /* ---------- Tipografia ---------- */
   if (data.typography && data.typography.length) {
-    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText) + '<div class="type">';
+    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText, data.typographyTextPt) + '<div class="type">';
     data.typography.forEach(function (f, i) {
       // "specimen": false → a fonte não carrega no site (ex.: Adobe Fonts sem kit):
       // mostra só nome, função e origem, sem desenhar a amostra com outra fonte.
@@ -138,7 +142,7 @@
   if (palette.length) {
     if (data.paletteStyle === 'cards') {
       // cards arredondados em fundo preto, larguras variadas (span 1 ou 2 de 3 colunas)
-      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div>' +
+      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div>' +
         '<div class="pal-cards-wrap"><div class="container"><div class="pal-cards">';
       palette.forEach(function (c, i) {
         var rgb = hexToRgb(c.hex);
@@ -153,7 +157,7 @@
       html += '</div></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
     } else if (data.paletteStyle === 'bands') {
       // faixas empilhadas: nome em 2 linhas e códigos ao lado, alternando o lado
-      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="pal-bands"' + (data.paletteFont ? ' style="--pf:' + esc(data.paletteFont) + '"' : '') + '>';
+      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div><div class="pal-bands"' + (data.paletteFont ? ' style="--pf:' + esc(data.paletteFont) + '"' : '') + '>';
       palette.forEach(function (c, i) {
         var rgb = hexToRgb(c.hex);
         var parts = String(c.name).split(' ');
@@ -169,7 +173,7 @@
       });
       html += '</div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
     } else {
-    html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="palette-strip" style="--n:' + palette.length + '">';
+    html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div><div class="palette-strip" style="--n:' + palette.length + '">';
     palette.forEach(function (c) {
       var rgb = hexToRgb(c.hex);
       var text = isDark(c.hex) ? '#fff' : '';
@@ -191,7 +195,7 @@
   var logo = data.logo;
   if (logo && logo.layout === 'cards' && logo.versions) {
     // logo em cards (ex.: Helena): um card largo e dois menores, sem o bloco interativo
-    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText) +
+    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText, data.logoTextPt) +
       '<div class="logo-cards">' + logo.versions.map(function (v, i) {
         return '<figure class="logo-card" style="--bg:' + esc(v.bg || '#000') + ';--i:' + i + (v.span ? ';grid-column:span ' + v.span : '') + '">' +
           '<img src="' + esc(v.src) + '" alt="' + esc(v.alt || '') + '" style="width:' + esc(v.width || '60%') + '"></figure>';
@@ -209,7 +213,7 @@
     if (logo.clearSpace) tabs.push({ id: 'space', long: 'Área de proteção', short: 'Proteção' });
     if (logo.sizes && logo.sizes.length) tabs.push({ id: 'sizes', long: 'Tamanho mínimo', short: 'Mínimo' });
 
-    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText) + '<div class="lab">';
+    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText, data.logoTextPt) + '<div class="lab">';
     if (tabs.length > 1) {
       html += '<div class="lab__tabs" role="tablist" aria-label="Logo"><span class="lab__ink" aria-hidden="true"></span>' +
         tabs.map(function (t, i) {

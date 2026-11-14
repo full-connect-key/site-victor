@@ -564,3 +564,9 @@
   .logo-card:first-child { min-height: 240px; }
 }
 @media (prefers-reduced-motion: reduce) { .logo-card { opacity: 1; transform: none; transition: none; } }
+
+/* abertura das seções em EN + PT */
+.block__leadwrap { max-width: calc(860 * var(--u)); margin: calc(-16 * var(--u)) 0 calc(48 * var(--u)); }
+.block__leadwrap .block__lead { margin: 0; }
+.block__lead-pt { margin: 12px 0 0; color: #8a8a8a; font-size: clamp(14px, 1.05vw, 20px); line-height: 1.15; }
+.page-helena .block__lead-pt { color: #8a8a8a; }

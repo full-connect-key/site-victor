@@ -920,3 +920,6 @@ img.media { height: auto; }
 /* Helena: espelhos de ponta a ponta, com pares de aberturas entre eles */
 .media--full.media--spread + .media--full.media--spread { margin-top: calc(30 * var(--u)); }
 .gallery--between { margin: calc(69 * var(--u)) 0; }
+
+.concept__lead-pt { margin-top: 8px; color: var(--muted); font-size: clamp(16px, 1.3vw, 24px); line-height: 1.05; }
+.page-helena .concept__lead-pt { color: #a8a8a8; }
