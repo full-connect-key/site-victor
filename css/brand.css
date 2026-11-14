@@ -487,7 +487,7 @@
 .pal-card__codes { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
 .pal-card__codes span {
   background: #000;
-  color: #fff;
+  color: var(--c);   /* texto na cor do card, como na referência */
   padding: 1px 6px;
   font-size: clamp(11px, .85vw, 15px);
   letter-spacing: .02em;
