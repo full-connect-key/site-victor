@@ -665,7 +665,29 @@
 @media (max-width: 480px) { .pal-crime__list { gap: 40px 14px; } .pal-crime__stain svg { transform: scale(1.1); } .pal-crime__codes { font-size: 10.5px; } .pal-crime__codes b { width: 36px; } }
 @media (prefers-reduced-motion: reduce) { .pal-crime .splat, .pal-crime .drop, .pal-crime__marker { transition: none; } }
 
-/* 3 fontes: 3 colunas no desktop */
-@media (min-width: 1101px) { .type--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 801px) and (max-width: 1100px) { .type--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* 3 fontes: cartões quadrados em 3 colunas; a fileira passa um pouco das margens */
+@media (min-width: 801px) {
+  .type--3 {
+    --w: min(calc(1500 * var(--u)), 100vw - var(--gutter) * 2);
+    width: var(--w);
+    margin-inline: calc((100% - var(--w)) / 2);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .type--3 .type__card {
+    aspect-ratio: 1;
+    padding: calc(32 * var(--u)) calc(34 * var(--u));
+    gap: calc(14 * var(--u));
+    justify-content: space-between;
+  }
+  .type--3 .type__name { font-size: clamp(22px, 1.7vw, 34px); }
+  .type--3 .type__use { font-size: clamp(12px, .8vw, 15px); }
+  .type--3 .type__aa { font-size: clamp(80px, 7.6vw, 150px); }
+  .type--3 .type__weights { gap: 6px; }
+  .type--3 .type__weights span { font-size: clamp(11px, .75vw, 14px); padding: 2px 12px; }
+  .type--3 .type__glyphs { font-size: clamp(12px, .95vw, 18px); line-height: 1.25; padding-top: calc(14 * var(--u)); overflow-wrap: normal; }
+  .type--3 .type__top { gap: 10px; }
+}
+@media (min-width: 801px) and (max-width: 1100px) {
+  .type--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .type__top .pill { max-width: 100%; white-space: normal; }
