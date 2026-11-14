@@ -242,3 +242,5 @@
 .about-home__visual .about-hero__sticker--1 { width: 21%; top: 2%; left: -4%; }
 .about-home__visual .about-hero__sticker--2 { width: 17%; top: 16%; right: 1%; }
 .about-home__visual .about-hero__sticker--4 { width: 20%; bottom: 8%; right: 2%; }
+.cv__link { font-weight: 700; text-decoration: underline; text-decoration-color: var(--pink); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.cv__link:hover { color: var(--pink); }
