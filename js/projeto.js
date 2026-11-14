@@ -75,4 +75,15 @@
       el.addEventListener('pointerleave', function () { cur.classList.remove('is-on'); });
     });
   }
+
+  /* Helena: clicar no logo da capa repete a animação */
+  var hl = document.querySelector('.hl-logo');
+  if (hl) {
+    hl.addEventListener('click', function () {
+      var els = [document.querySelector('.hl-hero')].concat([].slice.call(hl.querySelectorAll('.hl-mark, .hl-h, .hl-elena, .hl-dot')));
+      els.forEach(function (el) { el.style.animation = 'none'; });
+      void hl.offsetWidth;
+      els.forEach(function (el) { el.style.animation = ''; });
+    });
+  }
 })();

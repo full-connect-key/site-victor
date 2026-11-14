@@ -123,12 +123,8 @@ h1, h2, h3, p { margin: 0; }
   padding: calc(62 * var(--u)) 0 calc(14 * var(--u));
   transition: padding .35s ease, background-color .35s ease, box-shadow .35s ease;
 }
-/* depois de rolar um pouco: barra branca compacta, para ficar legível sobre qualquer conteúdo */
-.site-header.is-scrolled {
-  padding: 12px 0;
-  background-color: rgba(255, 255, 255, .97);
-  box-shadow: 0 2px 0 var(--black);
-}
+/* depois de rolar um pouco: fica compacto, com fundo transparente */
+.site-header.is-scrolled { padding: 12px 0; }
 .site-header__logo img { transition: width .35s ease; }
 .site-header.is-scrolled .site-header__logo img { width: max(160px, calc(230 * var(--u))); }
 .site-header .container {
