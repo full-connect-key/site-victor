@@ -66,7 +66,7 @@
 /* ---------- TIPOGRAFIA ---------- */
 .type {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* sempre 2 colunas no desktop; 1 no celular */
   gap: calc(34 * var(--u));
 }
 .type__card {
@@ -570,3 +570,5 @@
 .block__leadwrap .block__lead { margin: 0; }
 .block__lead-pt { margin: 12px 0 0; color: #8a8a8a; font-size: clamp(14px, 1.05vw, 20px); line-height: 1.15; }
 .page-helena .block__lead-pt { color: #8a8a8a; }
+
+@media (max-width: 800px) { .type { grid-template-columns: minmax(0, 1fr); } }
