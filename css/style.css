@@ -986,3 +986,14 @@ img.media { height: auto; }
 /* nas duplas o espaço é menor: sem parallax, para logo e cartão não se encostarem */
 .project-duo .project-row__visual.parallax,
 .project-duo .card.parallax { transform: none !important; }
+
+/* logo no lugar do nome, nos cartões das duplas */
+.card__logo { display: block; width: auto; max-width: 100%; height: auto; }
+.card__logo--helena { width: calc(230 * var(--u)); min-width: 150px; }
+.card__logo--kv { width: calc(330 * var(--u)); min-width: 210px; margin-left: -4px; }
+.card__logo--qual { width: calc(150 * var(--u)); min-width: 100px; }
+.project-duo .card__logo + .card__title { margin-top: calc(22 * var(--u)); }
+.project-duo .project-row--black .project-row__bg,
+.project-duo .project-row--qual .project-row__bg { object-position: center; }
+.project-row--personal { background: var(--pink) url("../img/hero-bg.jpg") center / cover no-repeat; background-blend-mode: multiply; }
+.project-duo .project-row--metropole .project-row__bg { object-position: 78% center; }
