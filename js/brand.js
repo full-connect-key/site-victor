@@ -13,6 +13,7 @@
      "typographyText": "Parágrafo opcional abaixo do título Typography",
      "paletteText": "Parágrafo opcional abaixo do título Color palette",
      "logoText": "Parágrafo opcional abaixo do título Logo",
+     "order": ["logo", "typography", "palette"],   // ordem das seções (padrão: logo primeiro)
      "typography": [
        { "name": "Nome da fonte", "role": "Primary", "use": "Títulos",
          "family": "'Nome da fonte', sans-serif",
@@ -130,6 +131,8 @@
     html += '</div></section></div>';
   }
 
+  var secType = html; html = '';
+
   /* ---------- Paleta ---------- */
   var palette = data.palette || [];
   if (palette.length) {
@@ -181,6 +184,8 @@
     html += '</div></section>';
     }
   }
+
+  var secPalette = html; html = '';
 
   /* ---------- Logo ---------- */
   var logo = data.logo;
@@ -246,6 +251,14 @@
     }
     html += '</section></div>';
   }
+
+  var secLogo = html;
+  // ordem das seções: Logo → Tipografia → Paleta (pode trocar com "order" nos dados)
+  var parts = { logo: secLogo, typography: secType, palette: secPalette };
+  html = (data.order || ['logo', 'typography', 'palette']).map(function (k) { return parts[k] || ''; }).join('');
+  // renumera 01, 02, 03 na ordem final
+  var k = 0;
+  html = html.replace(/<span class="block__num">\d+<\/span>/g, function () { k++; return '<span class="block__num">' + (k < 10 ? '0' : '') + k + '</span>'; });
 
   mount.innerHTML = html;
 
