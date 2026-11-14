@@ -512,3 +512,55 @@
 }
 .pal-card__codes span { white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .pal-card { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- Logo: aba Redução e grade de versões ---------- */
+.lab__logo--reduction { width: min(26%, 300px); }
+.logo-versions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(28 * var(--u));
+  margin-top: calc(40 * var(--u));
+}
+.logo-version {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: 2px solid var(--black);
+  border-radius: calc(28 * var(--u));
+  overflow: hidden;
+}
+.logo-version img { width: 62%; height: auto; transition: transform .45s cubic-bezier(.34, 1.56, .64, 1); }
+.logo-version img.is-small { width: 28%; }
+.logo-version:hover img { transform: scale(1.06); }
+.logo-version figcaption { position: absolute; left: calc(20 * var(--u)); bottom: calc(20 * var(--u)); }
+@media (max-width: 700px) { .logo-versions { grid-template-columns: minmax(0, 1fr); } }
+/* página escura: borda branca nas versões */
+.page-helena .logo-version { border-color: #fff; }
+
+/* ---------- Logo em cards (logo.layout: "cards") ---------- */
+.logo-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(20 * var(--u)); }
+.logo-card {
+  margin: 0;
+  min-height: calc(330 * var(--u));
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border-radius: calc(26 * var(--u));
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .6s ease calc(var(--i) * .12s), transform .7s cubic-bezier(.34, 1.4, .64, 1) calc(var(--i) * .12s);
+}
+.logo-card:first-child { min-height: calc(440 * var(--u)); }
+.logo-cards.is-in .logo-card { opacity: 1; transform: none; }
+.logo-card img { height: auto; transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
+.logo-card:hover img { transform: scale(1.06) rotate(-2deg); }
+@media (max-width: 700px) {
+  .logo-cards { grid-template-columns: minmax(0, 1fr); }
+  .logo-card { grid-column: auto !important; min-height: 200px; }
+  .logo-card:first-child { min-height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) { .logo-card { opacity: 1; transform: none; transition: none; } }

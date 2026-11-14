@@ -33,6 +33,8 @@
        "color": "light",                        // "light" = logo branco, "dark" = logo preto
        "backgrounds": ["gradient", "#111111"],  // opcional; padrão = cores da paleta + preto/branco
        "gradientClass": "gradient-bg",          // classe do degradê, se usar "gradient"
+       "reduction": "../img/reducao.svg",      // aba Redução (opcional)
+       "versions": [{ "src": "...", "label": "Logo · positivo", "bg": "#fff", "small": false }],  // grade de versões (opcional)
        "clearSpace": "x = altura da letra P",   // aba Área de proteção (opcional)
        "sizes": [{ "width": 150, "label": "40 mm · 150 px" }]   // aba Tamanho mínimo (opcional)
      }
@@ -182,7 +184,14 @@
 
   /* ---------- Logo ---------- */
   var logo = data.logo;
-  if (logo && logo.src) {
+  if (logo && logo.layout === 'cards' && logo.versions) {
+    // logo em cards (ex.: Helena): um card largo e dois menores, sem o bloco interativo
+    html += '<div class="container"><section class="block">' + head('Logo', data.logoNote) + lead(data.logoText) +
+      '<div class="logo-cards">' + logo.versions.map(function (v, i) {
+        return '<figure class="logo-card" style="--bg:' + esc(v.bg || '#000') + ';--i:' + i + (v.span ? ';grid-column:span ' + v.span : '') + '">' +
+          '<img src="' + esc(v.src) + '" alt="' + esc(v.alt || '') + '" style="width:' + esc(v.width || '60%') + '"></figure>';
+      }).join('') + '</div></section></div>';
+  } else if (logo && logo.src) {
     var bgs = logo.backgrounds || (function () {
       var list = palette.map(function (c) { return c.hex; });
       ['#111111', '#F4F4F4'].forEach(function (x) { if (list.indexOf(x) < 0) list.push(x); });
@@ -191,6 +200,7 @@
     var img = '<img class="lab__art" src="' + esc(logo.src) + '" alt="' + esc(logo.alt || '') + '">';
     var imgDeco = '<img class="lab__art" src="' + esc(logo.src) + '" alt="">';
     var tabs = [{ id: 'logo', long: 'Logo', short: 'Logo' }];
+    if (logo.reduction) tabs.push({ id: 'reduction', long: 'Redução', short: 'Redução' });
     if (logo.clearSpace) tabs.push({ id: 'space', long: 'Área de proteção', short: 'Proteção' });
     if (logo.sizes && logo.sizes.length) tabs.push({ id: 'sizes', long: 'Tamanho mínimo', short: 'Mínimo' });
 
@@ -206,6 +216,7 @@
     tabs.forEach(function (t, i) {
       html += '<div class="lab__panel' + (i === 0 ? ' is-active' : '') + '" role="tabpanel">';
       if (t.id === 'logo') html += '<div class="lab__logo">' + img + '</div>';
+      if (t.id === 'reduction') html += '<div class="lab__logo lab__logo--reduction"><img class="lab__art" src="' + esc(logo.reduction) + '" alt="' + esc((logo.alt || 'Logo') + ' — redução') + '"></div>';
       if (t.id === 'space') html += '<div class="lab__logo lab__logo--guide"><div class="lab__guide">' + imgDeco +
         '<span class="lab__x lab__x--t">x</span><span class="lab__x lab__x--r">x</span>' +
         '<span class="lab__x lab__x--b">x</span><span class="lab__x lab__x--l">x</span></div></div>' +
@@ -225,10 +236,27 @@
             ' style="' + (grad ? 'background:linear-gradient(135deg,#ff589e,#ffd900 50%,#ace107 70%,#58aeff)' : '--c:' + esc(b)) + '"></button>';
         }).join('') + '</div></div>';
     }
-    html += '</div></section></div>';
+    html += '</div>'; // fecha o .lab
+    if (logo.versions && logo.versions.length) {
+      html += '<div class="logo-versions">' + logo.versions.map(function (v) {
+        return '<figure class="logo-version" style="--bg:' + esc(v.bg || '#000') + '">' +
+          '<img src="' + esc(v.src) + '" alt="' + esc(v.alt || v.label || '') + '"' + (v.small ? ' class="is-small"' : '') + '>' +
+          '<figcaption class="pill">' + esc(v.label || '') + '</figcaption></figure>';
+      }).join('') + '</div>';
+    }
+    html += '</section></div>';
   }
 
   mount.innerHTML = html;
+
+  /* ---------- Logo em cards: entrada ao rolar ---------- */
+  var lc = mount.querySelector('.logo-cards');
+  if (lc) {
+    if ('IntersectionObserver' in window) {
+      var lio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { lc.classList.add('is-in'); lio.disconnect(); } }); }, { threshold: .2 });
+      lio.observe(lc);
+    } else lc.classList.add('is-in');
+  }
 
   /* ---------- Paleta em faixas: entrada ao rolar + copiar o código ---------- */
   var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card'));

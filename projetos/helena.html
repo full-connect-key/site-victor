@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=30">
-  <link rel="stylesheet" href="../css/brand.css?v=30">
-  <link rel="stylesheet" href="../css/projeto.css?v=30">
+  <link rel="stylesheet" href="../css/style.css?v=32">
+  <link rel="stylesheet" href="../css/brand.css?v=32">
+  <link rel="stylesheet" href="../css/projeto.css?v=32">
 </head>
 <body class="page-helena">
 
@@ -77,9 +77,6 @@
       </div>
     </div>
 
-    <div class="marquee-wrap" aria-hidden="true"><div class="marquee"><div class="marquee__track">
-      <span>Editorial Design</span><span><b>✦</b></span><span>Art Direction</span><span><b>✦</b></span><span>Illustration</span><span><b>✦</b></span><span>Branding</span><span><b>✦</b></span><span>Editorial Design</span><span><b>✦</b></span><span>Art Direction</span><span><b>✦</b></span><span>Illustration</span><span><b>✦</b></span><span>Branding</span><span><b>✦</b></span>
-    </div></div></div>
 
     <img class="media media--full media--spread" src="../img/helena/espelho-1.webp" alt="Espelho editorial da revista: páginas da editoria Afeto e Relacionamento" loading="lazy" width="1536" height="868">
 
@@ -115,19 +112,28 @@
     }
   ],
   "logo": {
-    "src": "../img/logo-helena.png",
+    "layout": "cards",
     "alt": "Logo Helena.",
-    "color": "light",
-    "backgrounds": [
-      "#111111",
-      "#00B9BE",
-      "#E74B9C",
-      "#FA8C35",
-      "#75B441",
-      "#F24056",
-      "#FFE000",
-      "#7750A1",
-      "#F4F4F4"
+    "versions": [
+      {
+        "src": "../img/helena/logo-branco.svg",
+        "bg": "#7750A1",
+        "span": 2,
+        "width": "min(60%, 640px)",
+        "alt": "Logo Helena. em branco sobre o roxo da paleta"
+      },
+      {
+        "src": "../img/helena/reducao-branco.svg",
+        "bg": "#111111",
+        "width": "min(46%, 240px)",
+        "alt": "Redução h. em branco sobre preto"
+      },
+      {
+        "src": "../img/helena/logo-preto.svg",
+        "bg": "#F9F9F9",
+        "width": "min(72%, 380px)",
+        "alt": "Logo Helena. em preto sobre branco"
+      }
     ]
   },
   "paletteStyle": "cards",
@@ -212,8 +218,8 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=30" defer></script>
-  <script src="../js/motion.js?v=30" defer></script>
-  <script src="../js/projeto.js?v=30" defer></script>
+  <script src="../js/brand.js?v=32" defer></script>
+  <script src="../js/motion.js?v=32" defer></script>
+  <script src="../js/projeto.js?v=32" defer></script>
 </body>
 </html>
