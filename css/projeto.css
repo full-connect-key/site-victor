@@ -697,8 +697,11 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 @media (max-width: 1000px) { .event-gallery__item--big:nth-child(24n + 13) { grid-column: span 2; } }
 
 /* Metrópole: capa (arte vetorial do mapa + cruzamento) */
-.project-hero--metropole-capa { background: #000 url("../img/metropole/capa.svg?v=5") center / cover no-repeat; }
+.project-hero--metropole-capa { background: #000; }
+/* a arte entra no HTML via js/capa-anim.js, para a animação rodar toda vez que a página abre */
+.p-hero__art { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.p-hero__art > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 /* celular: arte menor e deslocada, para caber o personagem e o logo */
 @media (max-width: 700px) {
-  .project-hero--metropole-capa { background-size: auto 56%; background-position: 66% 70%; }
+  .p-hero__art > svg { inset: auto; width: auto; height: 56%; aspect-ratio: 16 / 9; left: 66%; top: 70%; transform: translate(-66%, -70%); }
 }
