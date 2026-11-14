@@ -541,7 +541,8 @@ body { overflow-x: clip; }
 .lineup__hint { margin: 0 0 16px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .lineup__hint span { color: #D92D39; }
 .lineup__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: calc(14 * var(--u)); }
-.suspect figure { margin: 0; position: relative; }
+.suspect__btn { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: none; position: relative; cursor: pointer; overflow: hidden; font: inherit; text-align: left; }
+.suspect__btn:focus-visible { outline: 3px solid #D92D39; outline-offset: 3px; }
 .suspect__photo {
   display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
   /* régua de altura ao fundo, como numa foto de identificação */
@@ -550,17 +551,56 @@ body { overflow-x: clip; }
     #292929;
   transition: transform .5s cubic-bezier(.2, 1, .3, 1);
 }
-.suspect figure { overflow: hidden; }
 img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
-.suspect figcaption {
+.suspect__tag {
   position: absolute; left: 8px; right: 8px; bottom: 8px;
   display: flex; align-items: center; gap: 8px;
   background: #F2F0E9; color: #121212; padding: 4px 8px 4px 4px;
   font-family: 'serenity', sans-serif; font-weight: 700; font-size: clamp(11px, .8vw, 14px); text-transform: uppercase; letter-spacing: .04em;
 }
 .suspect__no { font-family: 'Urban Space', 'Archivo', sans-serif; font-weight: 400; background: #121212; color: #F2F0E9; padding: 2px 6px 0; font-size: 1.15em; }
-.suspect__name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.suspect:hover .suspect__photo { transform: scale(1.06); }
-.suspect:hover .suspect__no { background: #D92D39; }
+.suspect__name { line-height: 1.05; padding: 2px 0; }
+.suspect__btn:hover .suspect__photo, .suspect__btn:focus-visible .suspect__photo { transform: scale(1.06); }
+.suspect__btn:hover .suspect__no { background: #D92D39; }
 @media (max-width: 900px) { .lineup__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .lineup__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+
+.lineup__hint em { display: block; margin-top: 6px; font-style: normal; font-weight: 400; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+/* ficha de suspeito */
+.has-dossier { overflow: hidden; }
+.dossier { padding: 0; border: 0; background: none; max-width: min(920px, calc(100vw - 32px)); width: 100%; overflow: visible; }
+.dossier::backdrop { background: rgba(10, 10, 10, .82); backdrop-filter: blur(3px); }
+.dossier__card {
+  position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  background: #F2F0E9; color: #121212; border: 2px solid #121212; box-shadow: 10px 10px 0 #D92D39;
+}
+.dossier__card.is-swap { animation: dossier-in .35s cubic-bezier(.2, 1, .3, 1); }
+@keyframes dossier-in { from { opacity: .3; transform: translateY(10px) rotate(-.6deg); } }
+.dossier__photo-wrap { background: #D92D39; border-right: 2px solid #121212; }
+.dossier__photo { display: block; width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.dossier__body { padding: 34px 34px 30px; display: flex; flex-direction: column; gap: 12px; }
+.dossier__kicker { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #D92D39; }
+.dossier__kicker span[lang] { color: #858585; }
+.dossier__name { margin: 0; font-family: 'Urban Space', 'Archivo', sans-serif; font-weight: 400; text-transform: uppercase; font-size: clamp(30px, 3.4vw, 52px); line-height: .9; }
+.dossier__meta { margin: 0; display: flex; flex-direction: column; font-family: 'serenity', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .06em; padding-bottom: 12px; border-bottom: 1px dashed rgba(0, 0, 0, .3); }
+.dossier__meta span[lang] { font-weight: 300; text-transform: none; letter-spacing: 0; color: #858585; }
+.dossier__bio { margin: 0; font-family: 'serenity', sans-serif; font-weight: 300; font-size: clamp(16px, 1.25vw, 20px); line-height: 1.3; }
+.dossier__bio-pt { margin: 0; font-family: 'serenity', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.35; color: #6f6f6f; }
+.dossier__stamp {
+  margin: auto 0 0; align-self: flex-start; transform: rotate(-4deg);
+  border: 3px solid #D92D39; color: #D92D39; padding: 6px 12px 4px;
+  font-family: 'Urban Space', 'Archivo', sans-serif; text-transform: uppercase; font-size: 18px; line-height: 1; opacity: .85;
+}
+.dossier__stamp span { display: block; font-size: .62em; margin-top: 4px; }
+.dossier__close { position: absolute; top: -18px; right: -18px; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #121212; background: #F2F0E9; font-size: 24px; line-height: 1; cursor: pointer; }
+.dossier__navs { position: absolute; right: 18px; bottom: 18px; display: flex; gap: 8px; }
+.dossier__nav { width: 42px; height: 42px; border: 2px solid #121212; background: #121212; color: #F2F0E9; font-size: 18px; cursor: pointer; }
+.dossier__nav:hover, .dossier__close:hover { background: #D92D39; color: #F2F0E9; }
+@media (max-width: 700px) {
+  .dossier__card { grid-template-columns: minmax(0, 1fr); max-height: calc(100dvh - 40px); overflow-y: auto; }
+  .dossier__photo-wrap { border-right: 0; border-bottom: 2px solid #121212; }
+  .dossier__photo { aspect-ratio: 4 / 3; object-position: 50% 45%; }
+  .dossier__body { padding: 22px 20px 74px; }
+  .dossier__close { top: 8px; right: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .dossier__card.is-swap { animation: none; } }
