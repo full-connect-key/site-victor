@@ -414,3 +414,17 @@ body { overflow-x: clip; }
 }
 /* galeria de capas no lugar do mockup, logo depois da introdução */
 .project-body .covers { margin-top: calc(69 * var(--u)); }
+
+/* =========================================================
+   HELENA: fontes do projeto (arquivos originais em fonts/helena/)
+   Degular (OH no Type) — completa. Area Normal — versão TRIAL:
+   sem acentos, usada só na amostra do cartão de tipografia.
+   ========================================================= */
+@font-face { font-family: "Degular"; font-weight: 400; font-display: swap; src: url("../fonts/helena/degular-regular.otf") format("opentype"); }
+@font-face { font-family: "Degular"; font-weight: 500; font-display: swap; src: url("../fonts/helena/degular-medium.otf") format("opentype"); }
+@font-face { font-family: "Degular"; font-weight: 600; font-display: swap; src: url("../fonts/helena/degular-semibold.otf") format("opentype"); }
+@font-face { font-family: "Degular"; font-weight: 700; font-display: swap; src: url("../fonts/helena/degular-bold.otf") format("opentype"); }
+@font-face { font-family: "Area Normal"; font-weight: 400; font-display: swap; src: url("../fonts/helena/area-regular.otf") format("opentype"); }
+@font-face { font-family: "Area Normal"; font-weight: 500; font-display: swap; src: url("../fonts/helena/area-medium.otf") format("opentype"); }
+@font-face { font-family: "Area Normal"; font-weight: 600; font-display: swap; src: url("../fonts/helena/area-semibold.otf") format("opentype"); }
+@font-face { font-family: "Area Normal"; font-weight: 700; font-display: swap; src: url("../fonts/helena/area-bold.otf") format("opentype"); }

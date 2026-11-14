@@ -129,7 +129,7 @@
           return '<span style="font-weight:' + w[1] + '">' + esc(w[0]) + '</span>';
         }).join('') + '</div>' : '') +
         '<p class="type__glyphs" style="font-weight:' + (f.glyphWeight || heavy) + '">' +
-          'ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !?&amp;@#%()</p>' +
+          (f.glyphs ? esc(f.glyphs).replace(/\n/g, '<br>') : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !?&amp;@#%()') + '</p>' +
         '</article>';
     });
     html += '</div></section></div>';
