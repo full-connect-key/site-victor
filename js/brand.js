@@ -62,32 +62,68 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
-  /* mancha de sangue procedural (SVG): borda irregular com braços, respingos e uma escorrida */
+  /* mancha de sangue procedural (SVG): manchas fundidas por um filtro "goo",
+     com filetes de respingo e gotas soltas; cada semente gera um desenho diferente */
   function splatter(seed) {
     var r = (function (a) { return function () { a = (a * 16807) % 2147483647; return (a - 1) / 2147483646; }; })(seed * 7919 + 13);
-    var cx = 100, cy = 100, R = 46, n = 26, pts = [], k;
-    for (k = 0; k < n; k++) {
-      var a = k / n * Math.PI * 2, d = R * (0.82 + r() * 0.3);
-      if (r() < 0.22) d = R * (1.25 + r() * 0.45);           // braços da mancha
-      pts.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d]);
+    var f = function (v) { return v.toFixed(1); };
+    var body = '', drops = '', k, q, id = 'goo' + seed;
+    // 2 ou 3 núcleos de tamanhos diferentes, encostados
+    var cores = [[100, 100, 34 + r() * 6]];
+    var nc = 1 + Math.floor(r() * 2) + 1;
+    for (k = 1; k < nc; k++) {
+      var a0 = r() * Math.PI * 2, base = cores[0];
+      cores.push([base[0] + Math.cos(a0) * (30 + r() * 14), base[1] + Math.sin(a0) * (24 + r() * 10), 14 + r() * 12]);
     }
-    var p = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
-    for (k = 0; k < n; k++) {                                   // Catmull-Rom → Bézier (curva fechada e suave)
-      var p0 = pts[(k - 1 + n) % n], p1 = pts[k], p2 = pts[(k + 1) % n], p3 = pts[(k + 2) % n];
-      p += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' +
-        (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    cores.forEach(function (c) {
+      body += '<circle cx="' + f(c[0]) + '" cy="' + f(c[1]) + '" r="' + f(c[2] * .8) + '"/>';
+      var m = 12 + Math.floor(r() * 8);                     // borda irregular: bolinhas no contorno
+      for (q = 0; q < m; q++) {
+        var a = r() * Math.PI * 2, d = c[2] * (.6 + r() * .5), s = c[2] * (.1 + r() * .26);
+        body += '<circle cx="' + f(c[0] + Math.cos(a) * d) + '" cy="' + f(c[1] + Math.sin(a) * d) + '" r="' + f(s) + '"/>';
+      }
+    });
+    // filetes: linhas afinando para fora, com gota na ponta
+    var ns = 12 + Math.floor(r() * 8), c0 = cores[0];
+    for (k = 0; k < ns; k++) {
+      var b = r() * Math.PI * 2, from = c0[2] * .7, len = c0[2] * (.35 + r() * 1.1), w = 1.6 + r() * 3.2;
+      var x1 = c0[0] + Math.cos(b) * from, y1 = c0[1] + Math.sin(b) * from;
+      var x2 = c0[0] + Math.cos(b) * (from + len), y2 = c0[1] + Math.sin(b) * (from + len);
+      var nx = -Math.sin(b) * w, ny = Math.cos(b) * w;
+      body += '<polygon points="' + f(x1 + nx) + ',' + f(y1 + ny) + ' ' + f(x1 - nx) + ',' + f(y1 - ny) + ' ' + f(x2) + ',' + f(y2) + '"/>';
+      if (r() < .7) body += '<circle cx="' + f(x2) + '" cy="' + f(y2) + '" r="' + f(1.6 + r() * 2.6) + '"/>';
     }
-    var drops = '';
-    var m = 9 + Math.floor(r() * 6);
-    for (k = 0; k < m; k++) {
-      var b = r() * Math.PI * 2, dist = R * (1.35 + r() * 0.75), s = 1.2 + r() * 4.2;
-      var x = cx + Math.cos(b) * dist, y = cy + Math.sin(b) * dist;
-      drops += '<ellipse class="drop" style="--d:' + (k * 0.03 + .15).toFixed(2) + 's" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="' + (s * 1.6).toFixed(1) + '" ry="' + s.toFixed(1) + '" transform="rotate(' + (b * 180 / Math.PI).toFixed(0) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>';
+    // gotas soltas: grandes perto, pequenas longe
+    var nd = 14 + Math.floor(r() * 10);
+    for (k = 0; k < nd; k++) {
+      var g = r() * Math.PI * 2, t = r(), dist = c0[2] * (1.3 + t * 1.5), sz = Math.max(1.4, (1 - t) * (2 + r() * 8));
+      drops += '<circle class="drop" style="--d:' + (k * .025 + .15).toFixed(2) + 's" cx="' + f(c0[0] + Math.cos(g) * dist) + '" cy="' + f(c0[1] + Math.sin(g) * dist * .85) + '" r="' + f(sz) + '"/>';
     }
-    var dx = cx - 18 + r() * 36;                                 // escorrida
-    var drip = '<path class="drip" d="M' + (dx - 5) + ' ' + (cy + R * .6) + ' Q' + (dx - 3) + ' ' + (cy + R + 22) + ' ' + dx + ' ' + (cy + R + 32) + ' Q' + (dx + 4) + ' ' + (cy + R + 22) + ' ' + (dx + 5) + ' ' + (cy + R * .6) + 'Z"/><circle class="drip" cx="' + dx + '" cy="' + (cy + R + 31) + '" r="4.2"/>';
-    return '<svg viewBox="0 0 200 200" aria-hidden="true"><g class="splat"><path class="blob" d="' + p + 'Z"/>' + drip + drops +
-      '<ellipse class="gloss" cx="' + (cx - 14) + '" cy="' + (cy - 16) + '" rx="16" ry="8" transform="rotate(-30 ' + (cx - 14) + ' ' + (cy - 16) + ')"/></g></svg>';
+    return '<svg viewBox="0 0 200 200" aria-hidden="true"><defs><filter id="' + id + '" x="-20%" y="-20%" width="140%" height="140%">' +
+      '<feGaussianBlur in="SourceGraphic" stdDeviation="1.7"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11"/></filter></defs>' +
+      '<g class="splat"><g filter="url(#' + id + ')"><g class="blob">' + body + '</g>' + drops + '</g></g></svg>';
+  }
+
+  /* plaquinha de evidência em "tenda" (A-frame) branca, com o número na face da frente */
+  function marker(num) {
+    var ruler = '', k;
+    for (k = 0; k < 8; k++) {                                   // régua quadriculada (escala forense)
+      var x = 22 + k * 14;
+      ruler += '<rect x="' + x + '" y="' + (k % 2 ? 112 : 106) + '" width="14" height="6" fill="#121212"/>';
+      ruler += '<line x1="' + x + '" y1="118" x2="' + x + '" y2="130" stroke="#121212" stroke-width="1"/>';
+      ruler += '<line x1="' + (x + 7) + '" y1="124" x2="' + (x + 7) + '" y2="130" stroke="#121212" stroke-width=".7"/>';
+    }
+    return '<svg class="pal-crime__marker" viewBox="0 0 200 150" aria-hidden="true">' +
+      '<ellipse cx="104" cy="143" rx="94" ry="6" fill="rgba(0,0,0,.6)"/>' +
+      '<polygon points="160,10 166,140 196,132" fill="#8f8c84"/>' +                 // interior da tenda
+      '<polygon points="160,10 166,9 200,132 196,132" fill="#cfccc3"/>' +          // borda do painel de trás
+      '<polygon points="14,136 166,140 160,10 18,8" fill="#F2F0E9"/>' +            // face da frente
+      '<path d="M18 8 L160 10 L160 14 L18 12Z" fill="#fff"/>' +                    // dobra do topo
+      '<circle cx="90" cy="14" r="1.6" fill="#b9b6ad"/>' +                          // furinho
+      '<rect x="22" y="106" width="112" height="24" fill="none" stroke="#121212" stroke-width="1"/>' + ruler +
+      '<text x="27" y="117" font-family="serenity, sans-serif" font-weight="700" font-size="6" fill="#F2F0E9">cm</text>' +
+      '<text x="88" y="98" text-anchor="middle" font-family="serenity, Archivo, sans-serif" font-weight="700" font-size="92" fill="#121212">' + num + '</text>' +
+      '</svg>';
   }
 
   function hexToRgb(h) {
@@ -190,16 +226,16 @@
       palette.forEach(function (c, i) {
         var rgb = hexToRgb(c.hex);
         var lum = rgb[0] * .299 + rgb[1] * .587 + rgb[2] * .114;
-        html += '<li class="pal-crime__item" data-hex="' + esc(c.hex.toUpperCase()) + '" style="--c:' + esc(c.hex) + ';--i:' + i + ';--hl:' + (lum > 150 ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.16)') + (lum < 60 ? ';--rim:rgba(242,240,233,.22)' : '') + '">' +
-          '<button class="pal-crime__stain" type="button" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' + splatter(i + 3) + '</button>' +
-          '<div class="pal-crime__tag">' +
-            '<span class="pal-crime__no" aria-hidden="true">' + (i + 1) + '</span>' +
-            '<div class="pal-crime__body">' +
-              '<p class="pal-crime__kicker">Evidence Nº ' + ('0' + (i + 1)).slice(-2) + '</p>' +
-              '<p class="pal-crime__name">' + esc(c.name) + (c.namePt ? '<span lang="pt-BR">' + esc(c.namePt) + '</span>' : '') + '</p>' +
-              (c.use ? '<p class="pal-crime__use">' + esc(c.use) + (c.usePt ? '<span lang="pt-BR">' + esc(c.usePt) + '</span>' : '') + '</p>' : '') +
-              '<p class="pal-crime__codes"><span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span><span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span><span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span></p>' +
-            '</div>' +
+        html += '<li class="pal-crime__item" data-hex="' + esc(c.hex.toUpperCase()) + '" style="--c:' + esc(c.hex) + ';--i:' + i + ';--hl:' + (lum > 150 ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.16)') + (lum < 60 ? ';--rim:rgba(242,240,233,.55)' : '') + '">' +
+          '<div class="pal-crime__scene">' +
+            '<button class="pal-crime__stain" type="button" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' + splatter(i + 3) + '</button>' +
+            marker(i + 1) +
+          '</div>' +
+          '<div class="pal-crime__info">' +
+            '<p class="pal-crime__kicker">Evidence Nº ' + ('0' + (i + 1)).slice(-2) + '</p>' +
+            '<p class="pal-crime__name">' + esc(c.name) + (c.namePt ? '<span lang="pt-BR">' + esc(c.namePt) + '</span>' : '') + '</p>' +
+            (c.use ? '<p class="pal-crime__use">' + esc(c.use) + (c.usePt ? '<span lang="pt-BR">' + esc(c.usePt) + '</span>' : '') + '</p>' : '') +
+            '<p class="pal-crime__codes"><span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span><span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span><span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span></p>' +
           '</div></li>';
       });
       html += '</ol></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';

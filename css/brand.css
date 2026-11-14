@@ -638,31 +638,29 @@
 .pal-crime__stain svg { width: 100%; height: 100%; overflow: visible; display: block; transform: scale(1.3); }
 .pal-crime .splat { fill: var(--c); transform-origin: 100px 100px; transform: scale(.2); opacity: 0; transition: transform .9s cubic-bezier(.2, 1.4, .4, 1) calc(var(--i) * .15s), opacity .2s ease calc(var(--i) * .15s); }
 .pal-crime .drop { transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s cubic-bezier(.2, 1.6, .4, 1); transition-delay: calc(var(--i) * .15s + var(--d)); }
-.pal-crime .drip { transform-box: fill-box; transform-origin: top; transform: scaleY(0); transition: transform 1.6s cubic-bezier(.4, 0, .2, 1) calc(var(--i) * .15s + .6s); }
-.pal-crime .gloss { fill: var(--hl); }
-.pal-crime .blob, .pal-crime .drip, .pal-crime .drop { stroke: var(--rim, transparent); stroke-width: 1; }
+.pal-crime .splat { filter: drop-shadow(0 0 .6px var(--rim, transparent)) drop-shadow(0 0 6px var(--glow, transparent)); }
 .pal-crime__item.is-in .splat { transform: none; opacity: 1; }
-.pal-crime__item.is-in .drop, .pal-crime__item.is-in .drip { transform: none; }
+.pal-crime__item.is-in .drop { transform: none; }
 .pal-crime__item:hover .splat { transform: scale(1.05) rotate(-3deg); transition-delay: 0s; }
-/* plaquinha de evidência: aba numerada + ficha */
-.pal-crime__tag { margin-top: calc(30 * var(--u)); width: 100%; max-width: 260px; display: flex; flex-direction: column; align-items: flex-start; filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .5)); transform: rotate(calc((var(--i) - 1.5) * 1.2deg)); transition: transform .3s ease; }
-.pal-crime__item:hover .pal-crime__tag { transform: translateY(-4px) rotate(0deg); }
-.pal-crime__no {
-  font-family: 'Urban Space', 'Archivo', sans-serif;
-  background: #F2F0E9; color: #121212;
-  font-size: clamp(30px, 2.6vw, 48px); line-height: 1;
-  padding: 12px 22px 6px;
-  clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+/* plaquinha em tenda ao lado da mancha + ficha impressa no "chão" */
+.pal-crime__scene { position: relative; width: 100%; max-width: 260px; }
+.pal-crime__marker {
+  position: absolute; right: -10%; bottom: -12%; width: 52%;
+  overflow: visible; pointer-events: none;
+  transform-origin: 50% 100%; transform: scale(0) translateY(20px);
+  transition: transform .6s cubic-bezier(.2, 1.5, .4, 1) calc(var(--i) * .15s + .5s);
 }
-.pal-crime__body { background: #F2F0E9; color: #121212; width: 100%; padding: 14px 16px 16px; border-top: 4px solid var(--c); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .08); }
-.pal-crime__kicker { margin: 0 0 8px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .6; }
+.pal-crime__item.is-in .pal-crime__marker { transform: none; }
+.pal-crime__item:hover .pal-crime__marker { transform: translateY(-4px) rotate(-2deg); transition-delay: 0s; }
+.pal-crime__info { width: 100%; max-width: 260px; margin-top: calc(40 * var(--u)); color: #F2F0E9; }
+.pal-crime__kicker { margin: 0 0 8px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .55; }
 .pal-crime__name { margin: 0; font-family: 'Urban Space', 'Archivo', sans-serif; text-transform: uppercase; font-size: clamp(22px, 1.9vw, 34px); line-height: .9; }
-.pal-crime__name span, .pal-crime__use span { display: block; font-family: 'serenity', sans-serif; font-weight: 300; text-transform: none; opacity: .65; }
+.pal-crime__name span, .pal-crime__use span { display: block; font-family: 'serenity', sans-serif; font-weight: 300; text-transform: none; opacity: .6; }
 .pal-crime__name span { font-size: clamp(13px, .95vw, 16px); margin-top: 5px; line-height: 1.1; }
 .pal-crime__use { margin: 10px 0 0; font-family: 'serenity', sans-serif; font-weight: 300; font-size: clamp(13px, .95vw, 16px); line-height: 1.2; }
 .pal-crime__use span { font-size: .92em; }
-.pal-crime__codes { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed rgba(0, 0, 0, .3); display: flex; flex-direction: column; gap: 2px; font-size: 12px; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
-.pal-crime__codes b { display: inline-block; width: 44px; }
+.pal-crime__codes { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed rgba(242, 240, 233, .3); display: flex; flex-direction: column; gap: 2px; font-size: 12px; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.pal-crime__codes b { display: inline-block; width: 44px; opacity: .55; }
 @media (max-width: 900px) { .pal-crime__list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; } }
-@media (max-width: 480px) { .pal-crime__list { gap: 36px 14px; } .pal-crime__stain svg { transform: scale(1.1); } .pal-crime__body { padding: 10px 10px 12px; } .pal-crime__codes { font-size: 10.5px; } .pal-crime__codes b { width: 36px; } .pal-crime__no { font-size: 24px; padding: 8px 14px 4px; } }
-@media (prefers-reduced-motion: reduce) { .pal-crime .splat, .pal-crime .drop, .pal-crime .drip { transition: none; } }
+@media (max-width: 480px) { .pal-crime__list { gap: 40px 14px; } .pal-crime__stain svg { transform: scale(1.1); } .pal-crime__codes { font-size: 10.5px; } .pal-crime__codes b { width: 36px; } }
+@media (prefers-reduced-motion: reduce) { .pal-crime .splat, .pal-crime .drop, .pal-crime__marker { transition: none; } }
