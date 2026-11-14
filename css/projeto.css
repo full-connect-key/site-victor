@@ -420,12 +420,8 @@ body { overflow-x: clip; }
 
 /* =========================================================
    HELENA: fontes do projeto
-   Degular: arquivos originais em fonts/helena/.
-   Area: vem do Adobe Fonts (Web Project uso2liw, <link> no helena.html).
+   Degular (degular-variable) e Area (area-normal) vêm do Adobe Fonts
+   (Web Project uso2liw, <link> no helena.html).
    ========================================================= */
-@font-face { font-family: "Degular"; font-weight: 400; font-display: swap; src: url("../fonts/helena/degular-regular.otf") format("opentype"); }
-@font-face { font-family: "Degular"; font-weight: 500; font-display: swap; src: url("../fonts/helena/degular-medium.otf") format("opentype"); }
-@font-face { font-family: "Degular"; font-weight: 600; font-display: swap; src: url("../fonts/helena/degular-semibold.otf") format("opentype"); }
-@font-face { font-family: "Degular"; font-weight: 700; font-display: swap; src: url("../fonts/helena/degular-bold.otf") format("opentype"); }
 
 @media (max-width: 800px) { .cover-card { width: 72vw; } .covers { --cg: 16px; } }

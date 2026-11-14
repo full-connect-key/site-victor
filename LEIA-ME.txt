@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=43" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=44" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -20,7 +20,7 @@ js/projeto.js          Topo em tela cheia, imagens em cortina etc.
 css/style.css          Todo o visual (cores ficam no topo, em :root)
 js/brand.js            Tipografia, paleta e logo interativo das páginas de projeto
 css/brand.css          Visual desses blocos
-fonts/                 Co Text (Piá) e fonts/helena/ Degular (Helena; a Area vem do Adobe Fonts) — arquivos originais .otf
+fonts/                 Co Text (Piá), arquivos originais .otf. Degular e Area (Helena) vêm do Adobe Fonts
 js/motion.js           Parallax e animações de entrada (intensidade ajustável no topo do arquivo)
 img/                   Imagens exportadas do Figma
 
