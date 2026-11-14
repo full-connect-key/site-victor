@@ -458,3 +458,57 @@
   .pal-band { transform: none; transition: none; }
   .pal-band__name, .pal-band__codes { opacity: 1; transition: none; }
 }
+
+/* ---------- PALETA em cards sobre fundo preto (paletteStyle: "cards") ---------- */
+.pal-cards-wrap { background: #0a0a0a; padding: calc(70 * var(--u)) 0; border-block: 2px solid var(--black); }
+.pal-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: calc(28 * var(--u)); }
+.pal-card {
+  position: relative;
+  min-height: calc(220 * var(--u));
+  border: 0;
+  border-radius: calc(28 * var(--u));
+  background: var(--c);
+  padding: calc(26 * var(--u)) calc(26 * var(--u));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px) scale(.96);
+  transition: opacity .6s ease calc(var(--i) * .08s), transform .7s cubic-bezier(.34, 1.4, .64, 1) calc(var(--i) * .08s);
+}
+.pal-card.is-in { opacity: 1; transform: none; }
+.pal-card:hover { transform: translateY(-6px); transition-delay: 0s; }
+.pal-card:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+/* códigos em etiquetas pretas, como os destaques dos títulos da revista */
+.pal-card__codes { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.pal-card__codes span {
+  background: #000;
+  color: #fff;
+  padding: 1px 6px;
+  font-size: clamp(11px, .85vw, 15px);
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+.pal-card__codes b { font-weight: 700; }
+.pal-card__name {
+  position: absolute;
+  top: calc(22 * var(--u));
+  right: calc(26 * var(--u));
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(13px, 1vw, 18px);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.pal-card:hover .pal-card__name, .pal-card:focus-visible .pal-card__name { opacity: 1; transform: none; }
+@media (max-width: 700px) {
+  .pal-cards { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .pal-card { grid-column: auto !important; min-height: 130px; }
+}
+.pal-card__codes span { white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .pal-card { opacity: 1; transform: none; transition: none; } }

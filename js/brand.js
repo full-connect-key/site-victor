@@ -22,7 +22,7 @@
          "specimen": false,                     // fonte não carrega no site: sem amostra "Aa"
          "source": "Adobe Fonts" }              // origem da fonte (opcional)
      ],
-     "paletteStyle": "bands",                  // opcional: faixas empilhadas (ex.: Piá)
+     "paletteStyle": "bands",                  // opcional: "bands" (faixas, ex.: Piá) ou "cards" (cards em fundo preto, ex.: Helena; cada cor pode ter "span": 2)
      "paletteFont": "'Montserrat', sans-serif", // opcional: fonte dos nomes nas faixas
      "palette": [
        { "name": "Rosa", "hex": "#FF589E", "pantone": "213 C", "weight": 2,
@@ -131,7 +131,22 @@
   /* ---------- Paleta ---------- */
   var palette = data.palette || [];
   if (palette.length) {
-    if (data.paletteStyle === 'bands') {
+    if (data.paletteStyle === 'cards') {
+      // cards arredondados em fundo preto, larguras variadas (span 1 ou 2 de 3 colunas)
+      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div>' +
+        '<div class="pal-cards-wrap"><div class="container"><div class="pal-cards">';
+      palette.forEach(function (c, i) {
+        var rgb = hexToRgb(c.hex);
+        var cmyk = (c.cmyk || toCmyk(rgb)).split(' ').map(function (v) { return v + '%'; }).join(' ');
+        html += '<button class="pal-card" type="button" style="--c:' + esc(c.hex) + ';--i:' + i + ';grid-column:span ' + (c.span || 1) + '" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' +
+          '<span class="pal-card__codes">' +
+            '<span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span>' +
+            '<span><b>CMYK</b> ' + esc(cmyk) + '</span>' +
+            '<span><b>HEX</b> ' + esc(c.hex.toUpperCase().replace('#', '')) + '</span>' +
+          '</span><span class="pal-card__name">' + esc(c.name) + '</span></button>';
+      });
+      html += '</div></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
+    } else if (data.paletteStyle === 'bands') {
       // faixas empilhadas: nome em 2 linhas e códigos ao lado, alternando o lado
       html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText) + '</div><div class="pal-bands"' + (data.paletteFont ? ' style="--pf:' + esc(data.paletteFont) + '"' : '') + '>';
       palette.forEach(function (c, i) {
@@ -216,7 +231,7 @@
   mount.innerHTML = html;
 
   /* ---------- Paleta em faixas: entrada ao rolar + copiar o código ---------- */
-  var bands = [].slice.call(mount.querySelectorAll('.pal-band'));
+  var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card'));
   if (bands.length) {
     if ('IntersectionObserver' in window) {
       // observa o bloco (as faixas começam fora da tela, deslocadas para o lado)
@@ -225,7 +240,7 @@
           if (e.isIntersecting) { bands.forEach(function (b) { b.classList.add('is-in'); }); bio.disconnect(); }
         });
       }, { threshold: .15 });
-      bio.observe(mount.querySelector('.pal-bands'));
+      bio.observe(mount.querySelector('.pal-bands, .pal-cards'));
     } else bands.forEach(function (b) { b.classList.add('is-in'); });
     var toast = mount.querySelector('.pal-toast'), tt;
     bands.forEach(function (b) {
