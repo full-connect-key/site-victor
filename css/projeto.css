@@ -381,17 +381,20 @@ body { overflow-x: clip; }
    HELENA: galeria de capas deslizando sem parar
    ========================================================= */
 .covers { overflow: hidden; padding: calc(56 * var(--u)) 0; }
+.covers { --cg: calc(28 * var(--u)); }
 .covers__track {
   display: flex;
-  gap: calc(28 * var(--u));
+  gap: var(--cg);
   width: max-content;
-  animation: covers-slide 40s linear infinite;
+  animation: covers-slide 48s linear infinite;
 }
 .covers:hover .covers__track, .covers:focus-within .covers__track { animation-play-state: paused; }
-@keyframes covers-slide { to { transform: translateX(calc(-50% - 14 * var(--u))); } }
+@keyframes covers-slide { to { transform: translateX(calc(-50% - var(--cg) / 2)); } }
 .cover-card {
   flex: 0 0 auto;
-  width: clamp(200px, calc(330 * var(--u)), 360px);
+  /* largura de forma que nunca caibam duas cópias da mesma capa na tela:
+     a tela mostra no máximo 3 capas + pedaços (o ciclo tem 4) */
+  width: calc((100vw - 4 * var(--cg)) / 3);
   margin: 0;
   cursor: zoom-in;
 }
@@ -428,3 +431,5 @@ body { overflow-x: clip; }
 @font-face { font-family: "Area Normal"; font-weight: 500; font-display: swap; src: url("../fonts/helena/area-medium.otf") format("opentype"); }
 @font-face { font-family: "Area Normal"; font-weight: 600; font-display: swap; src: url("../fonts/helena/area-semibold.otf") format("opentype"); }
 @font-face { font-family: "Area Normal"; font-weight: 700; font-display: swap; src: url("../fonts/helena/area-bold.otf") format("opentype"); }
+
+@media (max-width: 800px) { .cover-card { width: 72vw; } .covers { --cg: 16px; } }
