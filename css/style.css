@@ -912,3 +912,6 @@ img.media { height: auto; }
 /* capa em faixa de ponta a ponta (Helena) */
 .media--cover { aspect-ratio: 16 / 10 !important; object-fit: cover; object-position: center; margin-top: calc(69 * var(--u)); }
 .gallery--3.gallery--mock .media { aspect-ratio: 4 / 3; }
+/* imagem sozinha no fim de uma sequência (mesmo tamanho de uma coluna, centralizada) */
+.gallery--single { display: grid; grid-template-columns: minmax(0, 1fr); max-width: calc(583 * var(--u)); margin-inline: auto; margin-top: calc(69 * var(--u)); }
+@media (max-width: 800px) { .gallery--single { max-width: none; } }
