@@ -38,7 +38,7 @@ O QUE AINDA FALTA PREENCHER
 - Páginas de projeto: troque cada <div class="media"></div> por
   <img class="media" src="../img/arquivo.jpg" alt="descrição">
 - Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
-- index.html: e-mail do botão CONTACT ME e os links do Instagram e do LinkedIn
+- index.html: links do Instagram e do LinkedIn
 - Bloco "Personal" da home: o botão está como "Coming soon" e o espaço da imagem
   usa o pontilhado do topo. Quando houver página/imagem, siga o comentário no index.html
 - Projeto "Qual emoção é essa aqui?" ainda não tem imagem na página Work
