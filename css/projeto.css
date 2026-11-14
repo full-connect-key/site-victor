@@ -625,3 +625,21 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .page-pia .closing p:not(.closing__pt) { text-transform: none; font-stretch: normal; font-variation-settings: normal; letter-spacing: -.01em; font-weight: 700; font-size: clamp(28px, 3vw, 56px); line-height: 1.02; }
 .page-pia .closing p:not(.closing__pt)::first-letter { color: #F72857; }
 .page-pia .opening__quote cite { color: #2476ED; }
+
+/* Metrópole — fundo grafite */
+.page-metropole { background: #141414; color: #F2F0E9; }
+.page-metropole .project-body { background: #141414; }
+.page-metropole .intro__eyebrow, .page-metropole .intro__text-pt, .page-metropole .concept__text,
+.page-metropole .concept__text-pt, .page-metropole .concept__lead-pt, .page-metropole .block__num,
+.page-metropole .block__lead, .page-metropole .block__note, .page-metropole .credits dt,
+.page-metropole .closing .closing__pt, .page-metropole .facts span[lang], .page-metropole .lineup__hint em { color: #9a9a9a; }
+.page-metropole .concept__text--main, .page-metropole .concept__lead { color: #F2F0E9; }
+.page-metropole .words .w { opacity: .22; } .page-metropole .words .w.on { opacity: 1; }
+.page-metropole .block__head, .page-metropole .facts { border-color: #F2F0E9; }
+.page-metropole .type__card { background: #141414; color: #F2F0E9; border-color: #F2F0E9; box-shadow: 10px 10px 0 #D92D39; }
+.page-metropole .type__card--dark { background: #F2F0E9; color: #141414; }
+.page-metropole .pal-crime { border-block-color: #292929; }
+.page-metropole .role { border-color: #F2F0E9; box-shadow: 6px 6px 0 #D92D39; }
+.page-metropole .media { background-color: #222; }
+.page-metropole .next { border-top: 2px solid #292929; }
+.page-metropole .site-footer { background: #141414; color: #F2F0E9; border-top: 1px solid #292929; }
