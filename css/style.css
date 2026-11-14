@@ -909,3 +909,6 @@ h1, h2, h3, p { margin: 0; }
 .gallery--spread .media, .media--spread { aspect-ratio: 1536 / 868; background: #ececec; }
 .gallery + .gallery { margin-top: calc(34 * var(--u)); }
 img.media { height: auto; }
+/* capa em faixa de ponta a ponta (Helena) */
+.media--cover { aspect-ratio: 16 / 10 !important; object-fit: cover; object-position: center; margin-top: calc(69 * var(--u)); }
+.gallery--3.gallery--mock .media { aspect-ratio: 4 / 3; }
