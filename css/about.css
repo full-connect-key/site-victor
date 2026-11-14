@@ -193,3 +193,5 @@
   .clients__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cv__when { white-space: normal; }
 }
+.clients__names .tag { white-space: normal; }
+@media (min-width: 901px) { .clients__logos { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
