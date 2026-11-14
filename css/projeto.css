@@ -535,3 +535,31 @@ body { overflow-x: clip; }
 .page-metropole .pal-ev__name span { font-family: 'serenity', sans-serif; font-weight: 300; }
 .page-metropole .facts b { font-size: clamp(26px, 2.7vw, 52px); }
 .page-metropole .closing p:not(.closing__pt) { letter-spacing: .02em; }
+
+/* Metrópole: galeria de personagens em "line-up" policial (5 x 4) */
+.lineup { margin-top: calc(56 * var(--u)); }
+.lineup__hint { margin: 0 0 16px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.lineup__hint span { color: #D92D39; }
+.lineup__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: calc(14 * var(--u)); }
+.suspect figure { margin: 0; position: relative; }
+.suspect__photo {
+  display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
+  /* régua de altura ao fundo, como numa foto de identificação */
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 calc(10% - 1px), rgba(242, 240, 233, .22) calc(10% - 1px) 10%),
+    #292929;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter .4s ease, transform .4s ease;
+}
+.suspect figcaption {
+  position: absolute; left: 8px; right: 8px; bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+  background: #F2F0E9; color: #121212; padding: 4px 8px 4px 4px;
+  font-family: 'serenity', sans-serif; font-weight: 700; font-size: clamp(11px, .8vw, 14px); text-transform: uppercase; letter-spacing: .04em;
+}
+.suspect__no { font-family: 'Urban Space', 'Archivo', sans-serif; font-weight: 400; background: #121212; color: #F2F0E9; padding: 2px 6px 0; font-size: 1.15em; }
+.suspect__name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.suspect:hover .suspect__photo { filter: none; }
+.suspect:hover .suspect__no { background: #D92D39; }
+@media (max-width: 900px) { .lineup__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .lineup__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }

@@ -24,7 +24,7 @@
          "specimen": false,                     // fonte não carrega no site: sem amostra "Aa"
          "source": "Adobe Fonts" }              // origem da fonte (opcional)
      ],
-     "paletteStyle": "bands",                  // opcional: "bands" (faixas, ex.: Piá), "cards" (cards em fundo preto, ex.: Helena; cada cor pode ter "span": 2) ou "evidence" (faixa proporcional + fichas, ex.: Metrópole; cada cor com "weight" em %, "namePt", "use", "usePt")
+     "paletteStyle": "bands",                  // opcional: "bands" (faixas, ex.: Piá), "cards" (cards em fundo preto, ex.: Helena; cada cor pode ter "span": 2) "evidence" (faixa proporcional + fichas; cada cor com "weight" em %) ou "blood" (manchas + plaquinhas de evidência, ex.: Metrópole; cada cor pode ter "namePt", "use", "usePt")
      "paletteFont": "'Montserrat', sans-serif", // opcional: fonte dos nomes nas faixas
      "palette": [
        { "name": "Rosa", "hex": "#FF589E", "pantone": "213 C", "weight": 2,
@@ -62,6 +62,34 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
+  /* mancha de sangue procedural (SVG): borda irregular com braços, respingos e uma escorrida */
+  function splatter(seed) {
+    var r = (function (a) { return function () { a = (a * 16807) % 2147483647; return (a - 1) / 2147483646; }; })(seed * 7919 + 13);
+    var cx = 100, cy = 100, R = 46, n = 26, pts = [], k;
+    for (k = 0; k < n; k++) {
+      var a = k / n * Math.PI * 2, d = R * (0.82 + r() * 0.3);
+      if (r() < 0.22) d = R * (1.25 + r() * 0.45);           // braços da mancha
+      pts.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d]);
+    }
+    var p = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (k = 0; k < n; k++) {                                   // Catmull-Rom → Bézier (curva fechada e suave)
+      var p0 = pts[(k - 1 + n) % n], p1 = pts[k], p2 = pts[(k + 1) % n], p3 = pts[(k + 2) % n];
+      p += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' +
+        (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    var drops = '';
+    var m = 9 + Math.floor(r() * 6);
+    for (k = 0; k < m; k++) {
+      var b = r() * Math.PI * 2, dist = R * (1.35 + r() * 0.75), s = 1.2 + r() * 4.2;
+      var x = cx + Math.cos(b) * dist, y = cy + Math.sin(b) * dist;
+      drops += '<ellipse class="drop" style="--d:' + (k * 0.03 + .15).toFixed(2) + 's" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="' + (s * 1.6).toFixed(1) + '" ry="' + s.toFixed(1) + '" transform="rotate(' + (b * 180 / Math.PI).toFixed(0) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>';
+    }
+    var dx = cx - 18 + r() * 36;                                 // escorrida
+    var drip = '<path class="drip" d="M' + (dx - 5) + ' ' + (cy + R * .6) + ' Q' + (dx - 3) + ' ' + (cy + R + 22) + ' ' + dx + ' ' + (cy + R + 32) + ' Q' + (dx + 4) + ' ' + (cy + R + 22) + ' ' + (dx + 5) + ' ' + (cy + R * .6) + 'Z"/><circle class="drip" cx="' + dx + '" cy="' + (cy + R + 31) + '" r="4.2"/>';
+    return '<svg viewBox="0 0 200 200" aria-hidden="true"><g class="splat"><path class="blob" d="' + p + 'Z"/>' + drip + drops +
+      '<ellipse class="gloss" cx="' + (cx - 14) + '" cy="' + (cy - 16) + '" rx="16" ry="8" transform="rotate(-30 ' + (cx - 14) + ' ' + (cy - 16) + ')"/></g></svg>';
+  }
+
   function hexToRgb(h) {
     h = h.replace('#', '');
     if (h.length === 3) h = h.replace(/./g, '$&$&');
@@ -155,24 +183,24 @@
           '</span><span class="pal-card__name">' + esc(c.name) + '</span></button>';
       });
       html += '</div></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
-    } else if (data.paletteStyle === 'evidence') {
-      // "arquivo de investigação": faixa proporcional ao uso + fichas numeradas (ex.: Metrópole)
+    } else if (data.paletteStyle === 'blood') {
+      // manchas de sangue, uma por cor, com plaquinhas de evidência numeradas (ex.: Metrópole)
       html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div>' +
-        '<div class="pal-ev"><div class="pal-ev__strip">';
-      palette.forEach(function (c, i) {
-        var lum = hexToRgb(c.hex).reduce(function (a, v, k) { return a + v * [.299, .587, .114][k]; }, 0);
-        html += '<button class="pal-ev__seg" type="button" style="--t:' + (lum > 150 ? '#292929' : '#F2F0E9') + ';--c:' + esc(c.hex) + ';--w:' + (c.weight || 1) + ';--i:' + i + '" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' +
-          '<span class="pal-ev__pct">' + (c.weight ? esc(c.weight) + '%' : '') + '</span></button>';
-      });
-      html += '</div><div class="container"><ol class="pal-ev__files">';
+        '<div class="pal-crime"><div class="container"><ol class="pal-crime__list">';
       palette.forEach(function (c, i) {
         var rgb = hexToRgb(c.hex);
-        html += '<li class="pal-ev__file" style="--c:' + esc(c.hex) + ';--i:' + i + '">' +
-          '<p class="pal-ev__tag"><span>Evidence Nº ' + ('0' + (i + 1)).slice(-2) + '</span></p>' +
-          '<p class="pal-ev__name">' + esc(c.name) + (c.namePt ? '<span lang="pt-BR">' + esc(c.namePt) + '</span>' : '') + '</p>' +
-          (c.use ? '<p class="pal-ev__use">' + esc(c.use) + (c.usePt ? '<span lang="pt-BR">' + esc(c.usePt) + '</span>' : '') + '</p>' : '') +
-          '<p class="pal-ev__codes"><span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span><span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span><span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span></p>' +
-          '</li>';
+        var lum = rgb[0] * .299 + rgb[1] * .587 + rgb[2] * .114;
+        html += '<li class="pal-crime__item" data-hex="' + esc(c.hex.toUpperCase()) + '" style="--c:' + esc(c.hex) + ';--i:' + i + ';--hl:' + (lum > 150 ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.16)') + (lum < 60 ? ';--rim:rgba(242,240,233,.22)' : '') + '">' +
+          '<button class="pal-crime__stain" type="button" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' + splatter(i + 3) + '</button>' +
+          '<div class="pal-crime__tag">' +
+            '<span class="pal-crime__no" aria-hidden="true">' + (i + 1) + '</span>' +
+            '<div class="pal-crime__body">' +
+              '<p class="pal-crime__kicker">Evidence Nº ' + ('0' + (i + 1)).slice(-2) + '</p>' +
+              '<p class="pal-crime__name">' + esc(c.name) + (c.namePt ? '<span lang="pt-BR">' + esc(c.namePt) + '</span>' : '') + '</p>' +
+              (c.use ? '<p class="pal-crime__use">' + esc(c.use) + (c.usePt ? '<span lang="pt-BR">' + esc(c.usePt) + '</span>' : '') + '</p>' : '') +
+              '<p class="pal-crime__codes"><span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span><span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span><span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span></p>' +
+            '</div>' +
+          '</div></li>';
       });
       html += '</ol></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
     } else if (data.paletteStyle === 'bands') {
@@ -296,7 +324,7 @@
   }
 
   /* ---------- Paleta em faixas: entrada ao rolar + copiar o código ---------- */
-  var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card, .pal-ev__seg'));
+  var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card, .pal-ev__seg, .pal-crime__item'));
   if (bands.length) {
     if ('IntersectionObserver' in window) {
       // observa o bloco (as faixas começam fora da tela, deslocadas para o lado)
@@ -305,7 +333,7 @@
           if (e.isIntersecting) { bands.forEach(function (b) { b.classList.add('is-in'); }); bio.disconnect(); }
         });
       }, { threshold: .15 });
-      bio.observe(mount.querySelector('.pal-bands, .pal-cards, .pal-ev'));
+      bio.observe(mount.querySelector('.pal-bands, .pal-cards, .pal-ev, .pal-crime'));
     } else bands.forEach(function (b) { b.classList.add('is-in'); });
     var toast = mount.querySelector('.pal-toast'), tt;
     bands.forEach(function (b) {
