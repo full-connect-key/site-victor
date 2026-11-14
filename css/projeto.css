@@ -303,8 +303,8 @@ body { overflow-x: clip; }
 .hl-dot { animation: hl-dot 10s linear infinite, hl-ink 10s linear infinite; }
 
 /* Linha do tempo (10 s, em loop):
-   0–3,5 s  fundo passa pelas cores · 3,7–5,2 s  vira "h." · até 7,6 s segura
-   7,6–8,9 s  "h." volta a ser "helena." com um quique · 8,8–9,5 s  fundo volta ao preto */
+   0–4 s  fundo passa pelas cores · 4–4,6 s  fundo vai ao preto enquanto vira "h."
+   até 7,6 s segura "h." no preto · 7,6–8,9 s  volta a ser "helena." com um quique */
 .hl-hero { animation: hl-bg 10s linear infinite; }
 @keyframes hl-bg {
   0%, 5%      { background-color: #000; }
@@ -314,8 +314,8 @@ body { overflow-x: clip; }
   20.01%, 25% { background-color: #75B441; }
   25.01%, 30% { background-color: #F24056; }
   30.01%, 35% { background-color: #FFE000; }
-  35.01%, 88% { background-color: #7750A1; }
-  95%, 100%   { background-color: #000; }
+  35.01%, 40% { background-color: #7750A1; }
+  46%, 100%   { background-color: #000; }  /* a redução "h." fica no fundo preto */
 }
 /* no fundo amarelo o logo fica preto, para não sumir */
 @keyframes hl-ink { 0%, 30% { filter: none; } 30.01%, 35% { filter: brightness(0); } 35.01%, 100% { filter: none; } }
