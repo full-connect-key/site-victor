@@ -902,3 +902,10 @@ h1, h2, h3, p { margin: 0; }
   .site-header.is-scrolled .site-nav { gap: 6px; flex-wrap: nowrap; }
   .site-header.is-scrolled .site-nav .btn { padding: 6px 10px; font-size: 9px; min-height: 0; box-shadow: 2px 2px 0 var(--black); }
 }
+
+/* imagens reais nas caixas: mockups 4:3 e espelhos de página (1536×868) sem cortar */
+.gallery--mock .media { aspect-ratio: 4 / 3; }
+.gallery--spread { margin-top: calc(34 * var(--u)); }
+.gallery--spread .media, .media--spread { aspect-ratio: 1536 / 868; background: #ececec; }
+.gallery + .gallery { margin-top: calc(34 * var(--u)); }
+img.media { height: auto; }
