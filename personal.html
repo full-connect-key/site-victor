@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal — Victor Fávaro</title>
+  <meta name="description" content="Ilustrações, cartazes e projetos pessoais de Victor Fávaro.">
+  <meta property="og:title" content="Personal — Victor Fávaro">
+  <meta property="og:description" content="Ilustrações, cartazes e projetos pessoais de Victor Fávaro.">
+  <meta property="og:image" content="img/hero-name.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/brand.css?v=18">
+</head>
+<body>
+
+  <section class="personal-hero">
+    <header class="site-header">
+      <div class="container">
+        <a class="site-header__logo" href="index.html" aria-label="Victor Fávaro — início">
+          <img src="img/logo-victor-favaro.png" alt="Victor Fávaro" width="367" height="78">
+        </a>
+        <nav class="site-nav" aria-label="Menu principal">
+          <a class="btn" href="work.html">Work</a>
+          <a class="btn is-active" href="personal.html" aria-current="page">Personal</a>
+          <a class="btn" href="index.html#about">About me</a>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container personal-hero__content">
+      <h1 class="big-title">This is where <b>my personal stuff</b> lives.</h1>
+      <nav class="personal-hero__jump" aria-label="Seções">
+        <a class="btn btn--blue" href="#illustration">Illustration</a>
+        <a class="btn btn--yellow" href="#posters">Posters</a>
+        <a class="btn" href="#personal-projects" style="background:#fff">Personal projects</a>
+      </nav>
+    </div>
+  </section>
+
+  <main class="personal-body">
+    <!--
+      COMO ADICIONAR UM TRABALHO
+      Copie um <figure class="piece"> da seção certa e troque:
+        - o <div class="piece__ph" ...></div> por <img src="img/personal/arquivo.jpg" alt="Descrição" loading="lazy">
+          (a imagem aparece inteira, no formato dela: não precisa cortar)
+        - data-title, data-year e data-tech: aparecem quando a imagem é ampliada
+        - o texto do <figcaption>
+    -->
+
+    <section class="personal-section" id="illustration">
+      <div class="container">
+        <header class="block__head">
+          <span class="block__num">01</span>
+          <h2 class="block__title">Illustration</h2>
+        </header>
+        <div class="mural">
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 4 / 5">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 1 / 1">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 3 / 4">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 16 / 10">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 4 / 5">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título da ilustração]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 1 / 1">Ilustração</div>
+            <figcaption><b>[Título]</b><span>Illustration</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="personal-section personal-section--yellow" id="posters">
+      <div class="container">
+        <header class="block__head">
+          <span class="block__num">02</span>
+          <h2 class="block__title">Posters</h2>
+        </header>
+        <div class="mural">
+          <figure class="piece" data-title="[Título do cartaz]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 2 / 3">Cartaz</div>
+            <figcaption><b>[Título]</b><span>Poster</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título do cartaz]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 2 / 3">Cartaz</div>
+            <figcaption><b>[Título]</b><span>Poster</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título do cartaz]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 3 / 4">Cartaz</div>
+            <figcaption><b>[Título]</b><span>Poster</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título do cartaz]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 2 / 3">Cartaz</div>
+            <figcaption><b>[Título]</b><span>Poster</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Título do cartaz]" data-year="[Ano]" data-tech="[Técnica]">
+            <div class="piece__ph" style="aspect-ratio: 3 / 4">Cartaz</div>
+            <figcaption><b>[Título]</b><span>Poster</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="personal-section" id="personal-projects">
+      <div class="container">
+        <header class="block__head">
+          <span class="block__num">03</span>
+          <h2 class="block__title">Personal projects</h2>
+        </header>
+        <div class="mural">
+          <figure class="piece" data-title="[Nome do projeto]" data-year="[Ano]" data-tech="[Descrição curta]">
+            <div class="piece__ph" style="aspect-ratio: 16 / 10">Projeto pessoal</div>
+            <figcaption><b>[Nome do projeto]</b><span>Personal project</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Nome do projeto]" data-year="[Ano]" data-tech="[Descrição curta]">
+            <div class="piece__ph" style="aspect-ratio: 4 / 5">Projeto pessoal</div>
+            <figcaption><b>[Nome do projeto]</b><span>Personal project</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Nome do projeto]" data-year="[Ano]" data-tech="[Descrição curta]">
+            <div class="piece__ph" style="aspect-ratio: 1 / 1">Projeto pessoal</div>
+            <figcaption><b>[Nome do projeto]</b><span>Personal project</span></figcaption>
+          </figure>
+          <figure class="piece" data-title="[Nome do projeto]" data-year="[Ano]" data-tech="[Descrição curta]">
+            <div class="piece__ph" style="aspect-ratio: 3 / 4">Projeto pessoal</div>
+            <figcaption><b>[Nome do projeto]</b><span>Personal project</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Imagem ampliada (preenchida pelo js/personal.js) -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Trabalho ampliado" hidden>
+    <button class="lightbox__close btn" type="button" aria-label="Fechar">Close ✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Anterior">←</button>
+    <figure class="lightbox__fig">
+      <div class="lightbox__media"></div>
+      <figcaption class="lightbox__cap">
+        <b class="lightbox__title"></b>
+        <span class="lightbox__meta"></span>
+      </figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Próximo">→</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
+    </div>
+  </footer>
+  <script src="js/personal.js?v=18" defer></script>
+  <script src="js/motion.js?v=18" defer></script>
+</body>
+</html>
