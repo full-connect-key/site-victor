@@ -705,3 +705,11 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 @media (max-width: 700px) {
   .p-hero__art > svg { inset: auto; width: auto; height: 56%; aspect-ratio: 16 / 9; left: 66%; top: 70%; transform: translate(-66%, -70%); }
 }
+
+/* O Mágico de Oz: duplas no formato dos mockups (3:2), sem cortar */
+.page-oz .gallery--2 .media { aspect-ratio: 3 / 2; height: auto; }
+.page-oz .gallery + .gallery { margin-top: calc(34 * var(--u)); }
+/* moldura que recorta o zoom suave das fotos de página cheia */
+.media-frame { overflow: hidden; margin-top: calc(30 * var(--u)); }
+.media-frame > .media--full { margin-top: 0; }
+.concept + .media-frame, .container + .media-frame { margin-top: calc(69 * var(--u)); }
