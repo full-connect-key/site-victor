@@ -644,3 +644,54 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .page-metropole .next { border-top: 2px solid #292929; }
 .page-metropole .site-footer { background: #141414; color: #F2F0E9; border-top: 1px solid #292929; }
 
+
+/* ---------- Galeria de fotos do evento (ABF Expo) ---------- */
+.event-gallery { margin-top: calc(140 * var(--u)); padding: calc(110 * var(--u)) 0 calc(120 * var(--u)); background: #111; color: #fff; }
+.event-gallery .block__head { border-bottom-color: #fff; align-items: baseline; }
+.event-gallery .block__num { color: #9a9a9a; }
+.event-gallery__pt { margin-left: .5em; color: #9a9a9a; font-weight: 400; font-size: .55em; }
+.event-gallery__count { margin-left: auto; color: #9a9a9a; letter-spacing: .12em; font-size: clamp(13px, .95vw, 18px); white-space: nowrap; }
+.event-gallery__lead { max-width: calc(760 * var(--u)); font-size: clamp(18px, 1.45vw, 28px); line-height: 1.3; }
+.event-gallery__lead-pt { max-width: calc(760 * var(--u)); margin-top: 10px; color: #9a9a9a; font-size: clamp(14px, 1vw, 19px); }
+.event-gallery__grid {
+  margin-top: calc(56 * var(--u));
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: calc(230 * var(--u));
+  grid-auto-flow: dense;
+  gap: calc(18 * var(--u));
+}
+/* ritmo: de tempos em tempos uma foto grande */
+.event-gallery__item--big { grid-column: span 2; grid-row: span 2; }
+.event-gallery__item--wide { grid-column: span 2; }
+.event-gallery__item {
+  display: block; width: 100%; height: 100%; padding: 0; margin: 0;
+  border: 0; background: #2a2a2a; cursor: zoom-in;
+  border-radius: calc(14 * var(--u)); overflow: hidden;
+  animation: evIn .5s ease both;
+}
+.event-gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.event-gallery__item:hover img { transform: scale(1.04); }
+.event-gallery__item:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.event-gallery__item .event-gallery__ph { height: 100%; aspect-ratio: auto !important; }
+.event-gallery__ph {
+  width: 100%; background: #2a2a2a; color: #555;
+  display: grid; place-items: center;
+  font-family: var(--font-button); font-weight: 900; letter-spacing: .1em; font-size: max(10px, calc(13 * var(--u)));
+}
+.lightbox__media .event-gallery__ph { width: min(70vw, 900px); height: auto; max-height: calc(100vh - 200px); border: 2px solid #fff; border-radius: 16px; }
+.event-gallery__foot { margin-top: calc(40 * var(--u)); display: flex; justify-content: center; }
+.event-gallery__more[hidden] { display: none; }
+@keyframes evIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (max-width: 1000px) { .event-gallery__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 200px; } }
+@media (max-width: 600px) {
+  .event-gallery { padding: 70px 0; }
+  .event-gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; gap: 10px; }
+  .event-gallery__item { border-radius: 10px; }
+  .event-gallery .block__head { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { .event-gallery__item { animation: none; } }
+.event-gallery__more { white-space: normal; text-align: center; max-width: 100%; }
+/* a cada 24 fotos a grande alterna de lado */
+.event-gallery__item--big:nth-child(24n + 13) { grid-column: 3 / span 2; }
+@media (max-width: 1000px) { .event-gallery__item--big:nth-child(24n + 13) { grid-column: span 2; } }

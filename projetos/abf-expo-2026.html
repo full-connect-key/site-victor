@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=65">
-  <link rel="stylesheet" href="../css/brand.css?v=65">
-  <link rel="stylesheet" href="../css/projeto.css?v=65">
+  <link rel="stylesheet" href="../css/style.css?v=67">
+  <link rel="stylesheet" href="../css/brand.css?v=67">
+  <link rel="stylesheet" href="../css/projeto.css?v=67">
 </head>
 <body class="page-abf">
 
@@ -102,6 +102,30 @@
         <div class="media"></div>
       </div>
 
+    </div>
+
+    <!--
+      GALERIA DO EVENTO
+      Coloque as fotos em img/abf/evento/ com nomes 001.jpg, 002.jpg ... 100.jpg
+      e ajuste data-count com o total. Detalhes no topo de js/galeria.js
+    -->
+    <section class="event-gallery" data-folder="../img/abf/evento/" data-ext="jpg" data-count="100" data-step="24" data-alt="ABF Expo 2026, foto">
+      <div class="container">
+        <header class="block__head event-gallery__head">
+          <span class="block__num">Gallery</span>
+          <h2 class="block__title">The event<span class="event-gallery__pt" lang="pt-BR">O evento</span></h2>
+          <span class="event-gallery__count"></span>
+        </header>
+        <p class="event-gallery__lead">A look at ABF Expo 2026 in real life: the visual communication applied across the fair.</p>
+        <p class="event-gallery__lead-pt" lang="pt-BR">Um olhar sobre a ABF Expo 2026 ao vivo: a comunicação visual aplicada pela feira.</p>
+        <div class="event-gallery__grid"></div>
+        <div class="event-gallery__foot">
+          <button class="btn btn--md btn--yellow event-gallery__more" type="button">See more photos · Ver mais fotos</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
       <section class="credits">
         <h2 class="section-title">Credits</h2>
         <dl>
@@ -128,7 +152,8 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/motion.js?v=65" defer></script>
-  <script src="../js/projeto.js?v=65" defer></script>
+  <script src="../js/galeria.js?v=67" defer></script>
+  <script src="../js/motion.js?v=67" defer></script>
+  <script src="../js/projeto.js?v=67" defer></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=65" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=67" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -53,3 +53,8 @@ FONTES
 - Os botões usam "Obviously Wide Black" no Figma. Essa fonte é paga (Adobe Fonts).
   Por enquanto o site usa Archivo Expanded Black, que é bem parecida. Se tiver
   o Obviously no Adobe Fonts, cole o <link> do kit no <head> das páginas.
+
+GALERIA DE FOTOS DA ABF EXPO 2026 (projetos/abf-expo-2026.html)
+Coloque as fotos em img/abf/evento/ com nomes 001.jpg, 002.jpg, 003.jpg ...
+Na página, ajuste data-count="100" com o total de fotos.
+Foto que ainda não existir aparece como um espaço cinza.
