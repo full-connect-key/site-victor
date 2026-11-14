@@ -15,9 +15,11 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=46">
-  <link rel="stylesheet" href="../css/brand.css?v=46">
-  <link rel="stylesheet" href="../css/projeto.css?v=46">
+  <link rel="stylesheet" href="../css/style.css?v=47">
+  <link rel="preload" href="../fonts/UrbanSpace-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/uso2liw.css">
+  <link rel="stylesheet" href="../css/brand.css?v=47">
+  <link rel="stylesheet" href="../css/projeto.css?v=47">
 </head>
 <body class="page-metropole">
 
@@ -179,7 +181,45 @@
   <script type="application/json" id="brand-data">
 {
   "order": [
+    "typography",
     "palette"
+  ],
+  "typographyText": "Urban Space, heavy and compact, signs the logo and headlines with the weight of the city's buildings and the urgency of police files. Serenity, a light and clear sans serif, gives legibility to cards, maps and rules.",
+  "typographyTextPt": "A Urban Space, pesada e compacta, assina o logo e os títulos com o peso dos edifícios da cidade e a urgência dos arquivos policiais. A Serenity, uma sem serifa leve e clara, dá legibilidade a cartas, mapas e regras.",
+  "typography": [
+    {
+      "name": "Urban Space",
+      "role": "Headlines · Títulos",
+      "use": "Logo & headlines · Logo e títulos",
+      "family": "'Urban Space', 'Archivo', sans-serif",
+      "weights": [
+        [
+          "Regular",
+          400
+        ]
+      ],
+      "glyphWeight": 400,
+      "source": "Urban Space"
+    },
+    {
+      "name": "Serenity",
+      "role": "Body text · Texto",
+      "use": "Cards, maps & rules · Cartas, mapas e regras",
+      "family": "'serenity', sans-serif",
+      "weights": [
+        [
+          "Light",
+          300
+        ],
+        [
+          "Bold",
+          700
+        ]
+      ],
+      "glyphWeight": 300,
+      "dark": true,
+      "source": "Adobe Fonts"
+    }
   ],
   "paletteStyle": "evidence",
   "paletteNote": "Approximate values, sampled from the printed pieces · Valores aproximados, a partir das peças impressas",
@@ -221,8 +261,8 @@
   ]
 }
   </script>
-  <script src="../js/brand.js?v=46" defer></script>
-  <script src="../js/motion.js?v=46" defer></script>
-  <script src="../js/projeto.js?v=46" defer></script>
+  <script src="../js/brand.js?v=47" defer></script>
+  <script src="../js/motion.js?v=47" defer></script>
+  <script src="../js/projeto.js?v=47" defer></script>
 </body>
 </html>

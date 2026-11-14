@@ -284,6 +284,8 @@ body { overflow-x: clip; }
    Arquivos .otf originais em fonts/ (sem conversão: a licença
    pede autorização para modificar os arquivos).
    ========================================================= */
+@font-face { font-family: "Urban Space"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/UrbanSpace-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Urban Space"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/UrbanSpace-Italic.woff2") format("woff2"); }
 @font-face { font-family: "Co Text"; font-weight: 300; font-display: swap; src: local("Co Text Light"), url("../fonts/co-text-light.otf") format("opentype"); }
 @font-face { font-family: "Co Text"; font-weight: 400; font-display: swap; src: local("Co Text"), url("../fonts/co-text-regular.otf") format("opentype"); }
 @font-face { font-family: "Co Text"; font-weight: 700; font-display: swap; src: local("Co Text Bold"), url("../fonts/co-text-bold.otf") format("opentype"); }
@@ -514,3 +516,22 @@ body { overflow-x: clip; }
 }
 .role h3 { overflow-wrap: anywhere; font-size: clamp(18px, 1.45vw, 28px); }
 .role h3 { font-size: clamp(16px, 1.2vw, 23px); letter-spacing: .02em; overflow-wrap: normal; }
+
+/* Metrópole: Urban Space (títulos, fonts/) + Serenity (textos, Adobe Fonts) */
+.page-metropole .p-hero__tagline,
+.page-metropole .facts b,
+.page-metropole .role h3,
+.page-metropole .closing p:not(.closing__pt),
+.page-metropole .pal-ev__name,
+.page-metropole .pal-ev__pct {
+  font-family: 'Urban Space', 'Archivo', sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-variation-settings: normal;
+}
+.page-metropole .role p, .page-metropole .facts span { font-family: 'serenity', sans-serif; font-weight: 300; }
+.page-metropole .role p { font-size: clamp(15px, 1.05vw, 19px); }
+.page-metropole .facts span { font-size: clamp(13px, 1vw, 18px); }
+.page-metropole .pal-ev__name span { font-family: 'serenity', sans-serif; font-weight: 300; }
+.page-metropole .facts b { font-size: clamp(26px, 2.7vw, 52px); }
+.page-metropole .closing p:not(.closing__pt) { letter-spacing: .02em; }
