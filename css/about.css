@@ -195,3 +195,4 @@
 }
 .clients__names .tag { white-space: normal; }
 @media (min-width: 901px) { .clients__logos { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+.about-hero__photo img { object-position: center 20%; }
