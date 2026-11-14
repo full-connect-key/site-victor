@@ -917,3 +917,6 @@ img.media { height: auto; }
 @media (max-width: 800px) { .gallery--single { max-width: none; } }
 /* par de aberturas logo depois dos blocos de marca */
 #brand ~ script + .container .gallery { margin-top: calc(140 * var(--u)); }
+/* Helena: espelhos de ponta a ponta, com pares de aberturas entre eles */
+.media--full.media--spread + .media--full.media--spread { margin-top: calc(30 * var(--u)); }
+.gallery--between { margin: calc(69 * var(--u)) 0; }
