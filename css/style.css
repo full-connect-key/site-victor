@@ -924,3 +924,20 @@ img.media { height: auto; }
 .concept__lead-pt { margin-top: 8px; color: var(--muted); font-size: clamp(16px, 1.3vw, 24px); line-height: 1.05; }
 .page-helena .concept__lead-pt { color: #a8a8a8; }
 
+
+/* ABF Expo 2026 (provisório até chegarem logo e imagens) */
+.project-hero--abf, .project-row--abf { background: #1d2b4f; }
+.project-row__visual--abf {
+  color: #fff;
+  font-stretch: 75%; font-variation-settings: "wdth" 75;
+  font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+  font-size: clamp(36px, 4.4vw, 84px); line-height: .9;
+  max-width: calc(560 * var(--u));
+}
+.p-hero__title-ph {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  color: #fff; font-stretch: 75%; font-variation-settings: "wdth" 75;
+  font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+  font-size: clamp(44px, 6vw, 120px); pointer-events: none;
+}
+.card__title--long { font-size: clamp(30px, 2.25vw, 43px); }
