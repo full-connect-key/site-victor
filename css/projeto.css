@@ -344,3 +344,35 @@ body { overflow-x: clip; }
 
 /* capa dos projetos: sem a etiqueta de categoria, só o "Scroll" à direita */
 .p-hero__meta { justify-content: flex-end; }
+
+/* =========================================================
+   HELENA: página em fundo preto (combina com a redução "h.",
+   a paleta e o bloco do logo)
+   ========================================================= */
+.page-helena { background: #000; color: #fff; }
+.page-helena .project-body { background: #000; }
+.page-helena .intro__eyebrow,
+.page-helena .intro__text-pt,
+.page-helena .concept__text,
+.page-helena .concept__text-pt,
+.page-helena .block__num,
+.page-helena .block__lead,
+.page-helena .block__note { color: #a8a8a8; }
+.page-helena .words .w { opacity: .22; }
+.page-helena .words .w.on { opacity: 1; }
+.page-helena .block__head { border-bottom-color: #fff; }
+.page-helena .credits dt { color: #a8a8a8; }
+/* tipografia: o cartão claro vira contorno branco; o escuro ganha borda branca */
+.page-helena .type__card { background: #000; color: #fff; border-color: #fff; box-shadow: 10px 10px 0 #fff; }
+.page-helena .type__card--dark { background: #fff; color: #000; border-color: #fff; }
+.page-helena .type__source { border-top-color: currentColor; }
+/* paleta: o fundo preto já é a página */
+.page-helena .pal-cards-wrap { background: transparent; border-block: 0; padding-block: 0; }
+/* bloco do logo: sombra branca para destacar do fundo */
+.page-helena .lab { border-color: #fff; box-shadow: 10px 10px 0 #fff; }
+/* faixa de categorias e "next project" */
+.page-helena .marquee { border-color: #fff; }
+.page-helena .next { border-top: 2px solid #fff; }
+.page-helena .site-footer { background: #000; color: #fff; border-top: 1px solid #333; }
+.page-helena .media { background-color: #1a1a1a; }
+.page-helena .gallery--spread .media, .page-helena .media--spread { background: #1a1a1a; }
