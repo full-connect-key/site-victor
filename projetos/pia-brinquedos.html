@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=52">
-  <link rel="stylesheet" href="../css/brand.css?v=52">
-  <link rel="stylesheet" href="../css/projeto.css?v=52">
+  <link rel="stylesheet" href="../css/style.css?v=54">
+  <link rel="stylesheet" href="../css/brand.css?v=54">
+  <link rel="stylesheet" href="../css/projeto.css?v=54">
 </head>
 <body class="page-pia">
 
@@ -106,30 +106,13 @@
 
     <div class="media media--full"></div>
 
-    <div class="container">
-
-      <section class="intro concept">
-        <h2 class="section-title">Typography</h2>
-        <div>
-          <p class="concept__text concept__text--main">Co Text and Comfortaa balance function and expression. Co Text, the primary typeface, brings clarity, versatility and legibility; Comfortaa adds lightness and warmth with its rounded geometric shapes, keeping the identity friendly and playful.</p>
-          <p class="concept__text-pt" lang="pt-BR">A Co Text e a Comfortaa equilibram funcionalidade e expressão. A Co Text, tipografia principal, traz clareza, versatilidade e legibilidade; a Comfortaa acrescenta leveza e proximidade com suas formas geométricas e arredondadas, preservando o caráter amigável e lúdico da identidade.</p>
-        </div>
-      </section>
-
-      <div class="gallery gallery--2">
-        <div class="media"></div>
-        <div class="media"></div>
-      </div>
-    </div>
-
     <!-- Tipografia, paleta e logo: gerados a partir do bloco "brand-data" abaixo.
          Sem dados, nada aparece. Formato explicado no topo de js/brand.js -->
     <div id="brand"></div>
     <script type="application/json" id="brand-data">
 {
-  "fontsUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap",
+  "fontsUrl": "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap",
   "paletteStyle": "bands",
-  "paletteFont": "'Co Text', 'Montserrat', sans-serif",
   "paletteText": "Piá's palette brings together eight vibrant colors inspired by elements of Brazilian culture and nature. The tones reinforce the brand's playful character, creating an expressive, diverse identity full of possibilities.",
   "palette": [
     {
@@ -199,11 +182,83 @@
       "#F4F4F4"
     ]
   },
-  "paletteTextPt": "A paleta da Piá reúne oito cores vibrantes inspiradas em elementos da cultura e da natureza brasileira. As tonalidades reforçam o caráter lúdico da marca, criando uma identidade expressiva, diversa e cheia de possibilidades."
+  "paletteTextPt": "A paleta da Piá reúne oito cores vibrantes inspiradas em elementos da cultura e da natureza brasileira. As tonalidades reforçam o caráter lúdico da marca, criando uma identidade expressiva, diversa e cheia de possibilidades.",
+  "typographyText": "Co Text and Comfortaa balance function and expression. Co Text, the primary typeface, brings clarity, versatility and legibility; Comfortaa, the secondary one, adds lightness and warmth with its rounded geometric shapes, keeping the identity friendly and playful. Trebuchet MS is the institutional typeface, used in everyday documents and digital communication.",
+  "typographyTextPt": "A Co Text e a Comfortaa equilibram funcionalidade e expressão. A Co Text, tipografia principal, traz clareza, versatilidade e legibilidade; a Comfortaa, secundária, acrescenta leveza e proximidade com suas formas geométricas e arredondadas, preservando o caráter amigável e lúdico da identidade. A Trebuchet MS é a tipografia institucional, usada em documentos do dia a dia e na comunicação digital.",
+  "typography": [
+    {
+      "name": "Co Text",
+      "role": "Primary · Principal",
+      "use": "Headlines & text · Títulos e textos",
+      "family": "'Co Text', sans-serif",
+      "weights": [
+        [
+          "Light",
+          300
+        ],
+        [
+          "Regular",
+          400
+        ],
+        [
+          "Bold",
+          700
+        ]
+      ],
+      "glyphWeight": 400
+    },
+    {
+      "name": "Comfortaa",
+      "role": "Secondary · Secundária",
+      "use": "Highlights & details · Destaques e detalhes",
+      "family": "'Comfortaa', sans-serif",
+      "weights": [
+        [
+          "Light",
+          300
+        ],
+        [
+          "Regular",
+          400
+        ],
+        [
+          "Bold",
+          700
+        ]
+      ],
+      "glyphWeight": 400,
+      "dark": true,
+      "source": "Google Fonts"
+    },
+    {
+      "name": "Trebuchet MS",
+      "role": "Institutional · Institucional",
+      "use": "Documents & e-mail · Documentos e e-mail",
+      "family": "'Trebuchet MS', 'Lucida Grande', sans-serif",
+      "weights": [
+        [
+          "Regular",
+          400
+        ],
+        [
+          "Bold",
+          700
+        ]
+      ],
+      "glyphWeight": 400,
+      "source": "System font · Fonte do sistema"
+    }
+  ],
+  "paletteFont": "'Co Text', sans-serif"
 }
     </script>
 
-    <div class="media media--full"></div>
+    <div class="container">
+      <div class="gallery gallery--2">
+        <div class="media"></div>
+        <div class="media"></div>
+      </div>
+    </div>
 
     <div class="container">
       <section class="intro concept">
@@ -213,17 +268,11 @@
           <p class="concept__text-pt" lang="pt-BR">Uma linguagem próxima e acessível, que dialoga com crianças e adultos, construindo confiança e incentivando a descoberta, para que o aprendizado seja natural, participativo e prazeroso.</p>
         </div>
       </section>
+    </div>
 
-      <div class="gallery gallery--2">
-        <div class="media"></div>
-        <div class="media"></div>
-      </div>
+    <div class="media media--full"></div>
 
-      <blockquote class="closing">
-        <p>“Playing isn't just a way to have fun. It's a way to know, understand and transform the world.”</p>
-        <p class="closing__pt" lang="pt-BR">“Brincar não é apenas uma forma de se divertir. É uma maneira de conhecer, compreender e transformar o mundo.”</p>
-      </blockquote>
-
+    <div class="container">
       <section class="credits">
         <h2 class="section-title">Credits</h2>
         <dl>
@@ -252,8 +301,8 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=52" defer></script>
-  <script src="../js/motion.js?v=52" defer></script>
-  <script src="../js/projeto.js?v=52" defer></script>
+  <script src="../js/brand.js?v=54" defer></script>
+  <script src="../js/motion.js?v=54" defer></script>
+  <script src="../js/projeto.js?v=54" defer></script>
 </body>
 </html>

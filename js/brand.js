@@ -164,7 +164,7 @@
 
   /* ---------- Tipografia ---------- */
   if (data.typography && data.typography.length) {
-    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText, data.typographyTextPt) + '<div class="type">';
+    html += '<div class="container"><section class="block">' + head('Typography', data.typographyNote) + lead(data.typographyText, data.typographyTextPt) + '<div class="type' + (data.typography.length === 3 ? ' type--3' : '') + '">';
     data.typography.forEach(function (f, i) {
       // "specimen": false → a fonte não carrega no site (ex.: Adobe Fonts sem kit):
       // mostra só nome, função e origem, sem desenhar a amostra com outra fonte.
