@@ -425,3 +425,9 @@ body { overflow-x: clip; }
    ========================================================= */
 
 @media (max-width: 800px) { .cover-card { width: 72vw; } .covers { --cg: 16px; } }
+
+/* capas estáticas, as 4 lado a lado (substitui a versão deslizante) */
+.covers { overflow: visible; }
+.covers__track { width: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); animation: none; }
+.cover-card { width: auto; }
+@media (max-width: 800px) { .covers__track { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cover-card { width: auto; } }
