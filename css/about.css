@@ -201,13 +201,13 @@
 .about--home .container.about-home { max-width: none; }
 .about-home {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
   gap: calc(70 * var(--u));
 }
 .about-home__text { display: flex; flex-direction: column; align-items: flex-start; }
 .about-home .label { margin-bottom: calc(22 * var(--u)); text-transform: uppercase; letter-spacing: .12em; font-size: clamp(13px, 1vw, 19px); padding: 2px 12px; }
-.about-home .about__title { font-size: clamp(36px, 3.9vw, 76px); }
+.about-home .about__title { font-size: clamp(38px, 4.2vw, 80px); }
 .about-home__pt {
   margin-top: calc(18 * var(--u));
   font-stretch: 75%; font-variation-settings: "wdth" 75;
@@ -224,9 +224,21 @@
 .about-home__tags { margin-top: calc(26 * var(--u)); display: flex; flex-wrap: wrap; gap: calc(12 * var(--u)); }
 .about-home__tags .tag { font-size: clamp(14px, 1.2vw, 23px); }
 .about-home__cta { margin-top: calc(40 * var(--u)); }
-.about-home__visual { width: 100%; max-width: calc(620 * var(--u)); justify-self: end; aspect-ratio: 4 / 5; }
-.about-home__visual .about-hero__photo { inset: 5% 9% 3% 9%; }
+/* exceção: a foto passa da margem direita do conteúdo */
+.about--home { overflow: hidden; }
+.about-home { --cw: min(calc(1200 * var(--u)), 100vw - var(--gutter) * 2); }
+.about-home__visual {
+  width: calc(100% + (100vw - var(--cw)) / 2 - var(--gutter) / 2);
+  max-width: none;
+  justify-self: start;
+  aspect-ratio: 5 / 6;
+}
+.about-home__visual .about-hero__photo { inset: 5% 8% 3% 8%; }
 @media (max-width: 900px) {
   .about-home { grid-template-columns: 1fr; gap: 50px; }
   .about-home__visual { width: min(420px, 88%); margin-inline: auto; }
 }
+/* na home a moldura é maior: adesivos proporcionalmente menores */
+.about-home__visual .about-hero__sticker--1 { width: 21%; top: 2%; left: -4%; }
+.about-home__visual .about-hero__sticker--2 { width: 17%; top: 16%; right: 1%; }
+.about-home__visual .about-hero__sticker--4 { width: 20%; bottom: 8%; right: 2%; }
