@@ -341,3 +341,6 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .hl-hero, .hl-mark, .hl-h, .hl-elena, .hl-dot { animation: none !important; }
 }
+
+/* capa dos projetos: sem a etiqueta de categoria, só o "Scroll" à direita */
+.p-hero__meta { justify-content: flex-end; }
