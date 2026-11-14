@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=18" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=19" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -41,6 +41,7 @@ O QUE AINDA FALTA PREENCHER
 - Textos "Lorem ipsum" e créditos das páginas de projeto (só a do Piá tem texto real)
 - index.html: links do Instagram e do LinkedIn
 - Página Personal: as peças ainda são espaços cinza; troque pelas imagens (ver comentário no personal.html)
+- 36 Days of Type (seção 04 da Personal): uma peça quadrada por caractere, A–Z e 0–9
 - Bloco "Personal" da home: o espaço da imagem usa o pontilhado do topo até ter uma imagem
 - Projeto "Qual emoção é essa aqui?" ainda não tem imagem na página Work
 - Ao adicionar um projeto novo, inclua-o também nos links "Previous/Next"
