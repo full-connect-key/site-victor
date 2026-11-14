@@ -24,7 +24,7 @@
          "specimen": false,                     // fonte não carrega no site: sem amostra "Aa"
          "source": "Adobe Fonts" }              // origem da fonte (opcional)
      ],
-     "paletteStyle": "bands",                  // opcional: "bands" (faixas, ex.: Piá) ou "cards" (cards em fundo preto, ex.: Helena; cada cor pode ter "span": 2)
+     "paletteStyle": "bands",                  // opcional: "bands" (faixas, ex.: Piá), "cards" (cards em fundo preto, ex.: Helena; cada cor pode ter "span": 2) ou "evidence" (faixa proporcional + fichas, ex.: Metrópole; cada cor com "weight" em %, "namePt", "use", "usePt")
      "paletteFont": "'Montserrat', sans-serif", // opcional: fonte dos nomes nas faixas
      "palette": [
        { "name": "Rosa", "hex": "#FF589E", "pantone": "213 C", "weight": 2,
@@ -155,6 +155,26 @@
           '</span><span class="pal-card__name">' + esc(c.name) + '</span></button>';
       });
       html += '</div></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
+    } else if (data.paletteStyle === 'evidence') {
+      // "arquivo de investigação": faixa proporcional ao uso + fichas numeradas (ex.: Metrópole)
+      html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div>' +
+        '<div class="pal-ev"><div class="pal-ev__strip">';
+      palette.forEach(function (c, i) {
+        var lum = hexToRgb(c.hex).reduce(function (a, v, k) { return a + v * [.299, .587, .114][k]; }, 0);
+        html += '<button class="pal-ev__seg" type="button" style="--t:' + (lum > 150 ? '#292929' : '#F2F0E9') + ';--c:' + esc(c.hex) + ';--w:' + (c.weight || 1) + ';--i:' + i + '" data-hex="' + esc(c.hex.toUpperCase()) + '" aria-label="' + esc(c.name) + ', copiar ' + esc(c.hex.toUpperCase()) + '">' +
+          '<span class="pal-ev__pct">' + (c.weight ? esc(c.weight) + '%' : '') + '</span></button>';
+      });
+      html += '</div><div class="container"><ol class="pal-ev__files">';
+      palette.forEach(function (c, i) {
+        var rgb = hexToRgb(c.hex);
+        html += '<li class="pal-ev__file" style="--c:' + esc(c.hex) + ';--i:' + i + '">' +
+          '<p class="pal-ev__tag"><span>Evidence Nº ' + ('0' + (i + 1)).slice(-2) + '</span></p>' +
+          '<p class="pal-ev__name">' + esc(c.name) + (c.namePt ? '<span lang="pt-BR">' + esc(c.namePt) + '</span>' : '') + '</p>' +
+          (c.use ? '<p class="pal-ev__use">' + esc(c.use) + (c.usePt ? '<span lang="pt-BR">' + esc(c.usePt) + '</span>' : '') + '</p>' : '') +
+          '<p class="pal-ev__codes"><span><b>HEX</b> ' + esc(c.hex.toUpperCase()) + '</span><span><b>RGB</b> ' + esc(c.rgb || rgb.join(' ')) + '</span><span><b>CMYK</b> ' + esc(c.cmyk || toCmyk(rgb)) + '</span></p>' +
+          '</li>';
+      });
+      html += '</ol></div></div><span class="pill pal-toast" role="status" aria-live="polite"></span></section>';
     } else if (data.paletteStyle === 'bands') {
       // faixas empilhadas: nome em 2 linhas e códigos ao lado, alternando o lado
       html += '<section class="block block--full"><div class="container">' + head('Color palette', data.paletteNote) + lead(data.paletteText, data.paletteTextPt) + '</div><div class="pal-bands"' + (data.paletteFont ? ' style="--pf:' + esc(data.paletteFont) + '"' : '') + '>';
@@ -276,7 +296,7 @@
   }
 
   /* ---------- Paleta em faixas: entrada ao rolar + copiar o código ---------- */
-  var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card'));
+  var bands = [].slice.call(mount.querySelectorAll('.pal-band, .pal-card, .pal-ev__seg'));
   if (bands.length) {
     if ('IntersectionObserver' in window) {
       // observa o bloco (as faixas começam fora da tela, deslocadas para o lado)
@@ -285,7 +305,7 @@
           if (e.isIntersecting) { bands.forEach(function (b) { b.classList.add('is-in'); }); bio.disconnect(); }
         });
       }, { threshold: .15 });
-      bio.observe(mount.querySelector('.pal-bands, .pal-cards'));
+      bio.observe(mount.querySelector('.pal-bands, .pal-cards, .pal-ev'));
     } else bands.forEach(function (b) { b.classList.add('is-in'); });
     var toast = mount.querySelector('.pal-toast'), tt;
     bands.forEach(function (b) {

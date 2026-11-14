@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Metrópole — Victor Fávaro</title>
-  <meta name="description" content="Board Game Design — Metrópole. Projeto de Victor Fávaro.">
+  <meta name="description" content="Board Game Design — Metrópole: Mortos Não Contam Segredos. Jogo de tabuleiro de suspense e investigação no centro de São Paulo. Projeto de Victor Fávaro.">
   <meta property="og:title" content="Metrópole — Victor Fávaro">
-  <meta property="og:description" content="Board Game Design — Metrópole. Projeto de Victor Fávaro.">
+  <meta property="og:description" content="Board Game Design — Metrópole: Mortos Não Contam Segredos. Jogo de tabuleiro de suspense e investigação no centro de São Paulo. Projeto de Victor Fávaro.">
   <meta property="og:image" content="../img/hero-name.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +15,11 @@
   <link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css?v=45">
-  <link rel="stylesheet" href="../css/brand.css?v=45">
-  <link rel="stylesheet" href="../css/projeto.css?v=45">
+  <link rel="stylesheet" href="../css/style.css?v=46">
+  <link rel="stylesheet" href="../css/brand.css?v=46">
+  <link rel="stylesheet" href="../css/projeto.css?v=46">
 </head>
-<body>
+<body class="page-metropole">
 
 
   <section class="p-hero">
@@ -37,7 +37,8 @@
         </nav>
       </div>
     </header>
-      <h1 class="visually-hidden">Metrópole</h1>
+      <h1 class="visually-hidden">Metrópole: Mortos Não Contam Segredos</h1>
+      <p class="p-hero__tagline">Mortos Não Contam Segredos</p>
       <div class="p-hero__meta">
         <span class="p-hero__scroll"><i></i>Scroll</span>
       </div>
@@ -53,10 +54,13 @@
           <p class="intro__client">Metrópole</p>
         </div>
         <div>
-          <p class="intro__text words">Metrópole is a board game design project.</p>
-          <p class="intro__text-pt" lang="pt-BR">Metrópole é um projeto de design de jogo de tabuleiro.</p>
+          <p class="intro__text words">Metrópole: Mortos Não Contam Segredos is a suspense and investigation board game that turns downtown São Paulo into the stage for an immersive experience inspired by real crimes, mysterious events and urban legends. Combining true crime, social deduction and strategy, it puts trust between players to the test: each one takes on a character, walks through historic places and tries to unmask the killer hidden in the group.</p>
+          <p class="intro__text-pt" lang="pt-BR">Metrópole: Mortos Não Contam Segredos é um jogo de tabuleiro de suspense e investigação que transforma o centro histórico de São Paulo em cenário de uma experiência imersiva, inspirada em crimes reais, acontecimentos misteriosos e lendas urbanas. Unindo true crime, dedução social e estratégia, coloca a confiança entre os jogadores à prova: cada um assume um personagem, percorre locais históricos e tenta desmascarar o assassino infiltrado no grupo.</p>
         </div>
       </section>
+
+      <!-- Ficha rápida -->
+      <ul class="facts"><li><b>20</b><span>characters</span><span lang="pt-BR">personagens</span></li><li><b>20</b><span>players max.</span><span lang="pt-BR">jogadores no máx.</span></li><li><b>1 m</b><span>circular board</span><span lang="pt-BR">tabuleiro circular</span></li><li><b>1,5 m</b><span>map board</span><span lang="pt-BR">tabuleiro-mapa</span></li><li><b>18+</b><span>adult audience</span><span lang="pt-BR">público adulto</span></li><li><b>SP</b><span>São Paulo</span><span lang="pt-BR">cenário</span></li><li><b>2023</b><span>year</span><span lang="pt-BR">ano</span></li></ul>
 
       <!-- Imagens do projeto: troque cada <div class="media"></div>
            por <img class="media" src="../img/nome-da-imagem.jpg" alt="Descrição"> -->
@@ -66,21 +70,94 @@
       </div>
     </div>
 
-
-    <div class="media media--full"></div>
-
-    <!-- Tipografia, paleta e logo: gerados a partir do bloco "brand-data" abaixo.
-         Sem dados, nada aparece. Formato explicado no topo de js/brand.js -->
-    <div id="brand"></div>
-
     <div class="media media--full"></div>
 
     <div class="container">
+      <section class="intro concept">
+        <h2 class="section-title">Concept</h2>
+        <div>
+          <p class="concept__lead words">“Every city has its stories. Some, its dead took with them.”</p>
+          <p class="concept__lead-pt" lang="pt-BR">“Toda cidade tem suas histórias. Algumas, seus mortos levaram consigo.”</p>
+          <p class="concept__text">In a city inhabited by millions, a tragedy can be the end of someone&#x27;s story and, at the same time, just one more event in collective memory. The game is born from this contrast between the grandeur of the city and the fragility of individual stories. Built on three pillars (metropolis, investigation and suspense), it makes São Paulo&#x27;s buildings and histories a central part of the narrative.</p>
+          <p class="concept__text-pt" lang="pt-BR">Em uma cidade habitada por milhões de pessoas, uma tragédia pode ser o fim da história de alguém e, ao mesmo tempo, apenas mais um acontecimento na memória coletiva. O jogo nasce desse contraste entre a grandiosidade da cidade e a fragilidade das histórias individuais. A partir de três pilares (metrópole, investigação e suspense), transforma os edifícios e as histórias de São Paulo em parte central da narrativa.</p>
+        </div>
+      </section>
+
+      <section class="intro concept">
+        <h2 class="section-title">How to play</h2>
+        <div>
+          <p class="concept__text concept__text--main">The goal is to discover the killer infiltrated among the players before they eliminate everyone else. Groups explore different points of the board while discussions, accusations, bluffs and votes turn trust into the main strategic element. Ambient audio and narration, accessed by QR code, connect the physical game to digital resources.</p>
+          <p class="concept__text-pt" lang="pt-BR">O objetivo é descobrir o assassino infiltrado entre os participantes antes que ele elimine os demais. Grupos exploram diferentes pontos do tabuleiro, enquanto discussões, acusações, blefes e votações transformam a confiança no principal elemento estratégico. Áudios de ambientação e narração, acessados por QR Code, conectam o jogo físico a recursos digitais.</p>
+        </div>
+      </section>
+      <div class="roles">
+        <article class="role" style="--bg:#F2F0E9;--fg:#292929"><h3>Investigators</h3><p class="role__pt" lang="pt-BR">Investigadores</p><p>Find the killer.</p><p class="role__pt" lang="pt-BR">Descobrem o assassino.</p></article>
+        <article class="role" style="--bg:#D92D39;--fg:#F2F0E9"><h3>Killer</h3><p class="role__pt" lang="pt-BR">Assassino</p><p>Eliminates without being discovered.</p><p class="role__pt" lang="pt-BR">Elimina sem ser descoberto.</p></article>
+        <article class="role" style="--bg:#292929;--fg:#F2F0E9"><h3>Medium</h3><p class="role__pt" lang="pt-BR">Médium</p><p>Can protect other characters.</p><p class="role__pt" lang="pt-BR">Pode proteger outros personagens.</p></article>
+        <article class="role" style="--bg:#858585;--fg:#F2F0E9"><h3>Accomplice</h3><p class="role__pt" lang="pt-BR">Cúmplice</p><p>Helps the killer, in games with 10+ players.</p><p class="role__pt" lang="pt-BR">Ajuda o assassino, em partidas com mais de 10 jogadores.</p></article>
+        <article class="role" style="--bg:#F2F0E9;--fg:#292929"><h3>Narrator</h3><p class="role__pt" lang="pt-BR">Narrador</p><p>The first victim, who leads the next rounds.</p><p class="role__pt" lang="pt-BR">A primeira vítima, que conduz as rodadas seguintes.</p></article>
+      </div>
+
+      <section class="intro concept">
+        <h2 class="section-title">Characters</h2>
+        <div>
+          <p class="concept__text concept__text--main">Twenty characters with their own stories, relationships and conflicts, reflecting the social and cultural diversity of São Paulo. Their portraits were based on photo sessions with performing arts students and people chosen to match each profile.</p>
+          <p class="concept__text-pt" lang="pt-BR">Vinte personagens com histórias, relações e conflitos próprios, refletindo a diversidade social e cultural de São Paulo. Seus retratos partiram de sessões fotográficas com estudantes de artes cênicas e pessoas escolhidas de acordo com cada perfil.</p>
+        </div>
+      </section>
       <div class="gallery gallery--3">
         <div class="media"></div>
         <div class="media"></div>
         <div class="media"></div>
       </div>
+
+      <section class="intro concept">
+        <h2 class="section-title">Visual direction</h2>
+        <div>
+          <p class="concept__text concept__text--main">The visual language brings together three universes: São Paulo architecture, criminal investigation and the atmosphere of suspense. Historic buildings, police archives, forensic elements and city maps guided an identity that balances urban personality with the tension of an investigation game.</p>
+          <p class="concept__text-pt" lang="pt-BR">A linguagem visual une três universos: a arquitetura paulistana, a investigação criminal e a atmosfera de suspense. Edifícios históricos, arquivos policiais, elementos de perícia e mapas da cidade orientaram uma identidade que equilibra personalidade urbana e a tensão de um jogo investigativo.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tipografia, paleta e logo: gerados a partir do bloco "brand-data" abaixo.
+         Sem dados, nada aparece. Formato explicado no topo de js/brand.js -->
+    <div id="brand"></div>
+
+    <div class="container">
+      <section class="intro concept">
+        <h2 class="section-title">Components</h2>
+        <div>
+          <p class="concept__text concept__text--main">A 1 m circular main board and a 1.5 m map-shaped secondary board, reinforcing the link between the game and the city&#x27;s geography. Character, role and action cards, individual envelopes, markers, a rulebook and a narrator&#x27;s book, with rigid materials and soft-touch lamination for a tactile experience.</p>
+          <p class="concept__text-pt" lang="pt-BR">Um tabuleiro principal circular de 1 m e um tabuleiro secundário em formato de mapa, com 1,5 m, reforçando a relação entre o jogo e a geografia da cidade. Cartas de personagem, função e ação, envelopes individuais, peças de sinalização, manual de instruções e livro do narrador, com materiais rígidos e laminação soft touch para uma experiência tátil.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="media media--full"></div>
+
+    <div class="container">
+      <section class="intro concept">
+        <h2 class="section-title">Process</h2>
+        <div>
+          <p class="concept__text concept__text--main">Market and competitor research, mood boards for each pillar, naming, character building, rules and roles, visual identity, photo sessions, playtests and specifications for print production.</p>
+          <p class="concept__text-pt" lang="pt-BR">Pesquisa de mercado e concorrentes, painéis semânticos para cada pilar, naming, construção de personagens, regras e funções, identidade visual, sessões fotográficas, testes de jogabilidade e especificações para produção gráfica.</p>
+        </div>
+      </section>
+
+      <blockquote class="closing">
+        <p>“In a city of millions of stories, the greatest mystery may lie among those you trust.”</p>
+        <p class="closing__pt" lang="pt-BR">“Em uma cidade de milhões de histórias, o maior mistério pode estar entre aqueles em quem você confia.”</p>
+      </blockquote>
+
+      <section class="credits">
+        <h2 class="section-title">Credits</h2>
+        <dl>
+          <div><dt>Project</dt><dd>Academic project — Centro Universitário Belas Artes de São Paulo</dd></div>
+          <div><dt>Research / Visual Direction / Game Design / Narrative / Illustration / Graphic Design / Prototyping / Print Production</dt><dd>Ana Beatriz Kanashiro Counãgo<br>Victor Hugo Fávaro Reciputti<br>Marcela Antunes Setta<br>Giovanna Alves Castilho Belucci<br>Gustavo Kiyomoto Cardoso</dd></div>
+          <div><dt>2023</dt></div>
+        </dl>
+      </section>
     </div>
 
     <a class="next" href="como-voce-quer-que-eu-te-chame.html" data-cursor="Abrir">
@@ -99,8 +176,53 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=45" defer></script>
-  <script src="../js/motion.js?v=45" defer></script>
-  <script src="../js/projeto.js?v=45" defer></script>
+  <script type="application/json" id="brand-data">
+{
+  "order": [
+    "palette"
+  ],
+  "paletteStyle": "evidence",
+  "paletteNote": "Approximate values, sampled from the printed pieces · Valores aproximados, a partir das peças impressas",
+  "paletteText": "Red works as the highlight, evoking criminal investigation and danger. Black and graphite build the atmosphere of suspense, while gray and off-white support information, maps and signage.",
+  "paletteTextPt": "O vermelho funciona como destaque e remete à investigação criminal e ao perigo. O preto e o grafite criam a atmosfera de suspense, enquanto o cinza e o branco dão suporte às informações, aos mapas e à sinalização.",
+  "palette": [
+    {
+      "name": "Graphite",
+      "namePt": "Preto grafite",
+      "hex": "#292929",
+      "weight": 40,
+      "use": "Suspense and atmosphere.",
+      "usePt": "Suspense e atmosfera."
+    },
+    {
+      "name": "Red",
+      "namePt": "Vermelho",
+      "hex": "#D92D39",
+      "weight": 25,
+      "use": "Highlight, crime and danger.",
+      "usePt": "Destaque, crime e perigo."
+    },
+    {
+      "name": "Gray",
+      "namePt": "Cinza",
+      "hex": "#858585",
+      "weight": 20,
+      "use": "Maps and secondary information.",
+      "usePt": "Mapas e informações secundárias."
+    },
+    {
+      "name": "Off-white",
+      "namePt": "Branco claro",
+      "hex": "#F2F0E9",
+      "weight": 15,
+      "use": "Support, text and signage.",
+      "usePt": "Apoio, textos e sinalização."
+    }
+  ]
+}
+  </script>
+  <script src="../js/brand.js?v=46" defer></script>
+  <script src="../js/motion.js?v=46" defer></script>
+  <script src="../js/projeto.js?v=46" defer></script>
 </body>
 </html>

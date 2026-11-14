@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=45" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=46" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
