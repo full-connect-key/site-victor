@@ -915,3 +915,5 @@ img.media { height: auto; }
 /* imagem sozinha no fim de uma sequência (mesmo tamanho de uma coluna, centralizada) */
 .gallery--single { display: grid; grid-template-columns: minmax(0, 1fr); max-width: calc(583 * var(--u)); margin-inline: auto; margin-top: calc(69 * var(--u)); }
 @media (max-width: 800px) { .gallery--single { max-width: none; } }
+/* par de aberturas logo depois dos blocos de marca */
+#brand ~ script + .container .gallery { margin-top: calc(140 * var(--u)); }
