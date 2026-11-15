@@ -7,7 +7,7 @@ COMO SUBIR NA HOSTINGER
 4. Confira se o index.html ficou direto dentro de public_html, e não numa subpasta
 
 VERSÃO
-Ao mudar o CSS ou o JS, aumente o número em "?v=100" nos <link>/<script>
+Ao mudar o CSS ou o JS, aumente o número em "?v=101" nos <link>/<script>
 das páginas, para os navegadores baixarem a versão nova.
 
 ESTRUTURA
@@ -58,3 +58,8 @@ GALERIA DE FOTOS DA ABF EXPO 2026 (projetos/abf-expo-2026.html)
 Coloque as fotos em img/abf/evento/ com nomes 001.jpg, 002.jpg, 003.jpg ...
 Na página, ajuste data-count="100" com o total de fotos.
 Foto que ainda não existir aparece como um espaço cinza.
+
+REGRA DE RITMO DAS PÁGINAS DE PROJETO
+Dois blocos de texto nunca vêm seguidos: entre um tópico e outro sempre há
+uma imagem ou uma interação (galeria, logo interativo, tipografia, paleta,
+leitor do livro, animação). Isso vale também antes dos créditos.
