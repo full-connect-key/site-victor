@@ -15,9 +15,9 @@
   <link rel="icon" href="../img/favicon-192.png?v=4" sizes="192x192" type="image/png">
   <link rel="icon" href="../img/favicon-32.png?v=4" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4">
-  <link rel="stylesheet" href="../css/style.css?v=88">
-  <link rel="stylesheet" href="../css/brand.css?v=88">
-  <link rel="stylesheet" href="../css/projeto.css?v=88">
+  <link rel="stylesheet" href="../css/style.css?v=89">
+  <link rel="stylesheet" href="../css/brand.css?v=89">
+  <link rel="stylesheet" href="../css/projeto.css?v=89">
 </head>
 <body class="page-oz">
 
@@ -103,6 +103,34 @@
     <div class="media-frame"><img class="media media--full" src="../img/oz/cesta-sapatinhos-larga.jpg" alt="Livro numa cesta com os sapatinhos vermelhos e uma papoula" loading="lazy"></div>
 
     <div class="container">
+      <!--
+        LEITOR DO LIVRO: páginas em img/oz/livro/ (001.webp ... 157.webp).
+        O código fica em js/livro.js.
+      -->
+      <section class="reader" data-folder="../img/oz/livro/" data-ext="webp" data-count="157" tabindex="0" aria-label="Leitor do livro O Mágico de Oz">
+        <header class="block__head reader__head">
+          <h2 class="block__title">Read the book<span class="reader__pt" lang="pt-BR">Leia o livro</span></h2>
+          <button class="btn btn--yellow reader__fs" type="button">Full screen ⤢</button>
+        </header>
+        <div class="reader__stage">
+          <button class="reader__nav reader__nav--prev" type="button" aria-label="Página anterior">←</button>
+          <div class="reader__book">
+            <div class="reader__page reader__page--left"><img alt=""></div>
+            <div class="reader__page reader__page--right"><img alt=""></div>
+            <div class="reader__flip" aria-hidden="true">
+              <div class="reader__face reader__face--front"><img alt=""></div>
+              <div class="reader__face reader__face--back"><img alt=""></div>
+            </div>
+          </div>
+          <button class="reader__nav reader__nav--next" type="button" aria-label="Próxima página">→</button>
+        </div>
+        <div class="reader__bar">
+          <input class="reader__range" type="range" min="1" max="157" value="1" aria-label="Ir para a página">
+          <span class="reader__count"></span>
+        </div>
+        <p class="reader__hint">Click the page, use the arrows or swipe to turn. <span lang="pt-BR">Clique na página, use as setas ou arraste para virar.</span></p>
+      </section>
+
       <section class="credits">
         <h2 class="section-title">Credits</h2>
         <dl>
@@ -127,8 +155,9 @@
       <p>@2026 victor fávaro. <strong>all rights reserved.</strong></p>
     </div>
   </footer>
-  <script src="../js/brand.js?v=88" defer></script>
-  <script src="../js/motion.js?v=88" defer></script>
-  <script src="../js/projeto.js?v=88" defer></script>
+  <script src="../js/brand.js?v=89" defer></script>
+  <script src="../js/livro.js?v=1" defer></script>
+  <script src="../js/motion.js?v=89" defer></script>
+  <script src="../js/projeto.js?v=89" defer></script>
 </body>
 </html>

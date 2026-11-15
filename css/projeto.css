@@ -714,3 +714,90 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .media-frame > .media--full { margin-top: 0; }
 .concept + .media-frame, .container + .media-frame { margin-top: calc(69 * var(--u)); }
 .page-oz .container:has(> .gallery) + .container > .concept { margin-top: calc(110 * var(--u)); }
+
+/* ---------- Leitor do livro (O Mágico de Oz) ---------- */
+.reader { margin-top: calc(140 * var(--u)); outline: none; }
+.reader__head { align-items: center; }
+.reader__pt { margin-left: .5em; color: var(--muted); font-weight: 400; font-size: .55em; }
+.reader__fs { margin-left: auto; }
+.reader__stage {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 18px;
+  padding: calc(50 * var(--u)) 0;
+  background: #ffd23f;
+  border-radius: calc(25 * var(--u));
+}
+.reader__book {
+  position: relative;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(100%, calc(76vh * 1800 / 1335));
+  aspect-ratio: 1800 / 1335;
+  perspective: 2400px;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .28));
+  touch-action: pan-y;
+}
+.reader__page { position: relative; cursor: pointer; background: #fff; overflow: hidden; }
+.reader__page img, .reader__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reader__page--left { border-radius: 4px 0 0 4px; }
+.reader__page--right { border-radius: 0 4px 4px 0; }
+.reader__page--left::after, .reader__page--right::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 14%; pointer-events: none;
+}
+.reader__page--left::after { right: 0; background: linear-gradient(to left, rgba(0,0,0,.18), transparent); }
+.reader__page--right::after { left: 0; background: linear-gradient(to right, rgba(0,0,0,.18), transparent); }
+.reader__page.is-empty { background: transparent; cursor: default; }
+.reader__page.is-empty::after { display: none; }
+/* capa sozinha (primeira) e contracapa sozinha (última) */
+.reader.is-cover .reader__page--left, .reader.is-end .reader__page--right { visibility: hidden; }
+
+/* folha que vira */
+.reader__flip { position: absolute; top: 0; bottom: 0; width: 50%; display: none; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.45, .05, .3, 1); }
+.reader__flip.is-next { display: block; left: 50%; transform-origin: left center; }
+.reader__flip.is-prev { display: block; left: 0; transform-origin: right center; }
+.reader__flip.is-next.is-turning { transform: rotateY(-180deg); }
+.reader__flip.is-prev.is-turning { transform: rotateY(180deg); }
+.reader__face { position: absolute; inset: 0; backface-visibility: hidden; background: #fff; overflow: hidden; }
+.reader__face--back { transform: rotateY(180deg); }
+
+.reader__nav {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 2px solid var(--black); background: var(--white); color: var(--black);
+  box-shadow: 4px 4px 0 var(--black); font-size: 22px; cursor: pointer; justify-self: center;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.reader__nav:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--black); }
+.reader__nav:disabled { opacity: .3; cursor: default; box-shadow: none; }
+.reader__bar { display: flex; align-items: center; gap: 18px; margin-top: 20px; }
+.reader__range { flex: 1; accent-color: #7b3fa0; }
+.reader__count { font-variant-numeric: tabular-nums; letter-spacing: .08em; white-space: nowrap; min-width: 9ch; text-align: right; }
+.reader__hint { margin-top: 10px; color: var(--muted); font-size: clamp(13px, .9vw, 16px); }
+.reader__hint span { display: block; }
+
+/* uma página (celular) */
+.reader.is-single .reader__book { grid-template-columns: 1fr; aspect-ratio: 900 / 1335; width: min(100%, 420px); }
+.reader.is-single .reader__page--left { display: none; }
+.reader.is-single .reader__page--right { border-radius: 4px; }
+.reader.is-single .reader__page--right::after { display: none; }
+.reader__book.is-slide-next .reader__page--right img { animation: rdNext .35s ease; }
+.reader__book.is-slide-prev .reader__page--right img { animation: rdPrev .35s ease; }
+@keyframes rdNext { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: none; } }
+@keyframes rdPrev { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: none; } }
+
+/* tela cheia */
+.reader.is-fullscreen { background: #ffd23f; padding: 24px 32px; display: flex; flex-direction: column; margin: 0; }
+.reader.is-fullscreen .reader__stage { flex: 1; padding: 0; }
+.reader.is-fullscreen .reader__book { width: min(100%, calc((100vh - 200px) * 1800 / 1335)); }
+.reader.is-fullscreen.is-single .reader__book { width: min(100%, calc((100vh - 200px) * 900 / 1335)); }
+
+@media (max-width: 760px) {
+  .reader__stage { grid-template-columns: 1fr 1fr; gap: 14px; padding: 18px; }
+  .reader__book { grid-column: 1 / -1; grid-row: 1; }
+  .reader__nav--prev { grid-row: 2; grid-column: 1; }
+  .reader__nav--next { grid-row: 2; grid-column: 2; }
+  .reader__head { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { .reader__flip { transition: none; } }
