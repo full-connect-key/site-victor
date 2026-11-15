@@ -960,3 +960,13 @@ img.media { height: auto; }
     filter: drop-shadow(8px 8px 0 #000);
   }
 }
+
+/* celular: os 4 botões do menu sempre em uma fileira */
+@media (max-width: 520px) {
+  .site-nav { flex-wrap: nowrap; gap: 6px; justify-content: center; }
+  .site-nav .btn { padding: 8px 11px; font-size: 9.5px; letter-spacing: .06em; box-shadow: 3px 3px 0 var(--black); }
+}
+@media (max-width: 360px) {
+  .site-nav { gap: 4px; }
+  .site-nav .btn { padding: 6px 7px; font-size: 8px; letter-spacing: .04em; }
+}
