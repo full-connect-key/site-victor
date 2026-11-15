@@ -941,7 +941,7 @@ img.media { height: auto; }
   font-size: clamp(44px, 6vw, 120px); pointer-events: none;
 }
 .card__title--long { font-size: clamp(30px, 2.25vw, 43px); }
-@media (max-width: 700px) { .project-hero--oz { background-position: 44% 40%; } }
+@media (max-width: 700px) { .p-hero__card.project-hero--oz { background: #f2c300 url("../img/oz/v2/capa-mobile.jpg?v=3") center 55% / cover no-repeat; } }
 
 /* Personal: títulos sem traço, no tom do restante do site */
 .personal-section .block__head { border-bottom: 0; padding-bottom: 0; }
