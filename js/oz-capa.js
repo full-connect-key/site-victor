@@ -52,7 +52,7 @@
       }, { threshold: 0.35 });
       io.observe(box);
     })
-    .catch(function () { box.innerHTML = '<img src="../img/oz/livro-frente-cor.jpg" alt="">'; });
+    .catch(function () { box.innerHTML = '<img src="../img/oz/livro-frente.jpg" alt="">'; });
 
   if (replay) replay.addEventListener('click', function () { played = true; mount(); });
 })();
