@@ -154,8 +154,8 @@
   }
   function head(title, note) {
     n++;
-    return '<header class="block__head"><span class="block__num">' + (n < 10 ? '0' : '') + n +
-      '</span><h2 class="block__title">' + esc(title) + '</h2>' +
+    // sem numeração (01, 02...): o título fica igual aos outros tópicos da página
+    return '<header class="block__head"><h2 class="block__title">' + esc(title) + '</h2>' +
       (note ? '<p class="block__note">' + esc(note) + '</p>' : '') + '</header>';
   }
 
