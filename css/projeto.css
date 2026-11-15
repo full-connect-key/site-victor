@@ -875,3 +875,14 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .project-body .container:has(> section.concept:last-child) + *,
 .project-body .container:has(> section.concept:last-child) + * > .container:first-child > .block:first-child { margin-top: var(--tgap) !important; }
 .project-body .container:has(> section.concept:last-child) + #brand > .container:first-child > .block:first-child { margin-top: var(--tgap) !important; }
+
+/* Mágico de Oz: grade das aberturas de capítulo (peças planas) */
+.oz-caps { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: calc(14 * var(--u)); }
+.oz-caps img { width: 100%; aspect-ratio: 934 / 1394; object-fit: cover; border-radius: calc(10 * var(--u)); }
+@media (max-width: 900px) { .oz-caps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; } }
+/* Mágico de Oz: vertical à esquerda + duas empilhadas à direita */
+.oz-stack { display: grid; grid-template-columns: 1fr 1fr; gap: calc(34 * var(--u)); margin-top: calc(69 * var(--u)); }
+.oz-stack .media { height: 100%; aspect-ratio: auto; object-fit: cover; }
+.oz-stack .media:first-child { grid-row: span 2; }
+.oz-stack .media:not(:first-child) { aspect-ratio: 3 / 2; }
+@media (max-width: 700px) { .oz-stack { grid-template-columns: 1fr; } .oz-stack .media:first-child { grid-row: auto; aspect-ratio: 2 / 3; } }
