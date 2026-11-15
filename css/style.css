@@ -946,15 +946,17 @@ img.media { height: auto; }
 /* Personal: títulos sem traço, no tom do restante do site */
 .personal-section .block__head { border-bottom: 0; padding-bottom: 0; }
 
-/* Work · Mágico de Oz: no desktop só a arte da capa sobre o amarelo; no celular, a foto */
+/* Work · Mágico de Oz: no desktop, a foto da cesta; no celular, só a arte da capa sobre o roxo */
 .project-row__visual--ozcapa { display: none; }
-@media (min-width: 901px) {
+@media (max-width: 900px) {
+  .project-row--oz { background: #722376; }
   .project-row--oz picture { display: none; }
+  .project-row--oz.project-row--photo { padding-top: 70px; }
   .project-row--oz .project-row__visual--ozcapa {
     display: block;
-    height: calc(430 * var(--u));
-    width: auto;
-    margin-left: calc(60 * var(--u));
-    filter: drop-shadow(10px 10px 0 rgba(0,0,0,.9));
+    width: min(62%, 260px);
+    height: auto;
+    margin: 0 auto;
+    filter: drop-shadow(8px 8px 0 #000);
   }
 }
