@@ -519,7 +519,6 @@ body { overflow-x: clip; }
 
 /* Metrópole: Urban Space (títulos, fonts/) + Serenity (textos, Adobe Fonts) */
 .page-metropole .p-hero__tagline,
-.page-metropole .facts b,
 .page-metropole .role h3,
 .page-metropole .closing p:not(.closing__pt),
 .page-metropole .pal-ev__name,
@@ -529,11 +528,11 @@ body { overflow-x: clip; }
   font-stretch: normal;
   font-variation-settings: normal;
 }
-.page-metropole .role p, .page-metropole .facts span { font-family: 'serenity', sans-serif; font-weight: 300; }
+.page-metropole .role p { font-family: 'serenity', sans-serif; font-weight: 300; }
 .page-metropole .role p { font-size: clamp(15px, 1.05vw, 19px); }
 .page-metropole .facts span { font-size: clamp(13px, 1vw, 18px); }
 .page-metropole .pal-ev__name span { font-family: 'serenity', sans-serif; font-weight: 300; }
-.page-metropole .facts b { font-size: clamp(26px, 2.7vw, 52px); }
+.page-metropole .facts b { font-size: clamp(26px, 2.7vw, 52px); font-weight: 700; }
 .page-metropole .closing p:not(.closing__pt) { letter-spacing: .02em; }
 
 /* Metrópole: galeria de personagens em "line-up" policial (5 x 4) */
@@ -865,3 +864,4 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 /* Visual language: espaço entre a frase-chave e o parágrafo */
 .concept__lead-pt + .concept__text--main { margin-top: calc(32 * var(--u)); }
 .page-helena .concept__text--main { color: #fff; }
+.page-metropole .facts { padding-block: calc(40 * var(--u)) calc(44 * var(--u)); align-items: start; height: auto; }
