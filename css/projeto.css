@@ -845,3 +845,8 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 @media (max-width: 800px) {
   .oz-build { height: auto; width: min(100%, 420px); }
 }
+/* galeria ABF: título no formato do Concept */
+.event-gallery__intro { display: grid; grid-template-columns: 521fr 679fr; align-items: start; }
+.event-gallery .concept__text--main { color: #fff; }
+.event-gallery .event-gallery__count { margin: 16px 0 0; text-align: left; }
+@media (max-width: 800px) { .event-gallery__intro { grid-template-columns: 1fr; gap: 20px; } }

@@ -942,3 +942,6 @@ img.media { height: auto; }
 }
 .card__title--long { font-size: clamp(30px, 2.25vw, 43px); }
 @media (max-width: 700px) { .project-hero--oz { background-position: 44% 40%; } }
+
+/* Personal: títulos sem traço, no tom do restante do site */
+.personal-section .block__head { border-bottom: 0; padding-bottom: 0; }
