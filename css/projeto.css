@@ -862,3 +862,6 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .motion .project-body .reveal { transform: translateY(24px); transition-duration: 1.1s; }
 .words .w, .page-helena .words .w, .page-metropole .words .w { opacity: 1 !important; }
 .cursor { display: none !important; }
+/* Visual language: espaço entre a frase-chave e o parágrafo */
+.concept__lead-pt + .concept__text--main { margin-top: calc(32 * var(--u)); }
+.page-helena .concept__text--main { color: #fff; }
