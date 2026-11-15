@@ -867,3 +867,11 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .page-helena .concept__text--main { color: #fff; }
 .page-metropole .facts { padding-block: calc(40 * var(--u)) calc(44 * var(--u)); align-items: start; height: auto; }
 .project-body .container + .media--full, .project-body .container + .media-frame { margin-top: calc(90 * var(--u)); }
+
+/* Ritmo único: mesmo espaço acima e abaixo de cada bloco de texto (Concept / Visual language) */
+.project-body { --tgap: max(48px, calc(110 * var(--u))); }
+.project-body section.concept { margin-top: var(--tgap) !important; }
+.project-body section.concept + *,
+.project-body .container:has(> section.concept:last-child) + *,
+.project-body .container:has(> section.concept:last-child) + * > .container:first-child > .block:first-child { margin-top: var(--tgap) !important; }
+.project-body .container:has(> section.concept:last-child) + #brand > .container:first-child > .block:first-child { margin-top: var(--tgap) !important; }
