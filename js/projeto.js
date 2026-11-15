@@ -1,5 +1,10 @@
 /* Página de projeto: movimento ao rolar (ver css/projeto.css) */
 (function () {
+  // o menu sai de dentro da capa: a capa fica parada e a página desliza por cima dela,
+  // e o menu precisa continuar acima de tudo
+  var hdr = document.querySelector('.p-hero .site-header');
+  if (hdr) document.body.insertBefore(hdr, document.body.firstChild);
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var vh = innerHeight;
 

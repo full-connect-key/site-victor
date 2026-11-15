@@ -70,9 +70,8 @@
     // work
     { sel: '.project-row__visual', speed: -0.12 },
     { sel: '.project-row .card', speed: 0.06 },
-    { sel: '.project-row__bg', speed: 0.18, zoom: true },
-    // páginas de projeto
-    { sel: 'img.media--full:not([style*="contain"]):not(.media--spread):not(.media--cover)', speed: 0.1, zoom: true }
+    { sel: '.project-row__bg', speed: 0.18, zoom: true }
+    // páginas de projeto: sem parallax nas imagens (a capa fica parada e a página desliza sobre ela)
   ];
 
   var items = [];
