@@ -801,3 +801,31 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
   .reader__head { flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: reduce) { .reader__flip { transition: none; } }
+
+/* ---------- Abertura animada: O Mágico de Oz (js/oz-capa.js) ---------- */
+.oz-intro { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #f7c300; transition: background-color .9s ease; }
+.oz-intro svg { position: absolute; top: 0; left: 0; transform-origin: 0 0; overflow: visible; opacity: 0; transition: opacity .5s ease; }
+.oz-intro.is-ready svg { opacity: 1; }
+.oz-intro.is-reveal { background-color: rgba(247, 195, 0, 0); }
+.oz-intro.is-done svg { opacity: 0; transition-duration: .8s; }
+.oz-intro svg * { transform-box: fill-box; transform-origin: center; }
+.oz-intro .oz-bg { animation: ozPop .6s cubic-bezier(.2,.8,.3,1) both; }
+.oz-intro .oz-frame { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ozDraw 1.2s ease-in-out .3s forwards; }
+.oz-intro .oz-brick { animation: ozBrick .35s cubic-bezier(.3,1.6,.6,1) both; }
+.oz-intro .oz-oval { animation: ozGrow .6s cubic-bezier(.2,.9,.3,1.1) 1.3s both; }
+.oz-intro .oz-arc { animation: ozWipe .5s ease-out 1.75s both; }
+.oz-intro .oz-t-o, .oz-intro .oz-dash { animation: ozDrop .45s cubic-bezier(.3,1.5,.6,1) 2s both; }
+.oz-intro .oz-t-l { animation: ozDrop .4s cubic-bezier(.3,1.5,.6,1) both; }
+.oz-intro .oz-t-de { animation: ozDrop .4s cubic-bezier(.3,1.5,.6,1) 2.7s both; }
+.oz-intro .oz-t-oz { animation: ozSlam .55s cubic-bezier(.3,1.4,.5,1) 2.95s both; }
+.oz-intro .oz-chars { animation: ozWalk 1.1s cubic-bezier(.25,.7,.35,1) 3.35s both; }
+.oz-intro .oz-author { animation: ozFade .5s ease 4s both; }
+@keyframes ozPop { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
+@keyframes ozDraw { to { stroke-dashoffset: 0; } }
+@keyframes ozBrick { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
+@keyframes ozGrow { from { opacity: 0; transform: scale(.75); } to { opacity: 1; transform: none; } }
+@keyframes ozWipe { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+@keyframes ozDrop { from { opacity: 0; transform: translateY(-40%); } to { opacity: 1; transform: none; } }
+@keyframes ozSlam { 0% { opacity: 0; transform: scale(1.6); } 60% { opacity: 1; transform: scale(.94); } 100% { opacity: 1; transform: none; } }
+@keyframes ozWalk { 0% { opacity: 0; transform: translateX(-60%); } 25% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes ozFade { from { opacity: 0; transform: translateY(30%); } to { opacity: 1; transform: none; } }
