@@ -448,7 +448,7 @@ h1, h2, h3, p { margin: 0; }
   padding: calc(160 * var(--u)) var(--gutter) calc(60 * var(--u));
 }
 .project-hero--black { background: var(--black); }
-.project-hero--oz { background: #e5c823 url("../img/oz/v2/cesta.jpg?v=1") 22% 45% / cover no-repeat; }
+.project-hero--oz { background: #e5c823 url("../img/oz/v2/cesta.jpg?v=2") 22% 45% / cover no-repeat; }
 .project-hero--metropole { background: #b10d14 url("../img/row-metropole.jpg") right center / cover no-repeat; }
 .project-hero--kv { background: linear-gradient(104.16deg, #58aeff .34%, #fff 45.7%, #ff589e 99.66%); }
 .project-hero--green { background: var(--green); }
@@ -941,7 +941,7 @@ img.media { height: auto; }
   font-size: clamp(44px, 6vw, 120px); pointer-events: none;
 }
 .card__title--long { font-size: clamp(30px, 2.25vw, 43px); }
-@media (max-width: 700px) { .p-hero__card.project-hero--oz { background: #f2c300 url("../img/oz/v2/capa-mobile.jpg?v=3") center 55% / cover no-repeat; } }
+@media (max-width: 700px) { .p-hero__card.project-hero--oz { background: #f2c300 url("../img/oz/v2/cesta-mobile.jpg?v=1") center 50% / cover no-repeat; } }
 
 /* Personal: títulos sem traço, no tom do restante do site */
 .personal-section .block__head { border-bottom: 0; padding-bottom: 0; }
