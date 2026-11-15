@@ -691,11 +691,3 @@
   .type--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .type__top .pill { max-width: 100%; white-space: normal; }
-
-/* logos no mesmo desenho dos cartões de tipografia: borda + sombra deslocada */
-.logo-cards { gap: calc(34 * var(--u)); }
-.logo-card {
-  border: 2px solid var(--black);
-  border-radius: calc(36 * var(--u));
-  box-shadow: 10px 10px 0 var(--black);
-}
