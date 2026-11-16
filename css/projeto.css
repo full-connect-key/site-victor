@@ -902,14 +902,14 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 @media (max-width: 900px) { .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } }
 .page-helena .reader__stage { background: #1b1b1b; }
 .page-helena .reader__count, .page-helena .reader .block__title { color: #fff; }
-/* prancheta separada por editorias (cor de cada uma), duas por fileira */
-.hl-board__secs { display: grid; grid-template-columns: 1fr 1fr; gap: calc(50 * var(--u)) calc(34 * var(--u)); align-items: start; }
+/* prancheta: cada editoria num ponto da página, com a cor dela */
+.hl-sec { margin-top: calc(69 * var(--u)); }
 .hl-sec__name {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
-  margin-bottom: calc(14 * var(--u)); padding-bottom: 8px;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+  margin-bottom: calc(16 * var(--u)); padding-bottom: 10px;
   border-bottom: 3px solid var(--c);
-  color: #fff; font-weight: 700; font-size: clamp(16px, 1.25vw, 24px);
+  color: #fff; font-weight: 700; font-size: clamp(18px, 1.5vw, 28px);
 }
 .hl-sec__name span { color: #8a8a8a; font-weight: 400; font-size: .7em; }
-.hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 900px) { .hl-board__secs { grid-template-columns: 1fr; gap: 32px; } .hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.hl-sec .hl-board__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 900px) { .hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
