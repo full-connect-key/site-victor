@@ -917,3 +917,5 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .page-metropole .gallery--2 .media { aspect-ratio: 16 / 9; height: auto; }
 .page-metropole .media.met-pano { aspect-ratio: 2 / 1; height: auto; object-fit: cover; object-position: 10% 60%; margin-top: calc(110 * var(--u)); }
 @media (max-width: 700px) { .page-metropole .media.met-pano { aspect-ratio: 4 / 5; object-position: 18% 60%; } }
+.page-metropole .media.met-board { aspect-ratio: 1920 / 768; height: auto; margin-top: calc(110 * var(--u)); }
+@media (max-width: 700px) { .page-metropole .media.met-board { aspect-ratio: 4 / 3; object-fit: cover; object-position: center; } }
