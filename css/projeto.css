@@ -914,3 +914,5 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .hl-sec .hl-board__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 @media (max-width: 900px) { .hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .page-metropole .media.met-full { aspect-ratio: 16 / 9; height: auto; }
+.page-metropole .gallery--2 .media { aspect-ratio: 16 / 9; height: auto; }
+.page-metropole .media.met-pano { aspect-ratio: 3143 / 897; height: auto; margin-top: calc(110 * var(--u)); }
