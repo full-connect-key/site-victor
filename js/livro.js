@@ -99,6 +99,10 @@
   root.querySelector('.reader__page--right').addEventListener('click', function () { go(1); });
   root.querySelector('.reader__page--left').addEventListener('click', function () { go(-1); });
   range.max = total;
+  // proporção da página (data-ratio="largura/altura")
+  if (root.dataset.ratio) { var r = root.dataset.ratio.split('/'); root.style.setProperty('--pw', r[0]); root.style.setProperty('--ph', r[1]); }
+  // outro elemento pode abrir uma página específica: dispatchEvent(new CustomEvent('reader:go', {detail: n}))
+  root.addEventListener('reader:go', function (e) { pos = e.detail; render(); });
   range.addEventListener('input', function () { pos = parseInt(range.value, 10); render(); });
 
   root.addEventListener('keydown', function (e) {

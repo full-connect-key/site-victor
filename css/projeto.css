@@ -715,7 +715,7 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .page-oz .container:has(> .gallery) + .container > .concept { margin-top: calc(110 * var(--u)); }
 
 /* ---------- Leitor do livro (O Mágico de Oz) ---------- */
-.reader { margin-top: calc(140 * var(--u)); outline: none; }
+.reader { --pw: 900; --ph: 1335; margin-top: calc(140 * var(--u)); outline: none; }
 .reader__head { align-items: center; }
 .reader__pt { margin-left: .5em; color: var(--muted); font-weight: 400; font-size: .55em; }
 .reader__fs { margin-left: auto; }
@@ -733,8 +733,8 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
   justify-self: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: min(100%, calc(76vh * 1800 / 1335));
-  aspect-ratio: 1800 / 1335;
+  width: min(100%, calc(76vh * 2 * var(--pw) / var(--ph)));
+  aspect-ratio: calc(2 * var(--pw)) / var(--ph);
   perspective: 2400px;
   filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .28));
   touch-action: pan-y;
@@ -777,7 +777,7 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .reader__hint span { display: block; }
 
 /* uma página (celular) */
-.reader.is-single .reader__book { grid-template-columns: 1fr; aspect-ratio: 900 / 1335; width: min(100%, 420px); }
+.reader.is-single .reader__book { grid-template-columns: 1fr; aspect-ratio: var(--pw) / var(--ph); width: min(100%, 420px); }
 .reader.is-single .reader__page--left { display: none; }
 .reader.is-single .reader__page--right { border-radius: 4px; }
 .reader.is-single .reader__page--right::after { display: none; }
@@ -789,8 +789,8 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 /* tela cheia */
 .reader.is-fullscreen { background: #ffd23f; padding: 24px 32px; display: flex; flex-direction: column; margin: 0; }
 .reader.is-fullscreen .reader__stage { flex: 1; padding: 0; }
-.reader.is-fullscreen .reader__book { width: min(100%, calc((100vh - 200px) * 1800 / 1335)); }
-.reader.is-fullscreen.is-single .reader__book { width: min(100%, calc((100vh - 200px) * 900 / 1335)); }
+.reader.is-fullscreen .reader__book { width: min(100%, calc((100vh - 200px) * 2 * var(--pw) / var(--ph))); }
+.reader.is-fullscreen.is-single .reader__book { width: min(100%, calc((100vh - 200px) * var(--pw) / var(--ph))); }
 
 @media (max-width: 760px) {
   .reader__stage { grid-template-columns: 1fr 1fr; gap: 14px; padding: 18px; }
@@ -889,3 +889,27 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 /* Helena: mockups no formato original (3:2), sem cortar */
 .page-helena .gallery--2 .media { aspect-ratio: 3 / 2; height: auto; }
 .page-helena .media.hl-full { aspect-ratio: 16 / 9; height: auto; }
+
+/* Helena: prancheta com todas as páginas da revista */
+.hl-board { margin-top: calc(110 * var(--u)); }
+.hl-board__grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: calc(10 * var(--u)); }
+.hl-board__grid button { padding: 0; border: 0; background: #111; cursor: zoom-in; display: block; }
+.hl-board__grid img { width: 100%; aspect-ratio: 1608 / 1136; object-fit: cover; display: block; transition: transform .25s ease, opacity .25s ease; }
+.hl-board__grid button:hover img { transform: scale(1.06); }
+.hl-board__grid button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.hl-board__hint { margin-top: 14px; color: #8a8a8a; font-size: clamp(13px, .9vw, 16px); }
+.hl-board__hint span { display: block; }
+@media (max-width: 900px) { .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } }
+.page-helena .reader__stage { background: #1b1b1b; }
+.page-helena .reader__count, .page-helena .reader .block__title { color: #fff; }
+/* prancheta separada por editorias (cor de cada uma), duas por fileira */
+.hl-board__secs { display: grid; grid-template-columns: 1fr 1fr; gap: calc(50 * var(--u)) calc(34 * var(--u)); align-items: start; }
+.hl-sec__name {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  margin-bottom: calc(14 * var(--u)); padding-bottom: 8px;
+  border-bottom: 3px solid var(--c);
+  color: #fff; font-weight: 700; font-size: clamp(16px, 1.25vw, 24px);
+}
+.hl-sec__name span { color: #8a8a8a; font-weight: 400; font-size: .7em; }
+.hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .hl-board__secs { grid-template-columns: 1fr; gap: 32px; } .hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
