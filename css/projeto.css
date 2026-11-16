@@ -886,3 +886,6 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .oz-stack .media:first-child { grid-row: span 2; }
 .oz-stack .media:not(:first-child) { aspect-ratio: 3 / 2; }
 @media (max-width: 700px) { .oz-stack { grid-template-columns: 1fr; } .oz-stack .media:first-child { grid-row: auto; aspect-ratio: 2 / 3; } }
+/* Helena: mockups no formato original (3:2), sem cortar */
+.page-helena .gallery--2 .media { aspect-ratio: 3 / 2; height: auto; }
+.page-helena .media.hl-full { aspect-ratio: 16 / 9; height: auto; }
