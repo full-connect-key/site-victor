@@ -913,3 +913,4 @@ img.suspect__photo { background: #D92D39; object-position: 50% 52%; }
 .hl-sec__name span { color: #8a8a8a; font-weight: 400; font-size: .7em; }
 .hl-sec .hl-board__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 @media (max-width: 900px) { .hl-sec .hl-board__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.page-metropole .media.met-full { aspect-ratio: 16 / 9; height: auto; }
